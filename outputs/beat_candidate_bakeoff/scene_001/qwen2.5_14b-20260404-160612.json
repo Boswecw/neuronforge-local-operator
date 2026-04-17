@@ -1,0 +1,54 @@
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_001"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Knocking Under the Chapel",
+      "beat_summary": "Mara and Tomas hear knocking under the chapel floor, which becomes a source of tension.",
+      "structural_role_hint": "Tension Builder",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "Three slow impacts rose from somewhere below the floor. Not loud. Not dramatic. Deliberate.\nKnock.\nA pause long enough for doubt.\nKnock.\nThen the third, slightly weaker than the first two, as if whatever waited under the chapel was growing tired.",
+          "reason": "Direct description of the knocking which creates tension."
+        }
+      ],
+      "uncertainty_note": "The source of the knocking remains ambiguous and mysterious throughout the scene.",
+      "review_note": "This beat establishes a significant element of suspense in the narrative."
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Opening the Secret Door",
+      "beat_summary": "Mara inserts an iron key into a hidden slot to open a secret door under the chapel.",
+      "structural_role_hint": "Turning Point",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "She slipped the key from her neck.\nTomas made a sound that was almost a laugh and not at all amused. “You are not opening that.”\n“Why else would the lock exist?”\n“That,” Mara said, “is precisely what I intend to find out.”",
+          "reason": "Direct description of Mara's decision to open the door."
+        }
+      ],
+      "uncertainty_note": "The consequences of opening the door are uncertain and ominous.",
+      "review_note": "This moment marks a critical shift in the story's direction."
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_summary": "Captain Joren Hale appears bound to a chair, leading to revelations about his past disappearance.",
+      "structural_role_hint": "Revelation",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "In the middle of the chamber sat a man bound to a chair of black wood.\nThe lantern shook in Mara’s grip.\nCaptain Joren Hale—older, gaunter, but recognizably the man from the Academy portrait—lifted his head against the light.",
+          "reason": "Direct description of Captain Hale's appearance and condition."
+        }
+      ],
+      "uncertainty_note": "The nature of Hale's current state and situation is unclear and unsettling.",
+      "review_note": "This beat introduces a major revelation about the expedition's history and adds depth to the narrative mystery."
+    }
+  ]
+}
+

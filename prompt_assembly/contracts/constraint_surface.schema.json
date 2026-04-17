@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/contracts/constraint_surface.schema.json",
+  "title": "Constraint Surface (Phase 0 contract lock)",
+  "description": "A typed, hashed, source-attributed constraint object consumed by prompt assembly. Constraint surfaces are the only authority NeuronForge accepts for what the model must obey.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "constraint_surface_id",
+    "schema_version",
+    "authoritative",
+    "constraint_type",
+    "items",
+    "source_refs",
+    "trust_level",
+    "created_at",
+    "hash",
+    "hash_algorithm",
+    "serialization_format"
+  ],
+  "properties": {
+    "constraint_surface_id": {
+      "type": "string",
+      "description": "Stable, opaque identifier for this constraint surface instance.",
+      "minLength": 1
+    },
+    "schema_version": {
+      "$ref": "common_enums.schema.json#/$defs/contract_version"
+    },
+    "authoritative": {
+      "type": "boolean",
+      "description": "True if and only if this constraint surface was issued by an authoritative producer for its constraint_type. Derived or runtime-trusted constraints must be false."
+    },
+    "constraint_type": {
+      "$ref": "common_enums.schema.json#/$defs/constraint_type"
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Opaque constraint items. Phase 0 does not normalize their internal shape; downstream consumers interpret them by constraint_type.",
+      "items": {
+        "type": "object",
+        "additionalProperties": true
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Stable references back to the producing systems or files that originated the items in this surface.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "trust_level": {
+      "$ref": "common_enums.schema.json#/$defs/trust_level"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "hash": {
+      "type": "string",
+      "description": "Hex-encoded hash of the canonical-JSON serialization of items + source_refs + constraint_type, computed under hash_algorithm.",
+      "pattern": "^[0-9a-f]{16,128}$"
+    },
+    "hash_algorithm": {
+      "$ref": "common_enums.schema.json#/$defs/hash_algorithm"
+    },
+    "serialization_format": {
+      "$ref": "common_enums.schema.json#/$defs/serialization_format"
+    }
+  },
+  "allOf": [
+    {
+      "description": "Authority/trust coherence: untrusted constraint surfaces may not be authoritative.",
+      "if": {
+        "properties": {
+          "trust_level": {
+            "const": "untrusted"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "authoritative": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "description": "Authority/trust coherence: derived constraint surfaces are by definition not authoritative.",
+      "if": {
+        "properties": {
+          "trust_level": {
+            "const": "derived"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "authoritative": {
+            "const": false
+          }
+        }
+      }
+    }
+  ]
+}

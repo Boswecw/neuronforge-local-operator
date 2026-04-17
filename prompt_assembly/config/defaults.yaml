@@ -1,0 +1,82 @@
+# NeuronForge Local prompt-assembly defaults (Phase 0 contract lock).
+#
+# This file is the zero-config baseline. It declares supported profiles,
+# their tokenizer pin, and the locked baseline algorithms. Phase 0 does
+# not execute any of these — they are contract surface only.
+#
+# Editing rules:
+#   * Never widen the lane allow list past LC-1, LC-2, LC-4 in Phase 0.
+#   * Never relax tokenizer_id / tokenizer_version pinning.
+#   * Adding a profile requires both a profile_id and a tokenizer pin.
+#
+# CLI/config posture (Phase 0):
+#   * Default config path:    prompt_assembly/config/defaults.yaml
+#   * Default config format:  YAML 1.2
+#   * Default artifact root:  ./.nf_local/prompt_assembly/
+#   * Zero-config example:    nf-local prompt-assembly run
+#                              --profile nf_local_editing_lore_safe_v1
+#                              --input <path>
+
+contract_version: "1.1.0-phase0"
+
+baselines:
+  hash_algorithm: blake3
+  serialization_format: canonical_json
+  signature_algorithm: ed25519       # not yet active in Phase 0
+  contract_version: "1.1.0-phase0"
+
+supported_lanes:
+  - LC-1
+  - LC-2
+  - LC-4
+
+unsupported_local_lanes:
+  - LC-3
+  - LC-5
+
+artifact_storage:
+  root: ./.nf_local/prompt_assembly/
+  manifests_subdir: manifests
+  bundles_subdir: bundles
+  audit_subdir: audit
+  debug_renders_subdir: debug
+
+profiles:
+  nf_local_editing_lore_safe_v1:
+    active: true
+    description: >
+      Lore-safe editing profile for NeuronForge Local.
+      Bound to LC-1 and LC-2 in Phase 0; LC-4 only via degraded fallback.
+    supported_lanes: [LC-1, LC-2, LC-4]
+    tokenizer_id: qwen2.5-bpe
+    tokenizer_version: "2.5.0"
+
+  nf_local_editing_general_grammar_v1:
+    active: true
+    description: >
+      General grammar cleanup profile. Workhorse route.
+    supported_lanes: [LC-1, LC-2]
+    tokenizer_id: qwen2.5-bpe
+    tokenizer_version: "2.5.0"
+
+  nf_local_reasoning_continuity_v1:
+    active: false
+    description: >
+      Reasoning-grade continuity profile. Reserved for later phases;
+      declared inactive so Phase 0 cannot route to it.
+    supported_lanes: [LC-2, LC-4]
+    tokenizer_id: phi4-bpe
+    tokenizer_version: "4.0.0"
+
+cli:
+  command_root: nf-local
+  surfaces:
+    registry_validate: nf-local prompt-assembly registry validate
+    bundle_build:      nf-local prompt-assembly bundle build
+    bundle_verify:     nf-local prompt-assembly bundle verify
+    health_check:      nf-local prompt-assembly health
+    debug_render:      nf-local prompt-assembly debug-render
+  zero_config_example: >-
+    nf-local prompt-assembly run
+      --profile nf_local_editing_lore_safe_v1
+      --input <path>

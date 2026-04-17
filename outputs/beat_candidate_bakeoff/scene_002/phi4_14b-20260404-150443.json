@@ -1,0 +1,50 @@
+```json
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_002"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Discovered Note",
+      "beat_summary": "Lena finds a note from 'Len' indicating Mark's unexpected presence.",
+      "structural_role_hint": "Revelation",
+      "confidence_class": "moderate",
+      "evidence_spans": [
+        {
+          "quote": "She knew before touching it that it was not there this morning.",
+          "reason": "The note’s sudden appearance suggests a significant revelation."
+        },
+        {
+          "quote": "Lena read the sentence twice more as if another line might surface if she stared long enough. I stopped by.",
+          "reason": "Emphasizes Lena's shock and search for meaning in the brief message."
+        }
+      ],
+      "uncertainty_note": "The context of Mark being dead could affect interpretation, but the note remains a pivotal discovery.",
+      "review_note": "Consideration needed on how this revelation impacts subsequent actions and emotional responses."
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Glimpse in Hallway",
+      "beat_summary": "Lena sees an ambiguous figure moving upstairs, increasing tension.",
+      "structural_role_hint": "Suspense",
+      "confidence_class": "moderate",
+      "evidence_spans": [
+        {
+          "quote": "Upstairs, distinctly this time, something moved. Not a creak. Not settling wood. A soft impact, followed by the faint drag of something against the floor.",
+          "reason": "Provides concrete evidence of movement, heightening suspense."
+        },
+        {
+          "quote": "On the kitchen table, beside the note, her green mug had begun to drip... The mug was warm too.",
+          "reason": "Indicates further unexplained phenomena adding to tension."
+        }
+      ],
+      "uncertainty_note": "The source of movement is unclear, but it's crucial for building suspense.",
+      "review_note": "Evaluate how this moment influences Lena’s decisions and the unfolding mystery."
+    }
+  ]
+}
+```
+

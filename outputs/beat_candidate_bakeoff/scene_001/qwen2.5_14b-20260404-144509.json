@@ -1,0 +1,48 @@
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_001"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Revelation of the Door",
+      "beat_summary": "Mara discovers a hidden door under the altar and recognizes its significance.",
+      "structural_role_hint": "Discovery",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "She slipped the key from her neck. Tomas made a sound that was almost a laugh and not at all amused. 'You are not opening that.'",
+          "reason": "Mara's action of retrieving the key and acknowledging the presence of a hidden door."
+        },
+        {
+          "quote": "Below them, silence spread out again, thick as held breath.",
+          "reason": "The anticipation leading up to the revelation of what lies behind the door."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Voices from Below",
+      "beat_summary": "Mara and Tomas hear a voice identified as Captain Hale's, prompting fear and uncertainty.",
+      "structural_role_hint": "Conflict",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "From the dark beneath the chapel, a voice rose up—faint, rough, unmistakably human. 'Don’t let it wear my face.' Tomas went white.",
+          "reason": "The first instance of the voice from below and its immediate effect on Tomas."
+        },
+        {
+          "quote": "'That cadence. The break on the second syllable. Nobody would know that.'",
+          "reason": "Tomas identifies Captain Hale's unique vocal trait, confirming their fears."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    }
+  ]
+}
+

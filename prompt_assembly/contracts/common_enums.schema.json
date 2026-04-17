@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/contracts/common_enums.schema.json",
+  "title": "NeuronForge Local — Common Enums (Phase 0 contract lock)",
+  "description": "Controlled vocabulary shared by all prompt-assembly contracts. These enums are normative. Any value not present here is invalid in Phase 0.",
+  "type": "object",
+  "$defs": {
+    "lane_id": {
+      "title": "Long-Context Lane Identifier",
+      "description": "V1.1 supports only the locally executable lanes LC-1, LC-2, LC-4. LC-3 and LC-5 are reserved but unsupported for local execution.",
+      "type": "string",
+      "enum": [
+        "LC-1",
+        "LC-2",
+        "LC-4"
+      ]
+    },
+    "trust_level": {
+      "title": "Trust Level",
+      "description": "Authority classification for any input or constraint surface. Drives redaction, override, and override rejection behavior.",
+      "type": "string",
+      "enum": [
+        "authoritative",
+        "trusted_runtime",
+        "derived",
+        "untrusted"
+      ]
+    },
+    "constraint_type": {
+      "title": "Constraint Surface Type",
+      "type": "string",
+      "enum": [
+        "patch_contract",
+        "workspace_boundary",
+        "evidence_bundle",
+        "acceptance_criteria",
+        "authority_boundary",
+        "lifecycle_boundary"
+      ]
+    },
+    "hash_algorithm": {
+      "title": "Hash Algorithm",
+      "description": "BLAKE3 is the Phase 0 baseline. Other entries are reserved for forward compatibility but rejected by Phase 0 validation.",
+      "type": "string",
+      "enum": [
+        "blake3"
+      ]
+    },
+    "serialization_format": {
+      "title": "Serialization Format",
+      "description": "Canonical JSON is the Phase 0 baseline for structured-content hashing.",
+      "type": "string",
+      "enum": [
+        "canonical_json"
+      ]
+    },
+    "signature_algorithm": {
+      "title": "Bundle Signature Algorithm",
+      "description": "Ed25519 is the Phase 0 baseline. The signature itself is not produced in Phase 0; only its metadata posture is locked.",
+      "type": "string",
+      "enum": [
+        "ed25519"
+      ]
+    },
+    "reason_code": {
+      "title": "Long-Context Reason Code",
+      "description": "Reason codes that justify lane assignment. Multiple codes may apply to a single lane decision.",
+      "type": "string",
+      "enum": [
+        "summary_lossy",
+        "sliding_window_lossy",
+        "governance_continuity_required",
+        "full_trace_required",
+        "partitioned_execution_required",
+        "amnesia_forbidden",
+        "degraded_lane_fallback"
+      ]
+    },
+    "error_code": {
+      "title": "Stable Error Codes (Phase 0)",
+      "type": "string",
+      "enum": [
+        "ERR_PROFILE_UNKNOWN",
+        "ERR_PROFILE_INACTIVE",
+        "ERR_LANE_UNSUPPORTED_LOCAL",
+        "ERR_PROFILE_LANE_INCOMPATIBLE",
+        "ERR_REQUIRED_REFERENCE_UNRESOLVED",
+        "ERR_REQUIRED_CONSTRAINT_SURFACE_MISSING",
+        "ERR_CONSTRAINT_SURFACE_HASH_INVALID",
+        "ERR_REQUIRED_STALE_INPUT",
+        "ERR_PROTECTED_BUDGET_IMPOSSIBLE",
+        "ERR_SECTION_CONFLICT_UNRESOLVED",
+        "ERR_BUNDLE_VERSION_INCOMPATIBLE",
+        "ERR_BUNDLE_SIGNATURE_INVALID"
+      ]
+    },
+    "policy_decision": {
+      "title": "Policy Decision",
+      "type": "string",
+      "enum": [
+        "admit",
+        "reject",
+        "require_review"
+      ]
+    },
+    "compaction_event_kind": {
+      "title": "Compaction Event Kind",
+      "type": "string",
+      "enum": [
+        "summary_synthesized",
+        "window_truncated",
+        "section_dropped",
+        "section_demoted",
+        "no_compaction"
+      ]
+    },
+    "tokenizer_id": {
+      "title": "Tokenizer Identifier",
+      "description": "Tokenizer identifiers supported in Phase 0. Every supported profile must declare a tokenizer_id from this set plus a tokenizer_version.",
+      "type": "string",
+      "enum": [
+        "qwen2.5-bpe",
+        "phi4-bpe",
+        "llama3-bpe"
+      ]
+    },
+    "contract_version": {
+      "title": "Phase 0 Contract Version",
+      "description": "Locked schema version string for Phase 0 contract artifacts.",
+      "type": "string",
+      "const": "1.1.0-phase0"
+    }
+  }
+}

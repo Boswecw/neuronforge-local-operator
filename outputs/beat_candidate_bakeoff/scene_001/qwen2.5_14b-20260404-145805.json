@@ -1,0 +1,56 @@
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_001"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Unveiling of the Hidden Door",
+      "beat_summary": "Mara and Tomas uncover a hidden door beneath the altar in Saint Ardin’s chapel, with Mara deciding to investigate despite Tomas's reluctance.",
+      "structural_role_hint": "Setup",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "Knock. A pause long enough for doubt. Knock. Then the third, slightly weaker than the first two, as if whatever waited under the chapel was growing tired.",
+          "reason": "The mysterious knocking introduces a mystery and sets up the discovery of the hidden door."
+        },
+        {
+          "quote": "She slipped the key from her neck. Tomas made a sound that was almost a laugh and not at all amused. 'You are not opening that.'",
+          "reason": "Mara decides to investigate the hidden door despite Tomas's objections, setting up the main conflict of the scene."
+        },
+        {
+          "quote": "Stone grated against stone. The crescent seam widened into a black mouth in the floor.",
+          "reason": "The physical description of the door opening adds tension and foreshadows danger ahead."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Revelation of Captain Hale's Fate",
+      "beat_summary": "Mara descends into the hidden chamber and finds Captain Joren Hale, bound to a chair with injuries, revealing that he is not truly alive.",
+      "structural_role_hint": "Climax",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "The stair opened into a round chamber no bigger than a grain cellar. Its walls were carved with figures worn nearly smooth by time: kneeling people with their hands over their mouths; a towering shape with no face, only a circle where the features should have been; and beneath that, a series of scratched lines.",
+          "reason": "The description of the chamber sets up the revelation to come."
+        },
+        {
+          "quote": "In the middle of the chamber sat a man bound to a chair of black wood. Captain Joren Hale—older, gaunter, but recognizably the man from the Academy portrait—lifted his head against the light.",
+          "reason": "The physical description and recognition of Captain Hale sets up the confrontation."
+        },
+        {
+          "quote": "'You brought my brother,' he rasped. 'That was kind of you.' Mara’s skin went cold for an entirely different reason.",
+          "reason": "Hale's revelation about himself being something other than alive, coupled with his contemptuous response to their presence, adds a chilling twist."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    }
+  ]
+}
+

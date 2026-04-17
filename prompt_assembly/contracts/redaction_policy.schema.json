@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/contracts/redaction_policy.schema.json",
+  "title": "Redaction Policy (Phase 0 contract lock)",
+  "description": "Formal redaction contract. Determines which manifest fields are visible at each disclosure surface (operator manifest view, debug render, audit reference). Phase 0 locks the contract shape; later phases enforce it at the API edge.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "redaction_policy_id",
+    "schema_version",
+    "manifest_visible_fields",
+    "debug_visible_fields",
+    "masked_fields",
+    "reference_only_fields",
+    "trust_level_effects"
+  ],
+  "properties": {
+    "redaction_policy_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "$ref": "common_enums.schema.json#/$defs/contract_version"
+    },
+    "manifest_visible_fields": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Fields visible in the standard operator manifest view.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "debug_visible_fields": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Fields additionally visible in the privileged debug render.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "masked_fields": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Fields whose values must be replaced with a stable mask token at every disclosure surface.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "reference_only_fields": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Fields that may be referenced by id/hash but whose body must never be inlined.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "trust_level_effects": {
+      "type": "object",
+      "description": "Per-trust-level overrides. Lower trust levels can promote fields into masked or reference_only.",
+      "additionalProperties": false,
+      "required": [
+        "authoritative",
+        "trusted_runtime",
+        "derived",
+        "untrusted"
+      ],
+      "properties": {
+        "authoritative": {
+          "$ref": "#/$defs/trust_effect"
+        },
+        "trusted_runtime": {
+          "$ref": "#/$defs/trust_effect"
+        },
+        "derived": {
+          "$ref": "#/$defs/trust_effect"
+        },
+        "untrusted": {
+          "$ref": "#/$defs/trust_effect"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "trust_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "force_masked",
+        "force_reference_only"
+      ],
+      "properties": {
+        "force_masked": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "force_reference_only": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

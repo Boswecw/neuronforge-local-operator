@@ -1,0 +1,67 @@
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_002"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Discovery of Unexplained Presence",
+      "beat_summary": "Lena returns home and discovers signs of an unexplained presence, which initially she attributes to her grief.",
+      "structural_role_hint": "Inciting Incident",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "The kitchen light was on. For a second she thought only of electricity—of the bill, of the bulb she kept meaning to replace over the sink, of the fact that she distinctly remembered switching everything off before she left that morning.",
+          "reason": "Initial confusion upon finding an unexpected and unexplained situation."
+        },
+        {
+          "quote": "The other was white stoneware. Plain. Heavy. One of the old set they used when people came over, back when people still came over.",
+          "reason": "Discovery of a second cup that shouldn't be there according to her memory."
+        }
+      ],
+      "uncertainty_note": "The narrative is clear about Lena's confusion and suspicion surrounding the unexplained presence in the house.",
+      "review_note": "This scene clearly marks an inciting incident for the story, setting up tension around an unexplained phenomenon that Lena attributes partially to grief."
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Glimpse of Possible Reality",
+      "beat_summary": "Lena encounters several inexplicable events and objects, raising questions about the reality of what she's experiencing.",
+      "structural_role_hint": "Catalyst",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "The coat hung still. Rainwater had dried in faint dark patches along one shoulder.",
+          "reason": "Observation of an unexplained object with a specific detail that connects to memories."
+        },
+        {
+          "quote": "Upstairs, distinctly this time, something moved. Not a creak. Not settling wood. A soft impact, followed by the faint drag of something against the floor.",
+          "reason": "Direct observation of movement and sound indicating an unexplained presence or event."
+        }
+      ],
+      "uncertainty_note": "The events are clearly described as unusual and potentially supernatural, but Lena's state of mind is also considered due to her grief.",
+      "review_note": "These moments act as a catalyst for Lena’s growing awareness that something beyond normal explanations might be happening in the house."
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Confirmation of Uncanny Presence",
+      "beat_summary": "Lena witnesses further signs and experiences, leading her to question her reality and sanity.",
+      "structural_role_hint": "Rising Action",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "The mug was warm too. Lena backed one step toward the counter without meaning to. She looked from the mug to the staircase to the coat on the hook.",
+          "reason": "Direct evidence of an unexplained presence, such as a warm cup and mysterious movement."
+        },
+        {
+          "quote": "At the edge of her vision, beyond the reflection in the dark kitchen window, someone crossed the upstairs hall. Just a passing shape, gone before she could turn.",
+          "reason": "A clear but fleeting visual encounter suggesting an uncanny presence."
+        }
+      ],
+      "uncertainty_note": "The sequence of events clearly indicates something supernatural or unexplained is occurring within Lena's home.",
+      "review_note": "This rising action builds on the earlier beat candidates by providing clearer and more direct evidence, pushing Lena further into questioning reality."
+    }
+  ]
+}
+

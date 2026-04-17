@@ -1,0 +1,57 @@
+```json
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_002"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Discovery of Unfamiliar Presence",
+      "beat_summary": "Lena discovers a white coffee cup on the kitchen table, indicating someone else's presence in her home.",
+      "structural_role_hint": "rising_action",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "On the table, beside her mug, sat a second cup. Steam no longer rose from it...",
+          "reason": "The existence of an unfamiliar item in the kitchen implies an unexpected presence."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Encounter with Mark's Coat",
+      "beat_summary": "Lena finds Mark's coat on a hook in the kitchen, which is unusual and unexpected.",
+      "structural_role_hint": "rising_action",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "A dark coat hanging over the hook by the mudroom door. Lena knew it...",
+          "reason": "The recognition of Mark's coat, despite him being deceased, signifies a disturbing discovery."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Suspenseful Movement from Upstairs",
+      "beat_summary": "Lena hears an unexplained sound coming from upstairs, increasing the suspense and sense of danger.",
+      "structural_role_hint": "climax",
+      "confidence_class": "moderate",
+      "evidence_spans": [
+        {
+          "quote": "Upstairs, distinctly this time, something moved. Not a creak...",
+          "reason": "The distinct sound from upstairs adds to the tension and suggests an unresolved mystery."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    }
+  ]
+}
+```
+

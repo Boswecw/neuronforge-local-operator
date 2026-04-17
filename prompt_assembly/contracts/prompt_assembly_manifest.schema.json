@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/contracts/prompt_assembly_manifest.schema.json",
+  "title": "Prompt Assembly Manifest (Phase 0 contract lock)",
+  "description": "The manifest is the runtime-truth record of how a prompt was assembled. It records actual decisions, not intended ones. Phase 0 locks the field set; later phases populate every field from real assembler events.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_id",
+    "schema_version",
+    "profile_id",
+    "tokenizer_id",
+    "tokenizer_version",
+    "long_context",
+    "constraint_surfaces",
+    "resolved_inputs",
+    "policy_decisions",
+    "compaction_events",
+    "section_order",
+    "section_token_counts",
+    "protected_budget_tokens",
+    "total_token_count",
+    "assembled_at",
+    "assembler_version",
+    "redaction_policy_id"
+  ],
+  "properties": {
+    "manifest_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "$ref": "common_enums.schema.json#/$defs/contract_version"
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tokenizer_id": {
+      "$ref": "common_enums.schema.json#/$defs/tokenizer_id"
+    },
+    "tokenizer_version": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Pinned tokenizer version for the supported profile. Required so token counts and budget enforcement are reproducible."
+    },
+    "long_context": {
+      "$ref": "long_context.schema.json"
+    },
+    "constraint_surfaces": {
+      "type": "array",
+      "description": "Resolved constraint surfaces consumed by the assembler. Each entry must already satisfy the constraint_surface schema.",
+      "items": {
+        "$ref": "constraint_surface.schema.json"
+      }
+    },
+    "resolved_inputs": {
+      "type": "array",
+      "description": "Inputs the assembler successfully resolved. Phase 0 only locks the descriptor shape.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "input_id",
+          "trust_level",
+          "hash",
+          "hash_algorithm",
+          "stale"
+        ],
+        "properties": {
+          "input_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "trust_level": {
+            "$ref": "common_enums.schema.json#/$defs/trust_level"
+          },
+          "hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{16,128}$"
+          },
+          "hash_algorithm": {
+            "$ref": "common_enums.schema.json#/$defs/hash_algorithm"
+          },
+          "stale": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "policy_decisions": {
+      "type": "array",
+      "description": "Every admit/reject/require_review decision the policy layer rendered while building the bundle.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "decision_id",
+          "subject",
+          "decision",
+          "rationale_code"
+        ],
+        "properties": {
+          "decision_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "subject": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Stable reference to the input or constraint subject of the decision."
+          },
+          "decision": {
+            "$ref": "common_enums.schema.json#/$defs/policy_decision"
+          },
+          "rationale_code": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Short stable code; full rationale lives in the audit log, not the manifest."
+          }
+        }
+      }
+    },
+    "compaction_events": {
+      "type": "array",
+      "description": "Every compaction the assembler performed. Empty list means no compaction occurred (still required, never inferred).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "event_id",
+          "kind",
+          "section_id",
+          "tokens_before",
+          "tokens_after"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "$ref": "common_enums.schema.json#/$defs/compaction_event_kind"
+          },
+          "section_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "tokens_before": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "tokens_after": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "section_order": {
+      "type": "array",
+      "description": "Final ordered list of section identifiers in the assembled bundle.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "section_token_counts": {
+      "type": "object",
+      "description": "Per-section token counts. Keys must match section_order entries.",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "protected_budget_tokens": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Tokens reserved for protected sections that must not be compacted."
+    },
+    "total_token_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "assembled_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "assembler_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "redaction_policy_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Reference to the redaction policy that governs manifest/debug visibility."
+    }
+  }
+}

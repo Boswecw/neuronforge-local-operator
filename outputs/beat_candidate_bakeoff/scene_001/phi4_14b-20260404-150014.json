@@ -1,0 +1,46 @@
+```json
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_001"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Tension and Mystery Introduction",
+      "beat_summary": "The scene begins with an ominous atmosphere as rain intensifies, setting the stage for a mysterious knocking beneath the chapel.",
+      "structural_role_hint": "Introduction of central mystery",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "By midnight it drummed against the slate roof... Three slow impacts rose from somewhere below the floor.",
+          "reason": "The detailed description of the setting and sound effects heightens tension, introducing central plot elements."
+        }
+      ],
+      "uncertainty_note": "None",
+      "review_note": "Key introduction to scene's main conflict; effectively sets tone for mystery."
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Revelation and Character Connection",
+      "beat_summary": "Mara identifies a hidden door beneath the altar, leading to a deeper exploration of mystery, while Tomas reveals his personal connection to Captain Hale.",
+      "structural_role_hint": "Progression of plot through character actions and revelations",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "Mara slipped the key from her neck... 'That,' Mara said, 'is precisely what I intend to find out.'",
+          "reason": "Describes a decisive action by Mara that propels the plot forward and reveals a hidden element in the chapel."
+        },
+        {
+          "quote": "'He was my brother.' ... 'Exactly.'",
+          "reason": "This revelation connects Tomas personally to the unfolding events, deepening character motivations and stakes."
+        }
+      ],
+      "uncertainty_note": "None",
+      "review_note": "Critical juncture connecting personal stakes with plot advancement."
+    }
+  ]
+}
+```
+

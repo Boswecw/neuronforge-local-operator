@@ -1,0 +1,55 @@
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_002"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Unexpected Light and Coffee",
+      "beat_summary": "Lena finds coffee and light in the kitchen, despite not remembering turning them on.",
+      "structural_role_hint": "Mystery",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "The kitchen light was on. Fresh enough to still be warm in the air.",
+          "reason": "Establishes unexpected and unexplained presence of coffee."
+        }
+      ],
+      "uncertainty_note": "While the scene is eerie, the direct evidence suggests a clear unexplained event.",
+      "review_note": "Consider if this beat stands alone or needs additional context from later events."
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Strange Discovery Upstairs",
+      "beat_summary": "Lena hears and sees movement upstairs, where she is certain nothing should be.",
+      "structural_role_hint": "Suspense",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "Upstairs, distinctly this time, something moved. A soft impact, followed by the faint drag of something against the floor.",
+          "reason": "Direct evidence of unexplained movement and sound."
+        }
+      ],
+      "uncertainty_note": "The scene is intentionally ambiguous about whether these events are real or imagined.",
+      "review_note": "This event significantly escalates the tension in the narrative."
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Unexplained Personal Items",
+      "beat_summary": "Lena finds her husband's coat and lighter, items that should not be there.",
+      "structural_role_hint": "Puzzle",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "It was not her coat. Rainwater had dried in faint dark patches along one shoulder.",
+          "reason": "Direct evidence of unexpected personal items."
+        }
+      ],
+      "uncertainty_note": "The scene leaves room for interpretation regarding the origin and significance of these objects.",
+      "review_note": "This beat deepens the mystery around Lena's experiences."
+    }
+  ]
+}
+

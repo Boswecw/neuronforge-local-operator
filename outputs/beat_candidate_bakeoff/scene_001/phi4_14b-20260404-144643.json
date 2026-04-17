@@ -1,0 +1,50 @@
+```json
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_001"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Revelation of the Hidden Door",
+      "beat_summary": "Mara discovers a hidden door under the chapel, marked by an unnaturally clean line, and attempts to unlock it.",
+      "structural_role_hint": "Exposition/Inciting Incident",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "The chapel stones were old enough that the seams between them had softened, but here—directly before the altar—one line remained unnaturally clean. A crescent.",
+          "reason": "This detail reveals a significant discovery by Mara, marking the transition into a new adventure or plot point."
+        },
+        {
+          "quote": "She slipped the key from her neck... The key turned with a deep internal clunk...",
+          "reason": "The action of unlocking signifies a pivotal moment where past secrets are about to be uncovered."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Confrontation with the Unknown",
+      "beat_summary": "Mara and Tomas confront an unknown entity that communicates through a voice resembling Captain Hale's.",
+      "structural_role_hint": "Rising Action",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "\"Don’t let it wear my face.\" Tomas went white. \"That,\" he said hoarsely, \"was Captain Hale.\"",
+          "reason": "This interaction marks a significant moment of tension and revelation about the mysterious entity beneath."
+        },
+        {
+          "quote": "The voice from below: 'Please.' Mara felt every hair rise along her arms.",
+          "reason": "Demonstrates the psychological impact on the characters as they face an unknown threat."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    }
+  ]
+}
+```
+

@@ -1,0 +1,83 @@
+{
+  "task_type": "extract.beat_candidates.scene.v1",
+  "source_scope": {
+    "scope_type": "scene",
+    "scene_id": "scene_002"
+  },
+  "candidates": [
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Suspenseful Discovery",
+      "beat_summary": "Lena discovers a white cup of coffee and a mysterious note from Mark, her deceased husband.",
+      "structural_role_hint": "Inciting Incident",
+      "confidence_class": "high",
+      "evidence_spans": [
+        {
+          "quote": "The kitchen light was on. For a second she thought only of electricity—of the bill, of the bulb she kept meaning to replace over the sink, of the fact that she distinctly remembered switching everything off before she left that morning.",
+          "reason": "This excerpt establishes Lena's initial confusion upon seeing the kitchen light."
+        },
+        {
+          "quote": "And on the table, beside her mug, sat a second cup. Steam no longer rose from it, but there was still a dark crescent of wet heat on the wood beneath.",
+          "reason": "Lena notices an unexplained coffee cup next to Mark's usual mug."
+        },
+        {
+          "quote": "Not hot. Not imagined. Warm. She set her keys on the table and looked around with the careful, incremental focus of someone trying not to startle herself into foolishness.",
+          "reason": "Lena confirms that the cup is warm and begins to investigate further."
+        },
+        {
+          "quote": "_Len._ Nothing else. Just that.",
+          "reason": "The note left by Mark adds a mysterious element to Lena's confusion."
+        }
+      ],
+      "uncertainty_note": "",
+      "review_note": ""
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Revelation of Unexplained Phenomena",
+      "beat_summary": "Lena encounters physical evidence and experiences that challenge her reality, suggesting the presence of Mark or an uncanny occurrence.",
+      "structural_role_hint": "Catalyst",
+      "confidence_class": "moderate",
+      "evidence_spans": [
+        {
+          "quote": "The house returned to stillness so completely that the creak began to feel like memory correcting itself after the fact. Lena crossed the room and touched the handle of the white cup.",
+          "reason": "Lena's sense of reality begins to shift as she confirms tangible evidence."
+        },
+        {
+          "quote": "She looked toward the staircase visible from the kitchen archway. Darkness filled the upper hall. No movement. No voice. Just the suggestion of the house extending upward into itself.",
+          "reason": "The description sets a tense atmosphere, hinting at more unexplained occurrences upstairs."
+        },
+        {
+          "quote": "Lena turned slowly. It was not her coat. One of the pockets sagged. Something was inside. She slid her hand in and drew out a small brass lighter.",
+          "reason": "Discovering Mark's personal items further intensifies Lena's confusion and fear."
+        }
+      ],
+      "uncertainty_note": "The evidence spans include speculative elements but are grounded within the text.",
+      "review_note": ""
+    },
+    {
+      "artifact_class": "candidate_beat",
+      "beat_label": "Confrontation with Inner Conflict",
+      "beat_summary": "Lena grapples with disbelief and fear as she faces possible supernatural or psychological phenomena in her home.",
+      "structural_role_hint": "Climax",
+      "confidence_class": "moderate",
+      "evidence_spans": [
+        {
+          "quote": "Her eyes drifted to the hall table. Her keys were not there. She looked down and saw them where she had left them on the kitchen table, next to the note.",
+          "reason": "Lena's perception of reality blurs as objects move without explanation."
+        },
+        {
+          "quote": "A soft impact, followed by the faint drag of something against the floor. Another soft sound. This one from above and slightly to the left. Bedroom side.",
+          "reason": "Unexplained sounds and movements intensify Lena's sense of dread and confusion."
+        },
+        {
+          "quote": "She looked from the mug to the staircase to the coat on the hook. At the edge of her vision, beyond the reflection in the dark kitchen window, someone crossed the upstairs hall.",
+          "reason": "Lena experiences a moment that strongly suggests supernatural presence or psychological breakdown."
+        }
+      ],
+      "uncertainty_note": "The evidence spans are heavily speculative and rely on ambiguous descriptions.",
+      "review_note": ""
+    }
+  ]
+}
+

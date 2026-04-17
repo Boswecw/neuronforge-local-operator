@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/contracts/compiled_bundle.schema.json",
+  "title": "Compiled Bundle Format Contract (Phase 0 contract lock)",
+  "description": "The compiled bundle is the artifact handed to a model executor. Phase 0 locks only the format contract: canonical-JSON posture, semantic version, signature metadata for forward Ed25519 verification, and a compatibility-check posture. The bundle body shape is intentionally permissive in Phase 0; later phases narrow it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bundle_id",
+    "bundle_version",
+    "schema_version",
+    "manifest_id",
+    "serialization_format",
+    "content_hash",
+    "content_hash_algorithm",
+    "signature",
+    "compatibility",
+    "created_at",
+    "body"
+  ],
+  "properties": {
+    "bundle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bundle_version": {
+      "type": "string",
+      "description": "Semantic version of the bundle artifact itself.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "schema_version": {
+      "$ref": "common_enums.schema.json#/$defs/contract_version"
+    },
+    "manifest_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The manifest_id this bundle was assembled under. Bundle and manifest are paired 1:1."
+    },
+    "serialization_format": {
+      "$ref": "common_enums.schema.json#/$defs/serialization_format"
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{16,128}$",
+      "description": "Hash of the canonical-JSON serialization of body."
+    },
+    "content_hash_algorithm": {
+      "$ref": "common_enums.schema.json#/$defs/hash_algorithm"
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "algorithm",
+        "key_id",
+        "value",
+        "signed"
+      ],
+      "properties": {
+        "algorithm": {
+          "$ref": "common_enums.schema.json#/$defs/signature_algorithm"
+        },
+        "key_id": {
+          "type": "string",
+          "description": "Identifier of the signing key. May be empty in Phase 0 because signing is not yet active.",
+          "minLength": 0
+        },
+        "value": {
+          "type": "string",
+          "description": "Hex- or base64-encoded signature. May be empty in Phase 0; the field is reserved.",
+          "minLength": 0
+        },
+        "signed": {
+          "type": "boolean",
+          "description": "Phase 0 always emits false. Later phases set true once Ed25519 signing is active. The field is mandatory so consumers can branch unconditionally."
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "min_consumer_version",
+        "min_tokenizer_version",
+        "tokenizer_id"
+      ],
+      "properties": {
+        "min_consumer_version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$"
+        },
+        "min_tokenizer_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tokenizer_id": {
+          "$ref": "common_enums.schema.json#/$defs/tokenizer_id"
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "body": {
+      "type": "object",
+      "description": "Bundle body. Phase 0 only requires it to be an object; later phases narrow this.",
+      "additionalProperties": true
+    }
+  }
+}

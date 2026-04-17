@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/contracts/long_context.schema.json",
+  "title": "Long Context Surface (Phase 0 contract lock)",
+  "description": "Normalized lane assignment for a prompt assembly request. This object is always present, never inferred downstream, and treated as immutable once produced. Phase 0 supports only LC-1, LC-2, LC-4 locally.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lane",
+    "reason_codes",
+    "summary_allowed",
+    "sliding_window_allowed",
+    "full_trace_required",
+    "governance_no_amnesia",
+    "partitioned_execution",
+    "degraded",
+    "contract_version"
+  ],
+  "properties": {
+    "lane": {
+      "$ref": "common_enums.schema.json#/$defs/lane_id"
+    },
+    "reason_codes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "common_enums.schema.json#/$defs/reason_code"
+      }
+    },
+    "summary_allowed": {
+      "type": "boolean",
+      "description": "True only when lossy summarization is permitted by the lane."
+    },
+    "sliding_window_allowed": {
+      "type": "boolean",
+      "description": "True only when sliding-window truncation is permitted by the lane."
+    },
+    "full_trace_required": {
+      "type": "boolean",
+      "description": "True when the lane requires the unmodified governance trace to be present in the bundle."
+    },
+    "governance_no_amnesia": {
+      "type": "boolean",
+      "description": "True when the lane forbids any compaction step that would silently drop governance state."
+    },
+    "partitioned_execution": {
+      "type": "boolean",
+      "description": "True when the lane requires partitioned execution across bounded sections rather than monolithic assembly."
+    },
+    "degraded": {
+      "type": "boolean",
+      "description": "True when the lane was assigned in a degraded posture (e.g., LC-2 fallback from LC-1 because a precondition failed)."
+    },
+    "contract_version": {
+      "$ref": "common_enums.schema.json#/$defs/contract_version"
+    }
+  }
+}
