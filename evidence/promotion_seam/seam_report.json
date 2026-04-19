@@ -1,0 +1,100 @@
+{
+  "admission_stage": "wave1_internal",
+  "all_pass": true,
+  "cases": [
+    {
+      "admission_class": "strict_admitted",
+      "expected_admission_class": "strict_admitted",
+      "expected_reason_codes_subset": [],
+      "lineage_preserved": true,
+      "name": "case_1_strict_admitted",
+      "pass": true,
+      "reason_codes": []
+    },
+    {
+      "admission_class": "non_strict_admitted",
+      "expected_admission_class": "non_strict_admitted",
+      "expected_reason_codes_subset": [],
+      "lineage_preserved": true,
+      "name": "case_2_non_strict_admitted",
+      "pass": true,
+      "reason_codes": []
+    },
+    {
+      "admission_class": "not_admitted",
+      "expected_admission_class": "not_admitted",
+      "expected_reason_codes_subset": [
+        "manifest_hash_missing"
+      ],
+      "name": "case_3_missing_manifest",
+      "pass": true,
+      "reason_codes": [
+        "manifest_hash_missing"
+      ]
+    },
+    {
+      "admission_class": "not_admitted",
+      "expected_admission_class": "not_admitted",
+      "expected_reason_codes_subset": [
+        "used_profile_unsupported"
+      ],
+      "name": "case_4_unsupported_profile",
+      "pass": true,
+      "reason_codes": [
+        "used_profile_unsupported"
+      ]
+    },
+    {
+      "admission_class": "not_admitted",
+      "expected_admission_class": "not_admitted",
+      "expected_reason_codes_subset": [
+        "non_strict_canonical_digest_mismatch"
+      ],
+      "name": "case_5_digest_mismatch",
+      "pass": true,
+      "reason_codes": [
+        "non_strict_canonical_digest_mismatch"
+      ]
+    },
+    {
+      "admission_class": "strict_admitted",
+      "expected_admission_class": "strict_admitted",
+      "expected_reason_codes_subset": [],
+      "lineage_absent_visibly": true,
+      "lineage_task_intent_id": null,
+      "name": "case_6_lineage_loss_attempt",
+      "pass": true,
+      "reason_codes": []
+    },
+    {
+      "admission_class": "strict_admitted",
+      "expected_admission_class": "strict_admitted",
+      "expected_reason_codes_subset": [],
+      "name": "case_7_replay_stable",
+      "pass": true,
+      "reason_codes": [],
+      "stable": true
+    }
+  ],
+  "envelope_path": "/home/charlie/Forge/ecosystem/pact/docs/evidence/wave1_promotion_envelope.json",
+  "log_path": "evidence/promotion_seam/promotion_runs.jsonl",
+  "mirror_path": "registry/pact_wave1_envelope_mirror.json",
+  "seam": "neuronforge_local_wave1",
+  "strict_success_hash": "sha256:e11c303a2d61950cef8502d41e6337cf53c2dae94456bdff79d12cde8304568c",
+  "summary": {
+    "admission_class_counts": {
+      "non_strict_admitted": 1,
+      "not_admitted": 3,
+      "not_promoted": 0,
+      "strict_admitted": 2
+    },
+    "log_path": "/home/charlie/Forge/ecosystem/local-systems/neuronforge-local-operator/evidence/promotion_seam/promotion_runs.jsonl",
+    "reason_code_counts": {
+      "manifest_hash_missing": 1,
+      "non_strict_canonical_digest_mismatch": 1,
+      "used_profile_unsupported": 1
+    },
+    "total_runs": 6
+  },
+  "wave_manifest_hash": "sha256:26b75ef5232a149e523d1bf2db1302cf5a9ba4025d66cdaecbd227e0dadedcf8"
+}
