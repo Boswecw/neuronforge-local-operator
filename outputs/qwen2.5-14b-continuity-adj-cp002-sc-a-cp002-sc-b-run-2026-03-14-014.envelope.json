@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "run_id": "run-2026-03-14-014",
+  "timestamp": "2026-03-14T12:55:10Z",
+  "scene_packet_id": "cp-002",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Possible Continuity Tension in Character's Position",
+      "finding_type": "continuity_tension",
+      "claim": "The character Rawn may have moved from the window to the table without a clear transition described between Scene A and Scene B.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp002-sc-a",
+          "cp002-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp002-sc-a",
+          "span_text": "He moved to the window and stood there while Amicae gathered her papers from the table.",
+          "span_role": "carry_forward"
+        },
+        {
+          "scene_id": "cp002-sc-b",
+          "span_text": "He was still at the window when the bells rang the second hour. The street below had gone quiet. He crossed the room and sat at the table where Amicae's chair was still pushed back from where she had risen, and he pulled her abandoned cup toward him and turned it in his hands without drinking.",
+          "span_role": "carry_forward"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition may be intentional and could be supported by context outside this two-scene window.",
+      "review_note": "Verify whether the character's movement from the window to the table is clearly described or if it needs further explanation for continuity.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a possible continuity tension in the character's position between scenes.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T12:56:17.606434+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v1.md",
+    "request_file": "inputs/case-packets/cp-002.json",
+    "raw_output_file": "outputs/qwen2.5-14b-continuity-adj-cp002-sc-a-cp002-sc-b-run-2026-03-14-014.raw.txt"
+  }
+}

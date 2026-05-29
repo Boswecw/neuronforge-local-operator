@@ -1,0 +1,68 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "This scene is richly descriptive with a focus on the visual and emotional impact of an ancient tower. The writing style is dense and evocative, emphasizing the contrast between past grandeur and present decay.",
+    "overall_assessment": "The scene excels in painting a vivid picture of the historical weight and atmospheric tension surrounding an ancient tower. However, the dense prose and repetitive use of adjectives may slow down pacing for some readers. The voice is consistent but may benefit from more varied sentence structures to maintain reader engagement.",
+    "dimension_scores": {
+      "voice_consistency": 1.0,
+      "flow": 0.75,
+      "sentence_variety": 0.6,
+      "clarity": 0.8,
+      "pacing": 0.6
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Effective imagery",
+        "detail": "The scene uses powerful and evocative language to describe the tower's appearance and atmosphere."
+      },
+      {
+        "type": "weakness",
+        "label": "Overuse of adjectives",
+        "detail": "Repetitive adjective use can make sentences feel cumbersome and slow down pacing."
+      },
+      {
+        "type": "observation",
+        "label": "Consistent voice",
+        "detail": "The scene maintains a consistent tone throughout, contributing to the overall mood."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Vary sentence structure",
+        "detail": "Incorporating shorter and varied sentences can enhance readability without sacrificing detail."
+      },
+      {
+        "priority": "low",
+        "label": "Trim redundant adjectives",
+        "detail": "Reducing the number of adjectives may improve pacing and clarity while maintaining impact."
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_spans": [
+      {
+        "start": 36,
+        "end": 71,
+        "reason": "Describes the tower's appearance in great detail."
+      },
+      {
+        "start": 185,
+        "end": 214,
+        "reason": "Repeats similar descriptive elements, highlighting repetitive adjective use."
+      }
+    ]
+  },
+  "task_id": "analyze.style.scene.v1",
+  "contract_version": "v1",
+  "run_id": "run-2026-03-21-002",
+  "run_metadata": {
+    "scene_file": "inputs/style-analysis-eval/scene-02-dense.md",
+    "raw_output_file": "evals/style-analysis-eval-2026-03-21/raw/qwen2.5-14b-style-scene-02-dense.md-run-2026-03-21-002.raw.txt"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-080",
+  "timestamp": "2026-03-14T18:58:34Z",
+  "scene_packet_id": "cp-010",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Emotional Tone Transition Gap",
+      "finding_type": "transition_gap",
+      "claim": "The emotional state of Amicae appears to shift in Scene A, but there is no clear transition to her calm demeanor in Scene B.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp010-sc-a",
+          "cp010-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp010-sc-a",
+          "span_text": "something in her face shifted — not quite recognition, not quite alarm.",
+          "span_role": "mismatch_signal"
+        },
+        {
+          "scene_id": "cp010-sc-b",
+          "span_text": "She said it clearly and with the specific calm that meant she had already decided what to do about it.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition may be intentional and could be supported by context outside this two-scene window.",
+      "review_note": "Examine the events between Scenes A and B to determine if there is an implied narrative that explains Amicae's emotional shift.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a potential transition gap in the emotional state of Amicae from Scene A to Scene B.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:59:35.904020+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-010.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp010-sc-a-cp010-sc-b-run-2026-03-14-080.raw.txt"
+  }
+}

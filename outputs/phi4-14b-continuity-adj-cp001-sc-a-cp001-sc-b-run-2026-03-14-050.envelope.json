@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-050",
+  "timestamp": "2026-03-14T18:28:08Z",
+  "scene_packet_id": "cp-001",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Hand injury carry forward issue",
+      "finding_type": "state_carry_forward_issue",
+      "claim": "The state of Rawn's injured hand is not adequately acknowledged in Scene B, despite his careful grip due to the injury being established in Scene A.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp001-sc-a",
+          "cp001-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp001-sc-a",
+          "span_text": "The metal edge opened a clean cut just below the knuckle, and he pressed his fist against his coat to slow the bleeding.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp001-sc-b",
+          "span_text": "He drew the gate bolt with his left hand and held it open for Amicae without slowing.",
+          "span_role": "mismatch_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition may be intentional, reflecting Rawn's resilience or an implicit narrative assumption that he has adapted to the injury quickly.",
+      "review_note": "Inspect whether Scene B provides any narrative cues suggesting Rawn is managing his injured hand effectively despite not mentioning it explicitly.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "A potential continuity issue regarding Rawn's injured left hand from Scene A to Scene B was identified, warranting review for character state carry forward consistency.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:29:34.522372+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-001.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp001-sc-a-cp001-sc-b-run-2026-03-14-050.raw.txt"
+  }
+}

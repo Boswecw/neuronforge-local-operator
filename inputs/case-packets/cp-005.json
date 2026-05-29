@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-005",
+  "scene_a_id": "cp005-sc-a",
+  "scene_b_id": "cp005-sc-b",
+  "scene_a_text": "Rawn rose from the bench when the clerk entered, crossed to the window, and looked down at the street before turning back to face the room. He said the name of the street where Amicae had last been seen. The clerk wrote it down. Rawn crossed back to the bench and sat, and the clerk asked whether he wished to add anything to the record.",
+  "scene_b_text": "When the clerk left, Rawn stood and walked to the window again and looked at the same stretch of street. The light had not changed. He turned back and sat at the bench, and held his hands together in his lap and looked at the door the clerk had closed behind him.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "repeated_movement_worth_flagging",
+    "secondary_category": "progression_redundancy",
+    "expected_review_posture": "candidate_issue_expected",
+    "expected_restraint_posture": "moderate_restraint",
+    "finding_expected": true,
+    "no_finding_acceptable": "partial",
+    "case_purpose": "Test detection of duplicated staging. Rawn performs the same window-cross-return movement beat across both scenes without meaningful progression difference. The repetition may be worth flagging as potentially accidental rather than intentionally rhythmic."
+  }
+}

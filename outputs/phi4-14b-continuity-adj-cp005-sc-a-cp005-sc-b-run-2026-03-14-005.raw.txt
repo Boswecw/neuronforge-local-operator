@@ -1,0 +1,42 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp005-sc-a", "cp005-sc-b"]
+  },
+  "input_unit_ids": ["cp005-sc-a", "cp005-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Repeated Movement",
+      "finding_type": "repeated_movement",
+      "claim": "Rawn's movement to and from the window appears repetitive between scenes without clear progression or narrative necessity.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp005-sc-a", "cp005-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp005-sc-a",
+          "span_text": "Rawn rose from the bench when the clerk entered, crossed to the window, and looked down at the street before turning back to face the room.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp005-sc-b",
+          "span_text": "When the clerk left, Rawn stood and walked to the window again and looked at the same stretch of street.",
+          "span_role": "carry_forward"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The repeated movement may be intentional for thematic reasons or character development not immediately apparent in these scenes.",
+      "review_note": "Assess whether Rawn's actions are thematically significant or contribute to character development between the two scenes.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a moderate confidence issue with repeated movement potentially lacking narrative necessity.",
+  "run_posture": "candidate_only"
+}
+```
+

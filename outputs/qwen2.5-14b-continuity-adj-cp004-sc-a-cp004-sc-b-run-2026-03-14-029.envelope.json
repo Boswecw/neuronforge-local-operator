@@ -1,0 +1,24 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "run_id": "run-2026-03-14-029",
+  "timestamp": "2026-03-14T18:03:27Z",
+  "scene_packet_id": "cp-004",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [],
+  "overall_run_note": "No clear continuity or progression issues identified between the two scenes.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:03:46.129201+00:00",
+    "findings_count": 0
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v2.md",
+    "request_file": "inputs/case-packets/cp-004.json",
+    "raw_output_file": "outputs/qwen2.5-14b-continuity-adj-cp004-sc-a-cp004-sc-b-run-2026-03-14-029.raw.txt"
+  }
+}

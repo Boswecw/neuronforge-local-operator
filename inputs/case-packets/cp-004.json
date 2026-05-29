@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-004",
+  "scene_a_id": "cp004-sc-a",
+  "scene_b_id": "cp004-sc-b",
+  "scene_a_text": "The boat put in before the light failed. Rawn helped secure the line and said nothing more to the captain than was required. He was already thinking past the landing.",
+  "scene_b_text": "The city received them without ceremony. Rawn moved through the lower ward quickly, Amicae half a step behind, and they were at the archive steps before the watch shifted. She had the key ready.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "acceptable_abrupt_transition",
+    "secondary_category": "false_positive_resistance",
+    "expected_review_posture": "restraint_expected",
+    "expected_restraint_posture": "high_restraint",
+    "finding_expected": false,
+    "no_finding_acceptable": true,
+    "case_purpose": "Test restraint against brisk but valid pacing. The transition is compressed — docking to city to archive steps — but reads as purposeful and within normal narrative compression. A restrained model should not invent a gap."
+  }
+}

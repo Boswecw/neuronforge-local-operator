@@ -1,0 +1,9 @@
+The ancient and moss-encrusted tower loomed with terrible and breathtaking magnificence against the bruised and wounded sky, its countless stone blocks weathered by the inexorable and relentless passage of innumerable centuries, each one worn and pitted and crumbling yet still somehow standing in defiant and immovable testament to the hands that had so long ago — in some forgotten and irretrievable age of builders now dust — lifted them one by one into the precise and ordered configuration that defined, even now, their shared and collective purpose as a monument both to ambition and to ruin.
+
+Orlen stood before it, his heart hammering furiously and wildly inside the bony cage of his chest, his breath coming in ragged and uneven gasps that misted and dissolved in the cold and biting air of the hillside. He had walked for so long. So very, impossibly, exhaustingly long. Every muscle in his body ached with a deep and persistent and almost unbearable throb that reminded him, again and again, with every step and stumble, that he was old and tired and perhaps no longer suited for the particular and demanding rigors of this kind of arduous and grueling journey.
+
+Yet the tower drew him. It called to something ancient and buried within him, some fragment of memory or instinct that predated language, that existed prior to the emergence of rational and considered thought, that spoke in the wordless tongue of bone and marrow and the slow, grinding certainty of fate.
+
+He took one step. Then another. His boots found purchase on the wet and treacherous grass. Above him, clouds moved across the vast and indifferent sky in slow, heavy processions, like mourners at a funeral too large for any single grief to contain.
+
+The tower waited, as it had always waited, as it would always wait, patient and cold and absolute.

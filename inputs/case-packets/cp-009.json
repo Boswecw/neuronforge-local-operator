@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-009",
+  "scene_a_id": "cp009-sc-a",
+  "scene_b_id": "cp009-sc-b",
+  "scene_a_text": "The news arrived while they were still at the table. Amicae read the note and passed it to Rawn without speaking. He read it twice. Neither of them ate after that. He sat with his hands flat on the table and looked at a point somewhere between the window and the wall, and she let him sit because she understood what the note meant for him specifically and not just for them.",
+  "scene_b_text": "Rawn was back at the case files when she returned from the courier office. He had the stack from the eastern registry spread across the left half of the table and was working through them with his usual notation marks. He asked without looking up whether the courier had confirmed the schedule, and she told him yes. He made a mark and turned to the next sheet.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "state_carry_forward_issue",
+    "secondary_category": "true_continuity_tension",
+    "expected_review_posture": "candidate_issue_expected",
+    "expected_restraint_posture": "moderate_restraint",
+    "finding_expected": true,
+    "no_finding_acceptable": false,
+    "case_purpose": "Test emotional state carry-forward. Scene A establishes Rawn in a state of significant personal impact — stunned, hands flat, unmoving. Scene B shows him restored to ordinary procedural work with no intervening signal. The emotional transition lacks bounded support."
+  }
+}

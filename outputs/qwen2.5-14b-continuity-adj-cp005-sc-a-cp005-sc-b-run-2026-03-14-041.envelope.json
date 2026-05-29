@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "run_id": "run-2026-03-14-041",
+  "timestamp": "2026-03-14T18:17:13Z",
+  "scene_packet_id": "cp-005",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Repeated action without narrative reason",
+      "finding_type": "repeated_movement",
+      "claim": "Rawn's actions of walking to the window and looking at the street appear to be repeated without a clear transition or explanation.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp005-sc-a",
+          "cp005-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp005-sc-a",
+          "span_text": "Rawn rose from the bench when the clerk entered, crossed to the window, and looked down at the street before turning back to face the room.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp005-sc-b",
+          "span_text": "When the clerk left, Rawn stood and walked to the window again and looked at the same stretch of street.",
+          "span_role": "carry_forward"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty_note": "The actions may have been intentionally repeated for emphasis or character development.",
+      "review_note": "Check if Rawn's repeated movements are explained by his emotional state or the importance of the task.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a potential repetition issue with Rawn's actions across scenes.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:18:17.340769+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-005.json",
+    "raw_output_file": "outputs/qwen2.5-14b-continuity-adj-cp005-sc-a-cp005-sc-b-run-2026-03-14-041.raw.txt"
+  }
+}

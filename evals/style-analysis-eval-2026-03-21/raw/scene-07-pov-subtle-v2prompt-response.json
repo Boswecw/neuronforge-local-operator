@@ -1,0 +1,55 @@
+{
+  "scene": "07-pov-subtle",
+  "model_id": "qwen2.5:14b",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene describes Lena rushing up the stairs to make it to an auction before it closes, while contrasting with Marcus's withdrawal from the auction.",
+    "overall_assessment": "This scene effectively conveys tension and urgency through clear descriptions and a consistent narrative voice. The pacing is well-suited for the dramatic content, but there are moments where sentence variety could be improved for sustained reader engagement. The flow between Lena's and Marcus's narratives could benefit from smoother transitions.",
+    "dimension_scores": {
+      "clarity": 0.9,
+      "flow": 0.75,
+      "voice_consistency": 1.0,
+      "sentence_variety": 0.8,
+      "pacing": 0.9
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Effective use of pacing",
+        "detail": "The scene's tempo effectively conveys urgency and suspense."
+      },
+      {
+        "type": "weakness",
+        "label": "Limited sentence variety",
+        "detail": "Sentence structures are repetitive, lacking variation in length and complexity."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Vary sentence structure",
+        "detail": "Incorporate a mix of short and long sentences to maintain reader engagement."
+      },
+      {
+        "priority": "low",
+        "label": "Smooth transitions between scenes",
+        "detail": "Ensure smoother narrative flow when switching focus between characters."
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_spans": [
+      {
+        "start": 124,
+        "end": 158,
+        "reason": "Example of sentence variety weakness"
+      },
+      {
+        "start": 367,
+        "end": 389,
+        "reason": "Example of effective pacing"
+      }
+    ]
+  },
+  "raw_model_output": "{\n  \"summary\": \"The scene describes Lena rushing up the stairs to make it to an auction before it closes, while contrasting with Marcus's withdrawal from the auction.\",\n  \"overall_assessment\": \"This scene effectively conveys tension and urgency through clear descriptions and a consistent narrative voice. The pacing is well-suited for the dramatic content, but there are moments where sentence variety could be improved for sustained reader engagement. The flow between Lena's and Marcus's narratives could benefit from smoother transitions.\",\n  \"dimension_scores\": {\n    \"clarity\": 0.9,\n    \"flow\": 0.75,\n    \"voice_consistency\": 1.0,\n    \"sentence_variety\": 0.8,\n    \"pacing\": 0.9\n  },\n  \"findings\": [\n    {\n      \"type\": \"strength\",\n      \"label\": \"Effective use of pacing\",\n      \"detail\": \"The scene's tempo effectively conveys urgency and suspense.\"\n    },\n    {\n      \"type\": \"weakness\",\n      \"label\": \"Limited sentence variety\",\n      \"detail\": \"Sentence structures are repetitive, lacking variation in length and complexity.\"\n    }\n  ],\n  \"recommendations\": [\n    {\n      \"priority\": \"medium\",\n      \"label\": \"Vary sentence structure\",\n      \"detail\": \"Incorporate a mix of short and long sentences to maintain reader engagement.\"\n    },\n    {\n      \"priority\": \"low\",\n      \"label\": \"Smooth transitions between scenes\",\n      \"detail\": \"Ensure smoother narrative flow when switching focus between characters.\"\n    }\n  ],\n  \"confidence\": 0.9,\n  \"evidence_spans\": [\n    {\n      \"start\": 124,\n      \"end\": 158,\n      \"reason\": \"Example of sentence variety weakness\"\n    },\n    {\n      \"start\": 367,\n      \"end\": 389,\n      \"reason\": \"Example of effective pacing\"\n    }\n  ]\n}"
+}

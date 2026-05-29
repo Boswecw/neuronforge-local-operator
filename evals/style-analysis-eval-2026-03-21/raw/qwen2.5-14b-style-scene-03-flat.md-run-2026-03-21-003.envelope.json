@@ -1,0 +1,15 @@
+{
+  "schema_validation_status": "failed",
+  "warnings": [
+    "normalizer produced no output"
+  ],
+  "task_id": "analyze.style.scene.v1",
+  "contract_version": "v1",
+  "run_id": "run-2026-03-21-003",
+  "timestamp": "2026-03-22T00:39:18Z",
+  "run_metadata": {
+    "prompt_file": "prompts/style-analysis-scene-v1.md",
+    "scene_file": "inputs/style-analysis-eval/scene-03-flat.md",
+    "raw_output_file": "evals/style-analysis-eval-2026-03-21/raw/qwen2.5-14b-style-scene-03-flat.md-run-2026-03-21-003.raw.txt"
+  }
+}

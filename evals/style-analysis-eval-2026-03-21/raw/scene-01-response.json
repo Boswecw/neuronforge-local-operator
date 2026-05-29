@@ -1,0 +1,63 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene is a quiet morning routine with a somber tone, hinting at underlying tension or past struggles.",
+    "overall_assessment": "This scene establishes a clear and evocative setting for the protagonist's morning routine. The narrative flows well through sensory details and internal reflections, creating an atmosphere of introspection and foreboding. However, there are some moments where the voice slightly shifts from Saren to an omniscient narrator, which may disrupt the consistency if this style is not maintained throughout the manuscript. Sentence variety is strong, but pacing could be enhanced by varying shorter and more action-oriented sentences with longer descriptive ones.",
+    "dimension_scores": {
+      "voice_consistency": 0.75,
+      "flow": 0.85,
+      "sentence_variety": 0.95,
+      "clarity": 0.9,
+      "pacing": 0.8
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Rich sensory details",
+        "detail": "The scene is filled with vivid descriptions of the cold morning, frost, and silence."
+      },
+      {
+        "type": "weakness",
+        "label": "Voice inconsistency",
+        "detail": "There are moments where the narrative voice shifts from Saren's perspective to an omniscient narrator."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Maintain consistent voice",
+        "detail": "Ensure that the narrative voice remains closely aligned with Saren throughout the story."
+      },
+      {
+        "priority": "low",
+        "label": "Vary sentence length for pacing",
+        "detail": "Incorporate a mix of shorter, punchier sentences to complement the longer descriptive passages and enhance the scene's rhythm."
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_spans": [
+      {
+        "start": 56,
+        "end": 81,
+        "reason": "Example of sensory detail ('The well chain rang once when she hauled it up...')."
+      },
+      {
+        "start": 247,
+        "end": 270,
+        "reason": "Shift from Saren's internal reflection to an omniscient voice about the silence being ordinary."
+      }
+    ]
+  },
+  "task_id": "analyze.style.scene.v1",
+  "contract_version": "v1",
+  "run_id": "run-2026-03-21-001",
+  "run_metadata": {
+    "scene_file": "inputs/style-analysis-eval/scene-01-clean.md",
+    "raw_output_file": "evals/style-analysis-eval-2026-03-21/raw/qwen2.5-14b-style-scene-01-clean.md-run-2026-03-21-001.raw.txt"
+  }
+}

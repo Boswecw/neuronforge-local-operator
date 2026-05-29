@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp001-sc-a", "cp001-sc-b"]
+  },
+  "input_unit_ids": ["cp001-sc-a", "cp001-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Grip Carefulness Continuity Issue",
+      "finding_type": "continuity_tension",
+      "claim": "Rawn's grip on the lantern in Scene B does not reflect his careful handling from Scene A.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp001-sc-a", "cp001-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp001-sc-a",
+          "span_text": "By the time they reached the gate, his left sleeve was dark at the wrist and his grip on the lantern had become careful rather than easy.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp001-sc-b",
+          "span_text": "He drew the gate bolt with his left hand and held it open for Amicae without slowing. The yard was quiet and they crossed it quickly, the lantern swinging at his side.",
+          "span_role": "carry_forward"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The ease of Rawn's grip in Scene B may reflect a narrative choice to prioritize action over injury detail.",
+      "review_note": "Verify if the careful handling described in Scene A is clearly transitioned or resolved by the time Scene B begins.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified potential continuity issue with Rawn's grip on the lantern between scenes.",
+  "run_posture": "candidate_only"
+}
+

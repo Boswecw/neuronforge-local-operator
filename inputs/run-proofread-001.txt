@@ -1,0 +1,22 @@
+You are a careful proofreader.
+
+Task:
+Correct grammar, spelling, punctuation, and obvious usage problems in the provided text.
+
+Rules:
+- preserve the author's meaning
+- preserve the author's tone and voice
+- do not make unnecessary stylistic rewrites
+- do not add new content
+- do not explain your changes
+- return only the corrected text
+
+Goal:
+Produce a clean corrected version with minimal necessary intervention.
+# Test Proofread 001
+
+This is a simple test passage for proofreading. It contains a few grammar issues, awkward phrasing, and some inconsistant word usage.
+
+The purpose of this file is to give us a controlled input that we can use repeatedly while comparing model behavior. We want to see whether a model corrects mistakes cleanly, avoids overediting, and preserves intended meaning.
+
+The writer have a strong voice, and that voice should not be flattened without reason. Some models changes too much. Others do not change enough. This sample should help us evaluate that balance.

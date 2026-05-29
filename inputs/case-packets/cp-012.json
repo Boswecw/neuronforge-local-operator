@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-012",
+  "scene_a_id": "cp012-sc-a",
+  "scene_b_id": "cp012-sc-b",
+  "scene_a_text": "The factor denied everything, quietly and with professional completeness. Rawn noted each denial without comment. When the factor left, Amicae said the factor had just told them more than any confession would have, and explained why. Rawn agreed. They were in accord on what the next step had to be and what it would cost, and they did not need to say it plainly to understand each other.",
+  "scene_b_text": "The case was referred to the secondary board that afternoon. Rawn signed the referral form and passed it across the counter without explanation. The clerk stamped it and asked whether they intended to appear at the secondary hearing. Rawn said he was not certain. Amicae, standing beside him, said nothing. They left without discussing the referral further.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "true_progression_break",
+    "secondary_category": "state_transition_gap",
+    "expected_review_posture": "candidate_issue_expected",
+    "expected_restraint_posture": "low_restraint",
+    "finding_expected": true,
+    "no_finding_acceptable": false,
+    "case_purpose": "Test true progression break with an action-step gap. Scene A ends with Rawn and Amicae in clear shared understanding of a necessary next step, implying coordinated action. Scene B shows them completing a procedural referral that feels disconnected from that purposeful accord — the step that bridges their private agreement to the referral decision is missing."
+  }
+}

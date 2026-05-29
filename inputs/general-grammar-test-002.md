@@ -1,0 +1,5 @@
+The inn was warmer then Rawn expected, but not by much. Smoke clung to the rafters and the floor sloped just enough that every table looked a little crooked if you stared at it to long. A woman with a scar across her chin brought stew without asking who had ordered it, and Rowetha eyed the bowl like it might bite her first.
+
+Amicae sat with her back to the wall, one hand wrapped around the spoon though she had not taken a bite yet. "Either these people are generous," she said quietly, "or they already know why we're here."
+
+Rawn glanced around the room. No one seemed interested in them, which only made him trust the place less. "Eat first," he muttered. "Then worry."

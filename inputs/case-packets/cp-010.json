@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-010",
+  "scene_a_id": "cp010-sc-a",
+  "scene_b_id": "cp010-sc-b",
+  "scene_a_text": "Amicae was the last one out of the chamber. She paused at the door and looked back at the empty bench where the arbiters had sat, and something in her face shifted — not quite recognition, not quite alarm. She let the door close behind her and followed the corridor toward the lower exit. She did not speak on the way down.",
+  "scene_b_text": "She told Rawn she knew who had written the addendum before the session had even begun. She said it clearly and with the specific calm that meant she had already decided what to do about it. Rawn asked how long she had known. She said since the second reading, which had been four days ago. He looked at her and then looked away.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "unclear_causal_link",
+    "secondary_category": "progression_break",
+    "expected_review_posture": "candidate_issue_expected",
+    "expected_restraint_posture": "moderate_restraint",
+    "finding_expected": true,
+    "no_finding_acceptable": "partial",
+    "case_purpose": "Test causal link clarity. Scene A ends with Amicae noticing something significant but undefined at the chamber door. Scene B opens with her already knowing and having known for four days. The causal bridge — how the glance at the bench connects to the specific knowledge she reveals — is absent."
+  }
+}

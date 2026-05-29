@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schemas/lane-analytics.schema.json",
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "lane_name": "Continuity / Progression Reasoning",
+  "lane_type": "continuity_reasoning",
+  "status": "candidate_baseline",
+  "required_route_class": "HIGH_QUALITY_LOCAL",
+  "adoption_posture": "review_assist_only",
+  "current_baseline_model": "qwen2.5:14b",
+  "current_baseline_prompt_profile": "continuity-adjacent-scene-v3",
+  "anchor_input": "inputs/continuity-adjacent-scene-test-001.json",
+  "anchor_run_id": "run-2026-03-14-038",
+  "last_evaluated_date": "2026-03-14",
+  "current_judgment": "qwen2.5:14b with continuity-adjacent-scene-v3 is the current candidate baseline for adjacent-scene continuity review. Zero false positives on restraint cases. 80% surface detection. Hard interpretive cases remain a known ceiling.",
+  "calibration_doc": null,
+  "status_doc": null,
+  "metrics": {
+    "schema_reliability": 1.0,
+    "false_positive_rate": 0.0,
+    "surface_detection_rate": 0.8
+  },
+  "next_required_decision": "Approve or defer qwen2.5:14b with continuity-adjacent-scene-v3 as the adjacent-scene continuity baseline. Hard case detection (cp-009, cp-012) remains unresolved — determine whether this blocks promotion.",
+  "metric_provenance": "benchmark_derived",
+  "metrics_gate_eligible": true,
+  "provenance_notes": null,
+  "metric_profile": "detection_reasoning"
+}

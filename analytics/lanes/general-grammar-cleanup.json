@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schemas/lane-analytics.schema.json",
+  "schema_version": "1.0",
+  "lane_id": "general-grammar-cleanup",
+  "lane_name": "General Grammar Cleanup",
+  "lane_type": "grammar_cleanup",
+  "status": "approved_baseline",
+  "required_route_class": "HIGH_QUALITY_LOCAL",
+  "adoption_posture": "review_assist_only",
+  "current_baseline_model": "qwen2.5:14b",
+  "current_baseline_prompt_profile": "general-grammar-cleanup-001",
+  "anchor_input": "inputs/general-grammar-test-001.md",
+  "anchor_run_id": "run-2026-03-13-035",
+  "last_evaluated_date": "2026-03-13",
+  "current_judgment": "qwen2.5:14b with general-grammar-cleanup-001 is the adopted baseline. Won or tied across all 5 evaluation tests against phi4:14b. Preserves intended meaning while making broader cleanup edits than lore-safe lane allows. phi4:14b showed repeated interpretive normalization and semantic recasting. Metrics are qualitative approximations from comparative manual review, not structured detection sets.",
+  "calibration_doc": "evals/general-grammar-calibration-2026-03-13.md",
+  "status_doc": "evals/general-grammar-lane-status-2026-03-13.md",
+  "metrics": {
+    "schema_reliability": 1.0,
+    "false_positive_rate": 0.05,
+    "surface_detection_rate": 0.9
+  },
+  "next_required_decision": "Test next challenger model across the 5-input evaluation set. Define a lightweight judgment rubric to make future adoption decisions more structured.",
+  "metric_provenance": "operator_judged",
+  "metrics_gate_eligible": false,
+  "provenance_notes": "false_positive_rate and surface_detection_rate are qualitative approximations from comparative manual review across 5 test inputs vs phi4:14b. Interpreted as: FPR = rate of unnecessary rewrite beyond grammar cleanup scope; SDR = rate of real grammar and readability issues correctly improved. No frozen labeled case pack exists. Values are not equivalent to benchmark-derived detection metrics.",
+  "metric_profile": "editing_cleanup"
+}

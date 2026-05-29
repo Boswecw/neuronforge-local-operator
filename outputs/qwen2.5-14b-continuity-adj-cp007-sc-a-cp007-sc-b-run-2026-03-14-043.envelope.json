@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "run_id": "run-2026-03-14-043",
+  "timestamp": "2026-03-14T18:18:36Z",
+  "scene_packet_id": "cp-007",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Descriptive Mismatch Between Scenes",
+      "finding_type": "descriptive_mismatch",
+      "claim": "The state of the yard's wetness described in Scene A is contradicted by its dry condition in Scene B.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp007-sc-a",
+          "cp007-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp007-sc-a",
+          "span_text": "the yard was standing water by the time Rawn crossed it. He came inside wet to the elbows, his boots leaving tracks across the flagstones.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp007-sc-b",
+          "span_text": "The afternoon light was hard and clear, the stones already dry underfoot.",
+          "span_role": "mismatch_signal"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty_note": "The transition may be intentional and could be supported by context outside this two-scene window.",
+      "review_note": "Verify whether the character's perception of yard conditions is consistent between scenes or if an external factor (e.g., time passage) explains the difference.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Detected a descriptive mismatch in the state of the yard between Scene A and Scene B.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:19:40.795687+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-007.json",
+    "raw_output_file": "outputs/qwen2.5-14b-continuity-adj-cp007-sc-a-cp007-sc-b-run-2026-03-14-043.raw.txt"
+  }
+}

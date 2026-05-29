@@ -1,0 +1,24 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-072",
+  "timestamp": "2026-03-14T18:52:58Z",
+  "scene_packet_id": "cp-002",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [],
+  "overall_run_note": "No continuity or progression issues identified between the scenes.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:53:18.714484+00:00",
+    "findings_count": 0
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-002.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp002-sc-a-cp002-sc-b-run-2026-03-14-072.raw.txt"
+  }
+}

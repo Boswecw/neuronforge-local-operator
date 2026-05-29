@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-006",
+  "timestamp": "2026-03-14T12:29:34Z",
+  "scene_packet_id": "cp-006",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "State Carry Forward Issue",
+      "finding_type": "state_carry_forward_issue",
+      "claim": "The state of the front door being unlocked is not clearly established between scenes.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp006-sc-a",
+          "cp006-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp006-sc-a",
+          "span_text": "Rawn tried the door and found it locked.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp006-sc-b",
+          "span_text": "He tried the latch once more, as much out of habit as expectation, and it gave this time — someone had unlocked it from the inside while he was on the upper floor.",
+          "span_role": "progression_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The unlocking may be intentional and contextually supported by off-page events not covered in these scenes.",
+      "review_note": "Verify whether there is an explanation or earlier scene that accounts for the door being unlocked while Rawn was on the upper floor.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a possible state carry forward issue regarding the front door's lock status between scenes.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T12:30:29.707839+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v1.md",
+    "request_file": "inputs/case-packets/cp-006.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp006-sc-a-cp006-sc-b-run-2026-03-14-006.raw.txt"
+  }
+}

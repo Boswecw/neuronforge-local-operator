@@ -1,0 +1,63 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene presents a tense conversation between Adric and Fennick about a ledger from a past transaction, with each character's words reflecting their roles in the narrative.",
+    "overall_assessment": "This dialogue-driven scene is effective in conveying tension through concise, direct exchanges. The style maintains clarity and voice consistency, though it could benefit from slightly more varied sentence structures to enhance engagement. Pacing is well-maintained as the conversation progresses logically towards a resolution.",
+    "dimension_scores": {
+      "voice_consistency": 0.9,
+      "flow": 0.75,
+      "sentence_variety": 0.6,
+      "clarity": 0.8,
+      "pacing": 0.8
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Clear dialogue",
+        "detail": "The conversation is straightforward and easy to follow."
+      },
+      {
+        "type": "weakness",
+        "label": "Lack of sentence variety",
+        "detail": "Most sentences are simple and lack variation, which might reduce engagement."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Increase sentence complexity",
+        "detail": "Introduce more complex sentence structures to add depth and interest."
+      },
+      {
+        "priority": "low",
+        "label": "Incorporate descriptive elements",
+        "detail": "Add some description or action to enhance the scene's atmosphere."
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_spans": [
+      {
+        "start": 129,
+        "end": 146,
+        "reason": "Example of a simple sentence that could benefit from more complexity."
+      },
+      {
+        "start": 317,
+        "end": 350,
+        "reason": "A moment of contemplation that can be expanded with additional description."
+      }
+    ]
+  },
+  "task_id": "analyze.style.scene.v1",
+  "contract_version": "v1",
+  "run_id": "run-2026-03-21-005",
+  "run_metadata": {
+    "scene_file": "inputs/style-analysis-eval/scene-05-dialogue-heavy.md",
+    "raw_output_file": "evals/style-analysis-eval-2026-03-21/raw/qwen2.5-14b-style-scene-05-dialogue-heavy.md-run-2026-03-21-005.raw.txt"
+  }
+}

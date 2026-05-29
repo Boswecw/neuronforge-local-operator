@@ -1,0 +1,42 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp003-sc-a", "cp003-sc-b"]
+  },
+  "input_unit_ids": ["cp003-sc-a", "cp003-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Warden Meeting Commitment Bypassed",
+      "finding_type": "progression_break",
+      "claim": "Scene A establishes a commitment for Rawn to meet the warden, which Scene B shows as bypassed without acknowledgment.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp003-sc-a", "cp003-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp003-sc-a",
+          "span_text": "Rawn told her he would go to the warden himself before the morning session.",
+          "span_role": "commitment"
+        },
+        {
+          "scene_id": "cp003-sc-b",
+          "span_text": "His expression told her the meeting had not happened. He said the warden had sent word at first light that the schedule had changed.",
+          "span_role": "bypass"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty_note": "The commitment was bypassed due to an unexpected change in the warden's schedule, which may be a deliberate plot device.",
+      "review_note": "Review whether any narrative justification for the schedule change is provided outside these scenes that might support this progression break.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Found one high-confidence finding related to an explicit commitment in Scene A being bypassed in Scene B without acknowledgment or transition.",
+  "run_posture": "candidate_only"
+}
+```
+

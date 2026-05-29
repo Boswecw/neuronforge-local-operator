@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-078",
+  "timestamp": "2026-03-14T18:57:14Z",
+  "scene_packet_id": "cp-008",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Lighting condition transition",
+      "finding_type": "descriptive_mismatch",
+      "claim": "In Scene A, Rawn arrives after dark and does not light the second lamp, suggesting dim lighting. Scene B transitions to morning with no mention of lighting conditions.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp008-sc-a",
+          "cp008-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp008-sc-a",
+          "span_text": "He arrived after dark, ate what was left on the tray, and did not light the second lamp.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp008-sc-b",
+          "span_text": "He was easier with her the next morning than the previous days had suggested he would be.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition may be intentional and could be supported by context outside this two-scene window, where lighting conditions are not critical to continuity.",
+      "review_note": "Review the narrative purpose of the dim lighting in Scene A and whether it needs explicit addressing in Scene B.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a potential descriptive mismatch regarding lighting conditions between scenes. No other continuity or progression issues found.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:58:16.887836+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-008.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp008-sc-a-cp008-sc-b-run-2026-03-14-078.raw.txt"
+  }
+}

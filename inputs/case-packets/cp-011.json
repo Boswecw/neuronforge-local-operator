@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-011",
+  "scene_a_id": "cp011-sc-a",
+  "scene_b_id": "cp011-sc-b",
+  "scene_a_text": "Amicae spread the map across the table and weighted its corners with whatever came to hand — a cup, an inkpot, the back of a comb, a folded note. Rawn leaned over the edge of the table and pointed to the district she had already marked. She had circled it twice and written a date beside the circle. The lamp between them was close enough that the light was good.",
+  "scene_b_text": "She rolled the map and tucked it into the case while Rawn pulled on his coat. The district was already placed in both their minds and the map was reference, not proof. She cinched the case and held it under her arm. He held the door and she went first.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "apparent_not_real_continuity_tension",
+    "secondary_category": "acceptable_variation",
+    "expected_review_posture": "restraint_expected",
+    "expected_restraint_posture": "high_restraint",
+    "finding_expected": false,
+    "no_finding_acceptable": true,
+    "case_purpose": "Test false-positive resistance against a tempting surface shift. Scene A has the map spread and studied. Scene B has it rolled and put away. The shift is narratively valid — they finished consulting it. A weak model might flag the map state transition; a restrained model should recognize this as clean compression."
+  }
+}

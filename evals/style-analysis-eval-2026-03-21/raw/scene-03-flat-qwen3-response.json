@@ -1,0 +1,71 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen3:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene is straightforward and methodical, with clear descriptions and minimal stylistic embellishment. Dialogue is sparse but purposeful.",
+    "overall_assessment": "The scene excels in clarity and voice consistency, with a neutral third-person perspective that remains focused. However, the repetitive sentence structure and lack of descriptive flourishes create a monotonous rhythm. Pacing feels deliberate but slow, with moments of dialogue providing brief tension. Recommendations include varying sentence length and incorporating more vivid imagery to enhance engagement.",
+    "dimension_scores": {
+      "pacing": 0.7,
+      "clarity": 0.95,
+      "voice_consistency": 0.9,
+      "sentence_variety": 0.6,
+      "flow": 0.75
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Clear descriptive structure",
+        "detail": "Each object and action is described in a logical sequence, ensuring reader comprehension without ambiguity."
+      },
+      {
+        "type": "weakness",
+        "label": "Predictable sentence patterns",
+        "detail": "Repetition of 'There was/There were' and subject-verb-object constructions reduces stylistic interest."
+      },
+      {
+        "type": "observation",
+        "label": "Dialogue as tension catalyst",
+        "detail": "The sparse dialogue introduces moments of interaction that contrast with the otherwise static description."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Introduce varied sentence structures",
+        "detail": "Alternate between simple and complex sentences to create rhythmic variation and maintain reader interest."
+      },
+      {
+        "priority": "high",
+        "label": "Enhance sensory detail",
+        "detail": "Add more vivid descriptions of the environment, characters' emotions, or physical sensations to deepen immersion."
+      },
+      {
+        "priority": "low",
+        "label": "Experiment with paragraph pacing",
+        "detail": "Group related actions into longer paragraphs to create natural pauses and emphasize key moments."
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_spans": [
+      {
+        "start": 0,
+        "end": 103,
+        "reason": "Repetitive 'There was/There were' constructions demonstrate lack of sentence variety"
+      },
+      {
+        "start": 205,
+        "end": 235,
+        "reason": "Dialogue exchange provides contrast to descriptive passages, highlighting pacing shifts"
+      },
+      {
+        "start": 385,
+        "end": 415,
+        "reason": "Consecutive simple sentences illustrate uniformity in narrative rhythm"
+      }
+    ]
+  }
+}

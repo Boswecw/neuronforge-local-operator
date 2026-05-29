@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-007",
+  "scene_a_id": "cp007-sc-a",
+  "scene_b_id": "cp007-sc-b",
+  "scene_a_text": "The rain had been heavy since midday and the yard was standing water by the time Rawn crossed it. He came inside wet to the elbows, his boots leaving tracks across the flagstones. Amicae handed him a cloth without looking up from the ledger. He draped his coat over the chair nearest the fire and stood close until the worst of the chill was out of him.",
+  "scene_b_text": "Rawn found Amicae in the yard, going over the crate manifest with the factor. The afternoon light was hard and clear, the stones already dry underfoot. He waited at the edge of the yard until she was done, squinting into the brightness. She noticed him and held up two fingers, which meant she would be another quarter-hour at least.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "descriptive_mismatch_worth_review",
+    "secondary_category": "continuity_tension",
+    "expected_review_posture": "candidate_issue_expected",
+    "expected_restraint_posture": "moderate_restraint",
+    "finding_expected": true,
+    "no_finding_acceptable": "partial",
+    "case_purpose": "Test detection of an environmental descriptive mismatch. Scene A establishes heavy rain and standing water in the yard. Scene B shows the same yard with hard clear light and dry stones, with no time skip established. The shift may deserve candidate review."
+  }
+}

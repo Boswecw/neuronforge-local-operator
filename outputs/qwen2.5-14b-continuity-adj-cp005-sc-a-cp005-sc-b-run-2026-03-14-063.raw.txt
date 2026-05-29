@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp005-sc-a", "cp005-sc-b"]
+  },
+  "input_unit_ids": ["cp005-sc-a", "cp005-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Repeated movement across the room and to the window",
+      "finding_type": "repeated_movement",
+      "claim": "Rawn's actions of crossing to the window, looking down at the street, turning back to face the room, and returning to sit on the bench appear repeated without narrative reason.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp005-sc-a", "cp005-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp005-sc-a",
+          "span_text": "Rawn rose from the bench when the clerk entered, crossed to the window, and looked down at the street before turning back to face the room.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp005-sc-b",
+          "span_text": "When the clerk left, Rawn stood and walked to the window again and looked at the same stretch of street.",
+          "span_role": "carry_forward"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty_note": "The repeated movements may be intended as a narrative device for emphasis but are not explained within the given scenes.",
+      "review_note": "Check whether Rawn's repeated movement to and from the window has a clear narrative purpose or if it could be compressed for smoother continuity.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a possible repetition of actions without additional context explaining why these movements are necessary in both scenes.",
+  "run_posture": "candidate_only"
+}
+

@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-061",
+  "timestamp": "2026-03-14T18:44:28Z",
+  "scene_packet_id": "cp-003",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Named commitment bypassed",
+      "finding_type": "progression_break",
+      "claim": "In Scene A, Rawn appears to commit to visiting the warden before the morning session. In Scene B, no visit is referenced; instead, a changed schedule is mentioned.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp003-sc-a",
+          "cp003-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp003-sc-a",
+          "span_text": "Rawn told her he would go to the warden himself before the morning session.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp003-sc-b",
+          "span_text": "His expression told her the meeting had not happened. He said the warden had sent word at first light that the schedule had changed.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "high",
+      "uncertainty_note": "The commitment may be bypassed intentionally due to unforeseen circumstances explained later in the narrative.",
+      "review_note": "Verify if subsequent scenes clarify why Rawn did not visit the warden and how this affects the plot.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Scene B appears to bypass a named commitment from Scene A regarding a meeting with the warden, raising a progression break concern.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:45:31.759162+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-003.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp003-sc-a-cp003-sc-b-run-2026-03-14-061.raw.txt"
+  }
+}

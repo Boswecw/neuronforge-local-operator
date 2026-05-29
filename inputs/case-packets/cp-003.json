@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-003",
+  "scene_a_id": "cp003-sc-a",
+  "scene_b_id": "cp003-sc-b",
+  "scene_a_text": "Rawn told her he would go to the warden himself before the morning session. It was the only way to get ahead of the complaint before it reached the record. Amicae did not argue, which meant she agreed or had already decided to do it herself. He left the message with the night porter and confirmed the warden's schedule for the following day before he retired.",
+  "scene_b_text": "The morning session opened without him. Amicae held the left bench alone and did not look toward the door when the clerk called the roll. When the adjournment came she found Rawn in the corridor outside the archive room, and his expression told her the meeting had not happened. He said the warden had sent word at first light that the schedule had changed.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "true_progression_break",
+    "secondary_category": "transition_gap",
+    "expected_review_posture": "candidate_issue_expected",
+    "expected_restraint_posture": "low_restraint",
+    "finding_expected": true,
+    "no_finding_acceptable": false,
+    "case_purpose": "Test true progression break. Rawn committed to a specific action at the end of scene A. Scene B opens with that action failed, but the causal bridge — what happened between his confirmation and first light — is absent."
+  }
+}

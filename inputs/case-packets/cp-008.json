@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-008",
+  "scene_a_id": "cp008-sc-a",
+  "scene_b_id": "cp008-sc-b",
+  "scene_a_text": "Rawn did not pursue the conversation after the adjournment. He walked the long way back to the lodging house, which he did sometimes when he needed the air. Amicae had not followed and he had not expected her to. He arrived after dark, ate what was left on the tray, and did not light the second lamp.",
+  "scene_b_text": "He was easier with her the next morning than the previous days had suggested he would be. He asked after her sleep and whether the room had been cold. She answered, watching him with the careful attention she gave things she had not yet resolved. He poured water for both of them and set hers at her place without comment.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "ambiguous_edge_case",
+    "secondary_category": "confidence_calibration",
+    "expected_review_posture": "ambiguous_candidate_allowed",
+    "expected_restraint_posture": "high_restraint",
+    "finding_expected": "partial",
+    "no_finding_acceptable": true,
+    "case_purpose": "Test calibration in a genuinely ambiguous case. Rawn's ease in scene B is surprising given the tone of scene A, but the gap could be resolved by the elapsed night, or could be intentional characterization. The model must stay cautious — either a restrained low-confidence candidate or no finding are both acceptable outcomes."
+  }
+}

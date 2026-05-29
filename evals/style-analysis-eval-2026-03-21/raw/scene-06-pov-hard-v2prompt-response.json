@@ -1,0 +1,41 @@
+{
+  "scene": "06-pov-hard",
+  "model_id": "qwen2.5:14b",
+  "schema_validation_status": "degraded",
+  "warnings": [
+    "degraded: evidence_spans is empty"
+  ],
+  "output_payload": {
+    "summary": "The scene is written in a clear, concise style with Detective Reyes investigating a crime scene under rainy conditions.",
+    "overall_assessment": "This scene effectively conveys the cold, methodical nature of the investigation through precise language and focused detail. The narrative voice remains consistent throughout, maintaining an objective tone that suits the detective's perspective. However, there is minimal variation in sentence length and structure which may become monotonous for readers seeking stylistic diversity.",
+    "dimension_scores": {
+      "clarity": 0.9,
+      "flow": 0.85,
+      "voice_consistency": 1.0,
+      "sentence_variety": 0.65,
+      "pacing": 0.7
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Strong Clarity",
+        "detail": "The author uses clear and precise language to describe the crime scene without unnecessary complications."
+      },
+      {
+        "type": "weakness",
+        "label": "Limited Sentence Variety",
+        "detail": "The sentences tend towards a similar length and structure, which can diminish readability over longer passages."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Increase Sentence Length Variation",
+        "detail": "Consider incorporating longer descriptive sentences or more complex clauses to add variety and depth."
+      }
+    ],
+    "confidence": 0.95,
+    "evidence_spans": []
+  },
+  "raw_model_output": "{\n  \"summary\": \"The scene is written in a clear, concise style with Detective Reyes investigating a crime scene under rainy conditions.\",\n  \"overall_assessment\": \"This scene effectively conveys the cold, methodical nature of the investigation through precise language and focused detail. The narrative voice remains consistent throughout, maintaining an objective tone that suits the detective's perspective. However, there is minimal variation in sentence length and structure which may become monotonous for readers seeking stylistic diversity.\",\n  \"dimension_scores\": {\n    \"clarity\": 0.9,\n    \"flow\": 0.85,\n    \"voice_consistency\": 1.0,\n    \"sentence_variety\": 0.65,\n    \"pacing\": 0.7\n  },\n  \"findings\": [\n    {\n      \"type\": \"strength\",\n      \"label\": \"Strong Clarity\",\n      \"detail\": \"The author uses clear and precise language to describe the crime scene without unnecessary complications.\"\n    },\n    {\n      \"type\": \"weakness\",\n      \"label\": \"Limited Sentence Variety\",\n      \"detail\": \"The sentences tend towards a similar length and structure, which can diminish readability over longer passages.\"\n    }\n  ],\n  \"recommendations\": [\n    {\n      \"priority\": \"medium\",\n      \"label\": \"Increase Sentence Length Variation\",\n      \"detail\": \"Consider incorporating longer descriptive sentences or more complex clauses to add variety and depth.\"\n    }\n  ],\n  \"confidence\": 0.95,\n  \"evidence_spans\": []\n}"
+}

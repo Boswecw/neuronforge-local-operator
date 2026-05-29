@@ -1,0 +1,17 @@
+{
+  "python.defaultInterpreterPath": "/home/charlie/Forge/apps/public-app-local-support/neuronforge/.venv/bin/python",
+  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.extraPaths": [
+    "/home/charlie/Forge/apps/public-app-local-support/neuronforge"
+  ],
+  "python.terminal.activateEnvironment": true,
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "mypy-type-checker.interpreter": [
+    "/home/charlie/Forge/apps/public-app-local-support/neuronforge/.venv/bin/python"
+  ],
+  "mypy-type-checker.cwd": "/home/charlie/Forge/apps/public-app-local-support/neuronforge",
+  "mypy-type-checker.args": [
+    "--python-executable",
+    "/home/charlie/Forge/apps/public-app-local-support/neuronforge/.venv/bin/python"
+  ]
+}

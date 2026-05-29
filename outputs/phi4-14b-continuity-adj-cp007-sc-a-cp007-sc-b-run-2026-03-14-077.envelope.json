@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-077",
+  "timestamp": "2026-03-14T18:56:05Z",
+  "scene_packet_id": "cp-007",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Descriptive Mismatch - Wet to Dry Transition",
+      "finding_type": "descriptive_mismatch",
+      "claim": "In Scene A, Rawn enters the yard wet and leaves tracks on wet stones. In Scene B, Amicae is already in the yard with dry stones, suggesting a rapid drying that may need clarification.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp007-sc-a",
+          "cp007-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp007-sc-a",
+          "span_text": "The rain had been heavy since midday and the yard was standing water by the time Rawn crossed it. ... his boots leaving tracks across the flagstones.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp007-sc-b",
+          "span_text": "Rawn found Amicae in the yard, going over the crate manifest with the factor. The afternoon light was hard and clear, the stones already dry underfoot.",
+          "span_role": "mismatch_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition from wet to dry may be intentional and could reflect a rapid change in weather or time compression not detailed here.",
+      "review_note": "Examine if there is any narrative explanation for the quick drying of stones that might have occurred between the scenes.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified one descriptive mismatch regarding environmental conditions transitioning from wet to dry, requiring further review for context or clarification.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:57:14.333801+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-007.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp007-sc-a-cp007-sc-b-run-2026-03-14-077.raw.txt"
+  }
+}

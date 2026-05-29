@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schemas/lane-analytics.schema.json",
+  "schema_version": "1.0",
+  "lane_id": "lore-safe-proofreading",
+  "lane_name": "Lore-Safe Proofreading",
+  "lane_type": "proofreading",
+  "status": "approved_baseline",
+  "required_route_class": "HIGH_QUALITY_LOCAL",
+  "adoption_posture": "review_assist_only",
+  "current_baseline_model": "qwen2.5:14b",
+  "current_baseline_prompt_profile": "lore-safe-proofread-003",
+  "anchor_input": "inputs/lore-safe-test-001.md",
+  "anchor_run_id": "run-2026-03-13-005",
+  "last_evaluated_date": "2026-03-13",
+  "current_judgment": "qwen2.5:14b with lore-safe-proofread-003 is the approved baseline. Clean output with no reasoning leakage. Protected terms preserved. Occasional minor phrasing drift remains a known limit. phi4:14b tested as challenger across 6-test harder suite but did not overtake qwen. Metrics are qualitative approximations from comparative manual review, not structured detection sets.",
+  "calibration_doc": "docs/lore-safe-calibration-notes.md",
+  "status_doc": "evals/lore-safe-lane-status-2026-03-13.md",
+  "metrics": {
+    "schema_reliability": 1.0,
+    "false_positive_rate": 0.1,
+    "surface_detection_rate": 0.85
+  },
+  "next_required_decision": "Test next challenger model across the 6-test harder suite (lore-safe-test-001 through lore-safe-test-006) before considering baseline displacement.",
+  "metric_provenance": "operator_judged",
+  "metrics_gate_eligible": false,
+  "provenance_notes": "false_positive_rate and surface_detection_rate are qualitative approximations from comparative manual review across 6 test inputs vs phi4:14b. Interpreted as: FPR = rate of unnecessary preservation-damaging changes; SDR = rate of real errors correctly fixed. No frozen labeled case pack exists. Values are not equivalent to benchmark-derived detection metrics.",
+  "metric_profile": "lore_protection_editing"
+}

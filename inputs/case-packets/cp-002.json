@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-002",
+  "scene_a_id": "cp002-sc-a",
+  "scene_b_id": "cp002-sc-b",
+  "scene_a_text": "The argument wound down without resolution. Rawn stopped talking first, which was its own kind of answer. He moved to the window and stood there while Amicae gathered her papers from the table. The room felt smaller than it had an hour earlier. She left without a farewell and he listened to her steps on the stairs until the outer door opened and closed.",
+  "scene_b_text": "He was still at the window when the bells rang the second hour. The street below had gone quiet. He crossed the room and sat at the table where Amicae's chair was still pushed back from where she had risen, and he pulled her abandoned cup toward him and turned it in his hands without drinking.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "apparent_not_real_continuity_tension",
+    "secondary_category": "false_positive_resistance",
+    "expected_review_posture": "restraint_expected",
+    "expected_restraint_posture": "high_restraint",
+    "finding_expected": false,
+    "no_finding_acceptable": true,
+    "case_purpose": "Test false-positive resistance. The shift from window to table is deliberate narrative compression, not a continuity error. The model should not flag Rawn's movement or the elapsed time as problematic."
+  }
+}

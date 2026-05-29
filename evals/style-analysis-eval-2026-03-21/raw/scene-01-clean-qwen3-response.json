@@ -1,0 +1,66 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen3:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene exhibits a clear, atmospheric style with strong imagery and consistent third-person limited narration, balancing descriptive prose with deliberate pacing.",
+    "overall_assessment": "The text demonstrates strong clarity through vivid sensory details and consistent narrative focus. Flow is smooth, with natural transitions between environmental descriptions and character introspection. Voice consistency is maintained throughout, though some long sentences may occasionally slow pacing. Sentence variety is effective, blending short, impactful phrases with longer descriptive passages. Pacing is measured, creating tension through omission rather than explicit exposition.",
+    "dimension_scores": {
+      "pacing": 0.85,
+      "clarity": 0.95,
+      "voice_consistency": 0.98,
+      "sentence_variety": 0.88,
+      "flow": 0.92
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Imagery and atmosphere",
+        "detail": "Descriptions like 'the frost still unbroken in the corners where the sun hadn't reached yet' create vivid, immersive worldbuilding."
+      },
+      {
+        "type": "observation",
+        "label": "Pacing through omission",
+        "detail": "The scene withholds explicit emotional exposition, letting the environment and sparse dialogue convey tension implicitly."
+      },
+      {
+        "type": "weakness",
+        "label": "Occasional sentence density",
+        "detail": "Some longer sentences (e.g., the stone-in-the-boot metaphor) risk slowing momentum if not balanced with shorter phrases."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Vary sentence rhythm",
+        "detail": "Intersperse complex sentences with briefer, punchier constructions to maintain rhythmic interest during descriptive passages."
+      },
+      {
+        "priority": "low",
+        "label": "Clarify implicit tension",
+        "detail": "Consider adding one or two more explicit internal reactions to reinforce the emotional weight of Saren's journey without disrupting the atmospheric tone."
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_spans": [
+      {
+        "start": 45,
+        "end": 78,
+        "reason": "Demonstrates precise environmental detail contributing to clarity and atmosphere"
+      },
+      {
+        "start": 210,
+        "end": 235,
+        "reason": "Shows effective use of metaphor in maintaining voice consistency and thematic depth"
+      },
+      {
+        "start": 315,
+        "end": 340,
+        "reason": "Illustrates measured pacing through omission of explicit emotional exposition"
+      }
+    ]
+  }
+}

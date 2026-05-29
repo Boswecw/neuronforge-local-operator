@@ -1,0 +1,68 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene is straightforward and descriptive, focusing on a tense meeting between two characters in a small room.",
+    "overall_assessment": "This scene is written with clarity but lacks stylistic variety. It employs simple sentences to describe the setting and character interactions effectively, ensuring that readers understand what's happening. However, it could benefit from more sentence variation and deeper voice exploration to enhance engagement.",
+    "dimension_scores": {
+      "voice_consistency": 0.5,
+      "flow": 0.6,
+      "sentence_variety": 0.3,
+      "clarity": 0.9,
+      "pacing": 0.7
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Clear description",
+        "detail": "The scene is easy to understand due to its straightforward descriptions."
+      },
+      {
+        "type": "weakness",
+        "label": "Lack of sentence variety",
+        "detail": "Sentences are predominantly simple, which makes the writing feel repetitive and less engaging."
+      },
+      {
+        "type": "observation",
+        "label": "Minimal voice",
+        "detail": "The authorial voice is not distinct or developed beyond basic narrative exposition."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "high",
+        "label": "Increase sentence variety",
+        "detail": "Mix in complex and compound sentences to enhance readability and rhythm of the text."
+      },
+      {
+        "priority": "medium",
+        "label": "Develop voice",
+        "detail": "Consider incorporating more internal thoughts or using descriptive language that reflects character perspective."
+      }
+    ],
+    "confidence": 0.8,
+    "evidence_spans": [
+      {
+        "start": 126,
+        "end": 153,
+        "reason": "This span shows the repetitive nature of simple sentences describing objects and actions."
+      },
+      {
+        "start": 174,
+        "end": 201,
+        "reason": "The direct dialogue between characters highlights a lack of descriptive context around interactions."
+      }
+    ]
+  },
+  "task_id": "analyze.style.scene.v1",
+  "contract_version": "v1",
+  "run_id": "run-2026-03-21-003",
+  "run_metadata": {
+    "scene_file": "inputs/style-analysis-eval/scene-03-flat.md",
+    "raw_output_file": "evals/style-analysis-eval-2026-03-21/raw/qwen2.5-14b-style-scene-03-flat.md-run-2026-03-21-003.raw.txt"
+  }
+}

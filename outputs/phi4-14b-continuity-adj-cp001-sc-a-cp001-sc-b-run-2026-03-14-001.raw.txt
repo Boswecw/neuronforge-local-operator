@@ -1,0 +1,43 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp001-sc-a", "cp001-sc-b"]
+  },
+  "input_unit_ids": ["cp001-sc-a", "cp001-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Inconsistent physical capability",
+      "finding_type": "continuity_tension",
+      "claim": "Rawn's ability to perform tasks with his injured left hand may suggest continuity tension.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp001-sc-a", "cp001-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp001-sc-a",
+          "span_text": "The metal edge opened a clean cut just below the knuckle, and he pressed his fist against his coat to slow the bleeding.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp001-sc-b",
+          "span_text": "Rawn dropped from his horse first and led it by the bridle to the trough, looping the reins with the ease of long habit. He drew the gate bolt with his left hand...",
+          "span_role": "contrast"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "Rawn's resilience or rapid recovery may be intended by the author but is not explicitly stated.",
+      "review_note": "Assess whether Rawn's physical condition and actions are consistent with his injury in scene A when performing tasks in scene B.",
+      "candidate_state": "candidate_unreviewed",
+      "severity_hint": "moderate"
+    }
+  ],
+  "overall_run_note": "Identified a moderate continuity tension regarding Rawn's use of his injured hand across the two scenes.",
+  "run_posture": "candidate_only"
+}
+```
+

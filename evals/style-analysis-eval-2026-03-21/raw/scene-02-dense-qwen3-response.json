@@ -1,0 +1,66 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen3:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene employs rich, descriptive language with a consistent, poetic voice and deliberate pacing, though some sentences are overly complex and dense.",
+    "overall_assessment": "The scene is stylistically ambitious, with vivid imagery and a consistent third-person narrative voice that evokes a somber, atmospheric tone. However, the density of adjectives and adverbs in certain sentences may hinder clarity, and the pacing is uniformly slow, which risks monotony. Sentence structure varies sufficiently to avoid monotony, but tighter editing could enhance readability without sacrificing tone.",
+    "dimension_scores": {
+      "pacing": 0.7,
+      "clarity": 0.7,
+      "voice_consistency": 0.95,
+      "sentence_variety": 0.8,
+      "flow": 0.85
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Consistent poetic voice",
+        "detail": "The third-person narration maintains a unified, elegiac tone throughout, with a lexicon of archaic and evocative language that reinforces the scene's thematic weight."
+      },
+      {
+        "type": "weakness",
+        "label": "Overly dense descriptions",
+        "detail": "Phrases like 'innumerable centuries, each one worn and pitted and crumbling yet still somehow standing' burden sentences with excessive adjectives, risking reader fatigue."
+      },
+      {
+        "type": "observation",
+        "label": "Pacing uniformity",
+        "detail": "The slow, deliberate pacing aligns with the scene's contemplative mood but lacks variation to emphasize key moments or build tension."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Simplify overwrought descriptions",
+        "detail": "Trim excessive adjectives in complex sentences to improve readability while preserving the intended atmosphere."
+      },
+      {
+        "priority": "high",
+        "label": "Introduce rhythmic pacing shifts",
+        "detail": "Vary sentence length and cadence to create dynamic contrasts, particularly during Orlen's physical journey and his internal reflections."
+      }
+    ],
+    "confidence": 0.8,
+    "evidence_spans": [
+      {
+        "start": 0,
+        "end": 127,
+        "reason": "Exemplifies dense, complex sentence structure impacting clarity"
+      },
+      {
+        "start": 228,
+        "end": 265,
+        "reason": "Demonstrates consistent use of archaic, poetic language"
+      },
+      {
+        "start": 456,
+        "end": 480,
+        "reason": "Shows uniform pacing through repetitive phrasing ('slow, heavy processions') and static descriptions"
+      }
+    ]
+  }
+}

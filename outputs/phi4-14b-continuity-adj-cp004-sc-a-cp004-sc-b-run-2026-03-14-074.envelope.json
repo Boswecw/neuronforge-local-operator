@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-074",
+  "timestamp": "2026-03-14T18:54:26Z",
+  "scene_packet_id": "cp-004",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Potential progression break from boat to city",
+      "finding_type": "progression_break",
+      "claim": "In Scene A, Rawn appears to commit to securing the line and preparing to move past landing, but Scene B shows him immediately in the city without a transition.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp004-sc-a",
+          "cp004-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp004-sc-a",
+          "span_text": "Rawn helped secure the line and said nothing more to the captain than was required.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp004-sc-b",
+          "span_text": "The city received them without ceremony.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The lack of detailed transition from the boat to the city may be intentional, suggesting a rapid progression or an off-page journey.",
+      "review_note": "Verify whether there is any implied or off-page narrative that explains Rawn's quick transition from the boat landing to being in the city.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a potential progression break due to lack of explicit transition between scenes.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:55:29.051363+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-004.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp004-sc-a-cp004-sc-b-run-2026-03-14-074.raw.txt"
+  }
+}

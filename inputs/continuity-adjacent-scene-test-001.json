@@ -1,0 +1,13 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "test-packet-001",
+  "scene_a_id": "sc-041",
+  "scene_b_id": "sc-042",
+  "scene_a_text": "Rawn and Amicae descended toward the river road together, their banter carrying easily through the cool evening air. Rawn was still laughing as they reached the ford, joking about the magistrate's wig slipping sideways during the hearing. The ford was shallow after the dry season and they crossed without difficulty. Rawn tossed a coin to the boy guarding the horses on the far bank, and they rode out in good spirits, Amicae still shaking her head at the image of the wig.",
+  "scene_b_text": "The city gate was shut by the time they arrived. Rawn dismounted without speaking, his expression closed and flat. When Amicae asked what was wrong he did not answer. He tied his horse to the post at the tavern wall and walked to the door without waiting. Inside, he ordered alone and sat with his back to the room, watching the door.",
+  "packet_metadata": {
+    "chapter_id": "ch-04",
+    "note": "Test input for slice 1 validation"
+  }
+}

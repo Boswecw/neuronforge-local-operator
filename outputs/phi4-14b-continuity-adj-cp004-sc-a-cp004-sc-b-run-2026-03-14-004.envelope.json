@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-004",
+  "timestamp": "2026-03-14T12:26:51Z",
+  "scene_packet_id": "cp-004",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Transportation Method Transition Gap",
+      "finding_type": "transition_gap",
+      "claim": "The transition from the boat landing to being in the city lacks explicit connection, suggesting a possible gap.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp004-sc-a",
+          "cp004-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp004-sc-a",
+          "span_text": "The boat put in before the light failed.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp004-sc-b",
+          "span_text": "The city received them without ceremony.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition may be intentional, with the assumption that readers infer Rawn's travel by boat to the city.",
+      "review_note": "Examine whether additional context or implicit understanding supports this transition between scenes.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a potential gap in transitioning from boat landing to city arrival.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T12:27:43.341955+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v1.md",
+    "request_file": "inputs/case-packets/cp-004.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp004-sc-a-cp004-sc-b-run-2026-03-14-004.raw.txt"
+  }
+}

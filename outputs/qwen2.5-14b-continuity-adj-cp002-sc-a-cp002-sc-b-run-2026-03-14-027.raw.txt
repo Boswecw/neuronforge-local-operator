@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp002-sc-a", "cp002-sc-b"]
+  },
+  "input_unit_ids": ["cp002-sc-a", "cp002-sc-b"],
+  "candidate_findings": [],
+  "overall_run_note": "No review-worthy issues identified between the two scenes.",
+  "run_posture": "candidate_only"
+}
+

@@ -1,0 +1,55 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-007",
+  "timestamp": "2026-03-14T12:30:29Z",
+  "scene_packet_id": "cp-007",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Weather Transition Issue",
+      "finding_type": "descriptive_mismatch",
+      "claim": "The weather conditions in scene A and scene B are mismatched, suggesting a possible continuity issue.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp007-sc-a",
+          "cp007-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp007-sc-a",
+          "span_text": "The rain had been heavy since midday and the yard was standing water by the time Rawn crossed it.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp007-sc-b",
+          "span_text": "The afternoon light was hard and clear, the stones already dry underfoot.",
+          "span_role": "mismatch_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "This descriptive mismatch may be intentional or explained by external factors not covered in these scenes.",
+      "review_note": "Review whether there is a narrative explanation for the rapid weather change between scenes A and B.",
+      "candidate_state": "candidate_unreviewed",
+      "severity_hint": "minor"
+    }
+  ],
+  "overall_run_note": "Identified a possible descriptive mismatch regarding weather transition between the two scenes.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T12:31:24.320766+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v1.md",
+    "request_file": "inputs/case-packets/cp-007.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp007-sc-a-cp007-sc-b-run-2026-03-14-007.raw.txt"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://neuronforge.local/schemas/lane-analytics.schema.json",
+  "title": "NeuronForge Lane Analytics Record",
+  "description": "Machine-readable lane visibility surface for ForgeCommand consumption. One record per lane.",
+  "type": "object",
+  "required": [
+    "$schema",
+    "schema_version",
+    "lane_id",
+    "lane_name",
+    "lane_type",
+    "status",
+    "required_route_class",
+    "adoption_posture",
+    "current_baseline_model",
+    "current_baseline_prompt_profile",
+    "anchor_input",
+    "anchor_run_id",
+    "last_evaluated_date",
+    "current_judgment",
+    "calibration_doc",
+    "status_doc",
+    "metrics",
+    "next_required_decision",
+    "metric_provenance",
+    "metrics_gate_eligible",
+    "provenance_notes",
+    "metric_profile"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path or URL to this schema file."
+    },
+    "schema_version": {
+      "type": "string",
+      "description": "Version of the lane analytics schema this record conforms to.",
+      "enum": ["1.0"]
+    },
+    "lane_id": {
+      "type": "string",
+      "description": "Stable machine identifier. Must match filename stem.",
+      "minLength": 1
+    },
+    "lane_name": {
+      "type": "string",
+      "description": "Human-readable lane name for display.",
+      "minLength": 1
+    },
+    "lane_type": {
+      "type": "string",
+      "description": "Lane functional classification. Not a closed enum in v1.",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "description": "Current governed status of the lane.",
+      "enum": [
+        "planned",
+        "implementing",
+        "evaluating",
+        "candidate_baseline",
+        "approved_baseline",
+        "deferred",
+        "blocked",
+        "retired"
+      ]
+    },
+    "required_route_class": {
+      "type": "string",
+      "description": "Minimum route class required for this lane. Not a closed enum in v1.",
+      "minLength": 1
+    },
+    "adoption_posture": {
+      "type": "string",
+      "description": "Current adoption posture governing how lane output may be used.",
+      "enum": [
+        "blocked",
+        "experimental_only",
+        "review_assist_only",
+        "operator_assist",
+        "trusted_with_review",
+        "trusted_default"
+      ]
+    },
+    "current_baseline_model": {
+      "type": ["string", "null"],
+      "description": "Active baseline model identifier, or null if no baseline is established."
+    },
+    "current_baseline_prompt_profile": {
+      "type": ["string", "null"],
+      "description": "Active prompt profile identifier, or null if no baseline is established."
+    },
+    "anchor_input": {
+      "type": ["string", "null"],
+      "description": "Repo-relative path to the canonical anchor input used for baseline validation, or null."
+    },
+    "anchor_run_id": {
+      "type": ["string", "null"],
+      "description": "Run ID of the anchor evaluation run, or null."
+    },
+    "last_evaluated_date": {
+      "type": "string",
+      "description": "ISO 8601 date of the most recent governed evaluation. Format: YYYY-MM-DD.",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "current_judgment": {
+      "type": "string",
+      "description": "Concise human-readable judgment on the current lane state. Dashboard-ready.",
+      "minLength": 1
+    },
+    "calibration_doc": {
+      "type": ["string", "null"],
+      "description": "Repo-relative path to the calibration document for this lane, or null."
+    },
+    "status_doc": {
+      "type": ["string", "null"],
+      "description": "Repo-relative path to the lane status document, or null."
+    },
+    "metrics": {
+      "type": "object",
+      "description": "Numeric performance metrics from the most recent governed evaluation. Values must be numbers, not percent strings.",
+      "required": [
+        "schema_reliability",
+        "false_positive_rate",
+        "surface_detection_rate"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "schema_reliability": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Fraction of runs that produced valid schema-conformant envelopes."
+        },
+        "false_positive_rate": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Fraction of restraint cases incorrectly flagged."
+        },
+        "surface_detection_rate": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Fraction of surface true-positive cases correctly detected."
+        }
+      }
+    },
+    "next_required_decision": {
+      "type": "string",
+      "description": "Concise statement of the next governance decision required for this lane.",
+      "minLength": 1
+    },
+    "metric_provenance": {
+      "type": "string",
+      "description": "Evidence class of the metric values in this record. Determines how downstream consumers may interpret and compare metrics.",
+      "enum": [
+        "instrument_derived",
+        "benchmark_derived",
+        "automated_heuristic",
+        "operator_judged",
+        "mixed"
+      ]
+    },
+    "metrics_gate_eligible": {
+      "type": "boolean",
+      "description": "Whether the metric set is strong enough evidence to participate in automated or semi-automated trust posture actions such as auto-promote suggestions or lane health gating."
+    },
+    "provenance_notes": {
+      "type": ["string", "null"],
+      "description": "Human-readable explanation of metric derivation details. Required (non-null) when metric_provenance is operator_judged or mixed."
+    },
+    "metric_profile": {
+      "type": "string",
+      "description": "Interpretation contract for this lane's metric set. Tells downstream consumers which metric family is primary and how to interpret the shared metric trio. This is not provenance — it declares lane type, not evidence strength.",
+      "enum": [
+        "detection_reasoning",
+        "editing_cleanup",
+        "lore_protection_editing"
+      ]
+    }
+  }
+}

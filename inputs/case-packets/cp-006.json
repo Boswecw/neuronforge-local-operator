@@ -1,0 +1,19 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-006",
+  "scene_a_id": "cp006-sc-a",
+  "scene_b_id": "cp006-sc-b",
+  "scene_a_text": "Rawn tried the door and found it locked. He stepped back, considered the frame, and moved to the side passage instead. The side door opened without resistance and he went through and crossed the inner hall toward the stair.",
+  "scene_b_text": "The stair brought him back to the same corridor. The front door was still closed. He tried the latch once more, as much out of habit as expectation, and it gave this time — someone had unlocked it from the inside while he was on the upper floor. He held it open and waited.",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "repeated_movement_not_worth_flagging",
+    "secondary_category": "false_positive_resistance",
+    "expected_review_posture": "restraint_expected",
+    "expected_restraint_posture": "high_restraint",
+    "finding_expected": false,
+    "no_finding_acceptable": true,
+    "case_purpose": "Test restraint against natural reiteration. Rawn tries the same door twice, but the repetition is earned — he is on a second pass of the same corridor after completing an action, and the door state has changed. The model should not flag this as redundant staging."
+  }
+}

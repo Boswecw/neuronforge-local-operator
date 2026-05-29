@@ -1,0 +1,24 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-052",
+  "timestamp": "2026-03-14T18:29:52Z",
+  "scene_packet_id": "cp-003",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "fail_closed",
+  "failure_reason": "finding[0].evidence_spans[0]: invalid span_role: 'commitment'",
+  "candidate_findings": [],
+  "validation_result": {
+    "validation_result": "fail_closed",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T18:30:51.927898+00:00",
+    "failure_reason": "finding[0].evidence_spans[0]: invalid span_role: 'commitment'"
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
+    "request_file": "inputs/case-packets/cp-003.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp003-sc-a-cp003-sc-b-run-2026-03-14-052.raw.txt"
+  }
+}

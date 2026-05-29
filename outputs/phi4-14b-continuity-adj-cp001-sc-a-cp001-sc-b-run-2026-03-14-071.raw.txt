@@ -1,0 +1,42 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp001-sc-a", "cp001-sc-b"]
+  },
+  "input_unit_ids": ["cp001-sc-a", "cp001-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Careful Grip Not Acknowledged",
+      "finding_type": "state_carry_forward_issue",
+      "claim": "In Scene A, Rawn's grip is described as having become careful due to an injury, but in Scene B, he uses his left hand with ease.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp001-sc-a", "cp001-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp001-sc-a",
+          "span_text": "his grip on the lantern had become careful rather than easy.",
+          "span_role": "carry_forward"
+        },
+        {
+          "scene_id": "cp001-sc-b",
+          "span_text": "He drew the gate bolt with his left hand and held it open for Amicae without slowing.",
+          "span_role": "mismatch_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition may be intentional, reflecting Rawn's quick recovery or adaptation to his injury.",
+      "review_note": "Examine if there are any narrative elements between scenes that might explain the change in Rawn's grip handling.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Potential continuity issue identified regarding Rawn's hand injury and its impact on his actions between scenes.",
+  "run_posture": "candidate_only"
+}
+```
+

@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "phi4:14b",
+  "run_id": "run-2026-03-14-008",
+  "timestamp": "2026-03-14T12:31:24Z",
+  "scene_packet_id": "cp-008",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Emotional Tone Transition Gap",
+      "finding_type": "transition_gap",
+      "claim": "The emotional tone at the end of Scene A may not provide enough setup for Rawn's ease with Amicae in Scene B.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp008-sc-a",
+          "cp008-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp008-sc-a",
+          "span_text": "He did not light the second lamp.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp008-sc-b",
+          "span_text": "He was easier with her the next morning than the previous days had suggested he would be.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The emotional tone shift may be intentional and could be supported by context outside this two-scene window.",
+      "review_note": "Check whether the emotional tone at the end of Scene A provides enough setup for Rawn's behavior in Scene B.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a potential gap in emotional tone transition between scenes.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T12:32:16.972916+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v1.md",
+    "request_file": "inputs/case-packets/cp-008.json",
+    "raw_output_file": "outputs/phi4-14b-continuity-adj-cp008-sc-a-cp008-sc-b-run-2026-03-14-008.raw.txt"
+  }
+}

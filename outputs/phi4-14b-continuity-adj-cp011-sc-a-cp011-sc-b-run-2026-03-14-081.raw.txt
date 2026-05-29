@@ -1,0 +1,42 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp011-sc-a", "cp011-sc-b"]
+  },
+  "input_unit_ids": ["cp011-sc-a", "cp011-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Map State Carry Forward Issue",
+      "finding_type": "state_carry_forward_issue",
+      "claim": "In Scene A, Rawn and Amicae appear to establish the map as a point of discussion with specific markings for a district. By Scene B, the map is rolled up and tucked away, suggesting no further use or reference to its marked state.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp011-sc-a", "cp011-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp011-sc-a",
+          "span_text": "Amicae spread the map across the table...Rawn leaned over the edge of the table and pointed to the district she had already marked.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp011-sc-b",
+          "span_text": "She rolled the map and tucked it into the case...",
+          "span_role": "mismatch_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition of the map's state may be intentional as a narrative device, focusing on mental rather than physical elements.",
+      "review_note": "Verify whether there is any further reference or consequence regarding the map's markings in subsequent scenes.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "One possible state carry forward issue detected involving the map's role from Scene A to Scene B, with moderate confidence due to lack of explicit contradiction but change in focus.",
+  "run_posture": "candidate_only"
+}
+```
+

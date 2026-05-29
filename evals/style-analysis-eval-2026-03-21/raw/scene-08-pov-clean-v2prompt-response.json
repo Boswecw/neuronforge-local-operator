@@ -1,0 +1,55 @@
+{
+  "scene": "08-pov-clean",
+  "model_id": "qwen2.5:14b",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene describes Tariq's discovery of an unsealed letter from his sister with detailed observations of his surroundings and actions.",
+    "overall_assessment": "This scene offers a measured and contemplative style, focusing closely on Tariq's internal experience as he discovers a letter from his sister. The narrative is clear but somewhat static in its pacing, leaning heavily towards introspection rather than action. There are few abrupt changes or stylistic inconsistencies, though the rhythm can be repetitive at times due to the nature of the scene.",
+    "dimension_scores": {
+      "clarity": 0.9,
+      "flow": 0.75,
+      "voice_consistency": 1.0,
+      "sentence_variety": 0.65,
+      "pacing": 0.4
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Clear description",
+        "detail": "The scene's descriptions are clear and easy to understand."
+      },
+      {
+        "type": "weakness",
+        "label": "Monotonous rhythm",
+        "detail": "The repetitive sentence structure may detract from engagement."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Vary sentence lengths",
+        "detail": "Consider mixing in longer or shorter sentences to enhance the scene's flow and variety."
+      },
+      {
+        "priority": "high",
+        "label": "Accelerate pacing",
+        "detail": "Increase the tempo of the narrative to better match the emotional intensity of finding a letter from one\u2019s sister."
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_spans": [
+      {
+        "start": 365,
+        "end": 418,
+        "reason": "Illustrates repetitive sentence structure and static pacing."
+      },
+      {
+        "start": 222,
+        "end": 271,
+        "reason": "Highlights clear but uneventful description of Tariq's surroundings."
+      }
+    ]
+  },
+  "raw_model_output": "{\n  \"summary\": \"The scene describes Tariq's discovery of an unsealed letter from his sister with detailed observations of his surroundings and actions.\",\n  \"overall_assessment\": \"This scene offers a measured and contemplative style, focusing closely on Tariq's internal experience as he discovers a letter from his sister. The narrative is clear but somewhat static in its pacing, leaning heavily towards introspection rather than action. There are few abrupt changes or stylistic inconsistencies, though the rhythm can be repetitive at times due to the nature of the scene.\",\n  \"dimension_scores\": {\n    \"clarity\": 0.9,\n    \"flow\": 0.75,\n    \"voice_consistency\": 1.0,\n    \"sentence_variety\": 0.65,\n    \"pacing\": 0.4\n  },\n  \"findings\": [\n    {\n      \"type\": \"strength\",\n      \"label\": \"Clear description\",\n      \"detail\": \"The scene's descriptions are clear and easy to understand.\"\n    },\n    {\n      \"type\": \"weakness\",\n      \"label\": \"Monotonous rhythm\",\n      \"detail\": \"The repetitive sentence structure may detract from engagement.\"\n    }\n  ],\n  \"recommendations\": [\n    {\n      \"priority\": \"medium\",\n      \"label\": \"Vary sentence lengths\",\n      \"detail\": \"Consider mixing in longer or shorter sentences to enhance the scene's flow and variety.\"\n    },\n    {\n      \"priority\": \"high\",\n      \"label\": \"Accelerate pacing\",\n      \"detail\": \"Increase the tempo of the narrative to better match the emotional intensity of finding a letter from one\u2019s sister.\"\n    }\n  ],\n  \"confidence\": 0.9,\n  \"evidence_spans\": [\n    {\n      \"start\": 365,\n      \"end\": 418,\n      \"reason\": \"Illustrates repetitive sentence structure and static pacing.\"\n    },\n    {\n      \"start\": 222,\n      \"end\": 271,\n      \"reason\": \"Highlights clear but uneventful description of Tariq's surroundings.\"\n    }\n  ]\n}"
+}

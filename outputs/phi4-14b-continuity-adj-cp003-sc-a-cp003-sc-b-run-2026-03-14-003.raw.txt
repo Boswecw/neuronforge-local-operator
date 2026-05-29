@@ -1,0 +1,42 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp003-sc-a", "cp003-sc-b"]
+  },
+  "input_unit_ids": ["cp003-sc-a", "cp003-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Unaccounted Schedule Change",
+      "finding_type": "progression_break",
+      "claim": "Rawn's plan to meet the warden before the morning session does not progress as expected due to an unexplained schedule change.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp003-sc-a", "cp003-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp003-sc-a",
+          "span_text": "Rawn told her he would go to the warden himself before the morning session.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp003-sc-b",
+          "span_text": "He said the warden had sent word at first light that the schedule had changed.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The change in schedule may be part of a larger narrative strategy not visible within these scenes.",
+      "review_note": "Verify if any preceding events or discussions provide context for the warden's sudden schedule change.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Found one progression_break due to an unexplained change in the meeting schedule between scenes.",
+  "run_posture": "candidate_only"
+}
+```
+

@@ -1,0 +1,66 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen3:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene exhibits a clear, introspective narrative voice with a balanced mix of action and reflection, though some stylistic repetition may affect pacing.",
+    "overall_assessment": "The text demonstrates strong clarity and consistent voice, blending action with introspective narration. Flow is generally smooth, but occasional repetitive sentence structures and abrupt shifts in perspective could disrupt immersion. Pacing benefits from alternating tension and reflection, though tighter sentence variety would enhance rhythm.",
+    "dimension_scores": {
+      "pacing": 0.85,
+      "clarity": 0.9,
+      "voice_consistency": 0.9,
+      "sentence_variety": 0.8,
+      "flow": 0.85
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Strong introspective voice",
+        "detail": "The narrative voice effectively blends action with philosophical reflection, deepening character motivation."
+      },
+      {
+        "type": "weakness",
+        "label": "Repetitive sentence cadence",
+        "detail": "Frequent use of 'She' and 'The' at the start of sentences creates a slightly monotonous rhythm in action sequences."
+      },
+      {
+        "type": "observation",
+        "label": "Perspective shifts",
+        "detail": "The transition from third-person narration to first-person introspection is handled but may require tighter integration for seamless immersion."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Enhance sentence structure variation",
+        "detail": "Introduce more complex sentence structures in action sequences to avoid rhythmic monotony and improve pacing."
+      },
+      {
+        "priority": "low",
+        "label": "Refine perspective transitions",
+        "detail": "Smooth the shift between third-person narration and first-person introspection to maintain consistent immersion."
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_spans": [
+      {
+        "start": 142,
+        "end": 163,
+        "reason": "Example of introspective voice ('I have always been a careful person...')"
+      },
+      {
+        "start": 235,
+        "end": 257,
+        "reason": "Repetitive 'She' structure ('She inched forward... She had prepared...')"
+      },
+      {
+        "start": 332,
+        "end": 354,
+        "reason": "Perspective shift ('The young woman had not expected...')"
+      }
+    ]
+  }
+}

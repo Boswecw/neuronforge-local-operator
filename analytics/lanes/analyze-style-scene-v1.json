@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schemas/lane-analytics.schema.json",
+  "schema_version": "1.0",
+  "lane_id": "analyze-style-scene-v1",
+  "lane_name": "Style Analysis — Scene (v1)",
+  "lane_type": "style_analysis",
+  "status": "candidate_baseline",
+  "required_route_class": "WORKHORSE_LOCAL",
+  "adoption_posture": "experimental_only",
+  "current_baseline_model": "qwen2.5:14b",
+  "current_baseline_prompt_profile": "style-analysis-scene-v1",
+  "anchor_input": "inputs/style-analysis-eval/scene-01-clean.md",
+  "anchor_run_id": "eval-2026-03-21-001",
+  "last_evaluated_date": "2026-03-21",
+  "current_judgment": "Promoted to candidate_baseline (2026-03-21): Full 5-scene baseline run (scenes 01–05) with qwen2.5:14b against the final 6-dimension prompt confirms no regressions on diagnostic dimensions. schema_reliability 5/5. sentence_variety on scene-03-flat preserved at 0.30 (critical diagnostic signal). pacing on scene-02-dense improved from 0.60 to 0.50 (stronger signal). voice_consistency on scene-03-flat increased from 0.50 to 1.00 — expected under the narrowed tonal/register definition (flat tone is tonally stable). No false positives. pov_fidelity scores are 1.00 across all 5 scenes (no POV violations in the baseline set); this is the correct result. Multi-model POV survey (qwen2.5:14b, qwen3:14b, cogito:14b, gemma3:12b, phi4-reasoning) confirmed WORKHORSE_LOCAL ceiling at 2/4 POV thresholds — pov_fidelity is advisory only, not gate-eligible.",
+  "calibration_doc": "evals/style-analysis-calibration-2026-03-21.md",
+  "status_doc": "evals/style-analysis-lane-status-2026-03-21.md",
+  "metrics": {
+    "schema_reliability": 1.0,
+    "false_positive_rate": 0.0,
+    "surface_detection_rate": 1.0
+  },
+  "next_required_decision": "Decide whether to wire analyze.style.scene.v1 to AuthorForge as a live advisory capability (adoption_posture: experimental_only remains appropriate). If wiring: confirm AuthorForge proxy request shape matches the NeuronForge contract envelope; confirm pov_fidelity limitation is communicated to consumers (advisory only, not gate signal); run at least one end-to-end integration smoke test. If evaluating pov_fidelity gate-eligibility: test a FRONTIER_CLOUD model (e.g., claude-sonnet-4-6) against the 4 POV validation scenes before treating pov_fidelity as a reliable gate signal.",
+  "metric_provenance": "operator_judged",
+  "metrics_gate_eligible": false,
+  "provenance_notes": "Metrics derived from operator judgment across 5 eval scenes (run-2026-03-21-001 through run-2026-03-21-005). schema_reliability: 5/5 runs returned valid schema envelope. false_positive_rate: 0 clearly incorrect findings identified across all 5 runs. surface_detection_rate: 4/4 targeted style issues detected (scene-04 counted as detected despite dimension miscategorization). All metrics are operator-judged from a small 5-scene set. Not benchmark-derived. Not gate-eligible. pov_fidelity limitation: multi-model survey (qwen2.5:14b, qwen3:14b, cogito:14b, gemma3:12b, phi4-reasoning) confirms no WORKHORSE_LOCAL model passes all 4 POV validation thresholds. Best result is 2/4. pov_fidelity is in the schema as the correct semantic design but scores must not be used as gate signals for POV enforcement. See evals/style-analysis-calibration-2026-03-21.md §Multi-model POV validation survey for full results. metric_profile is set to detection_reasoning as the closest available value; style analysis identifies issues and reasons about them but is not a binary detection task.",
+  "metric_profile": "detection_reasoning"
+}

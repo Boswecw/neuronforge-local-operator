@@ -1,0 +1,54 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "contract_version": "1.0",
+  "route_class": "HIGH_QUALITY_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "run_id": "run-2026-03-14-019",
+  "timestamp": "2026-03-14T12:58:29Z",
+  "scene_packet_id": "cp-007",
+  "scope_label": "adjacent_scene",
+  "envelope_status": "valid_candidate",
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "State Carry Forward Issue",
+      "finding_type": "state_carry_forward_issue",
+      "claim": "Rawn's state of being wet and cold in Scene A is not carried forward into the dry conditions described for him in Scene B.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": [
+          "cp007-sc-a",
+          "cp007-sc-b"
+        ]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp007-sc-a",
+          "span_text": "He came inside wet to the elbows, his boots leaving tracks across the flagstones.",
+          "span_role": "carry_forward"
+        },
+        {
+          "scene_id": "cp007-sc-b",
+          "span_text": "the stones already dry underfoot",
+          "span_role": "mismatch_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The change in Rawn's condition may be intentional and could be supported by context outside this two-scene window.",
+      "review_note": "Verify whether the character's state is clearly handed off between the two scenes, considering possible intervening events or dialogue.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "A potential state carry forward issue identified due to a significant change in Rawn's physical condition from Scene A to Scene B without an explicit transition explanation.",
+  "validation_result": {
+    "validation_result": "valid",
+    "schema_version_checked": "1.0",
+    "validated_at": "2026-03-14T12:59:31.790096+00:00",
+    "findings_count": 1
+  },
+  "run_metadata": {
+    "prompt_file": "prompts/continuity-adjacent-scene-v1.md",
+    "request_file": "inputs/case-packets/cp-007.json",
+    "raw_output_file": "outputs/qwen2.5-14b-continuity-adj-cp007-sc-a-cp007-sc-b-run-2026-03-14-019.raw.txt"
+  }
+}

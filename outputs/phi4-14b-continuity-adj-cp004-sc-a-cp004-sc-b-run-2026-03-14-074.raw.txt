@@ -1,0 +1,42 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp004-sc-a", "cp004-sc-b"]
+  },
+  "input_unit_ids": ["cp004-sc-a", "cp004-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Potential progression break from boat to city",
+      "finding_type": "progression_break",
+      "claim": "In Scene A, Rawn appears to commit to securing the line and preparing to move past landing, but Scene B shows him immediately in the city without a transition.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp004-sc-a", "cp004-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp004-sc-a",
+          "span_text": "Rawn helped secure the line and said nothing more to the captain than was required.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp004-sc-b",
+          "span_text": "The city received them without ceremony.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The lack of detailed transition from the boat to the city may be intentional, suggesting a rapid progression or an off-page journey.",
+      "review_note": "Verify whether there is any implied or off-page narrative that explains Rawn's quick transition from the boat landing to being in the city.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified a potential progression break due to lack of explicit transition between scenes.",
+  "run_posture": "candidate_only"
+}
+```
+

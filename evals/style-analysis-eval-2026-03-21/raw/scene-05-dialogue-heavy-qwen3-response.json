@@ -1,0 +1,66 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen3:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene uses tight, dialogue-driven prose with clear character dynamics and a steady pace, emphasizing tension and resolution through concise exchanges.",
+    "overall_assessment": "The scene excels in clarity and voice consistency, with distinct character tones and purposeful dialogue. Pacing is effective, building tension through concise exchanges. However, sentence variety is limited, relying heavily on short dialogue lines. Adding more descriptive or varied sentence structures could enhance immersion and emotional depth.",
+    "dimension_scores": {
+      "pacing": 0.85,
+      "clarity": 0.9,
+      "voice_consistency": 0.9,
+      "sentence_variety": 0.75,
+      "flow": 0.85
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Clear dialogue",
+        "detail": "Direct exchanges with no ambiguity in character intentions or plot points."
+      },
+      {
+        "type": "weakness",
+        "label": "Limited sentence structure",
+        "detail": "Predominantly short sentences and dialogue lines with minimal descriptive variation."
+      },
+      {
+        "type": "observation",
+        "label": "Tense pacing",
+        "detail": "The dialogue maintains a steady rhythm, escalating tension before resolving with Adric's concession."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Incorporate descriptive prose",
+        "detail": "Add more vivid descriptions of setting or internal monologue to break up dialogue and deepen atmosphere."
+      },
+      {
+        "priority": "low",
+        "label": "Experiment with sentence length",
+        "detail": "Introduce longer, more complex sentences to contrast with dialogue and enhance narrative pacing."
+      }
+    ],
+    "confidence": 0.85,
+    "evidence_spans": [
+      {
+        "start": 0,
+        "end": 29,
+        "reason": "Exemplifies clear, purposeful dialogue with immediate character conflict."
+      },
+      {
+        "start": 139,
+        "end": 165,
+        "reason": "Shows voice consistency through Fennick's direct, assertive tone."
+      },
+      {
+        "start": 345,
+        "end": 392,
+        "reason": "Descriptive sentence introduces variation in sentence structure and setting."
+      }
+    ]
+  }
+}

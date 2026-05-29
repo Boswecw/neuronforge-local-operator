@@ -1,0 +1,42 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp007-sc-a", "cp007-sc-b"]
+  },
+  "input_unit_ids": ["cp007-sc-a", "cp007-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Descriptive Mismatch - Wet to Dry Transition",
+      "finding_type": "descriptive_mismatch",
+      "claim": "In Scene A, Rawn enters the yard wet and leaves tracks on wet stones. In Scene B, Amicae is already in the yard with dry stones, suggesting a rapid drying that may need clarification.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp007-sc-a", "cp007-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp007-sc-a",
+          "span_text": "The rain had been heavy since midday and the yard was standing water by the time Rawn crossed it. ... his boots leaving tracks across the flagstones.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp007-sc-b",
+          "span_text": "Rawn found Amicae in the yard, going over the crate manifest with the factor. The afternoon light was hard and clear, the stones already dry underfoot.",
+          "span_role": "mismatch_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition from wet to dry may be intentional and could reflect a rapid change in weather or time compression not detailed here.",
+      "review_note": "Examine if there is any narrative explanation for the quick drying of stones that might have occurred between the scenes.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "Identified one descriptive mismatch regarding environmental conditions transitioning from wet to dry, requiring further review for context or clarification.",
+  "run_posture": "candidate_only"
+}
+```
+

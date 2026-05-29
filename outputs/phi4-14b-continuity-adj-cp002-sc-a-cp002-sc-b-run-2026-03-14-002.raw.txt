@@ -1,0 +1,42 @@
+```json
+{
+  "schema_version": "1.0",
+  "lane_id": "continuity-progression-reasoning",
+  "analysis_scope_type": "adjacent_scene",
+  "analysis_scope_bounds": {
+    "scene_ids": ["cp002-sc-a", "cp002-sc-b"]
+  },
+  "input_unit_ids": ["cp002-sc-a", "cp002-sc-b"],
+  "candidate_findings": [
+    {
+      "finding_id": "cpf-001",
+      "finding_label": "Unclear Emotional Transition",
+      "finding_type": "transition_gap",
+      "claim": "The emotional transition from the argument to the quiet contemplation may lack clarity.",
+      "scope_type": "adjacent_scene",
+      "scope_bounds": {
+        "scene_ids": ["cp002-sc-a", "cp002-sc-b"]
+      },
+      "evidence_spans": [
+        {
+          "scene_id": "cp002-sc-a",
+          "span_text": "The argument wound down without resolution.",
+          "span_role": "setup"
+        },
+        {
+          "scene_id": "cp002-sc-b",
+          "span_text": "He was still at the window when the bells rang the second hour. The street below had gone quiet.",
+          "span_role": "transition_signal"
+        }
+      ],
+      "confidence": "moderate",
+      "uncertainty_note": "The transition may be intentional and reflect a natural shift in emotional focus.",
+      "review_note": "Examine whether the silence after Amicae's departure provides sufficient setup for Rawn's quiet contemplation.",
+      "candidate_state": "candidate_unreviewed"
+    }
+  ],
+  "overall_run_note": "One moderate-confidence finding identified regarding an unclear emotional transition between scenes.",
+  "run_posture": "candidate_only"
+}
+```
+

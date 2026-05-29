@@ -1,0 +1,45 @@
+{
+  "scene": "04-voice-drift",
+  "model_id": "qwen2.5:14b",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene is written with clear, precise language that conveys tension and detail effectively, though it occasionally shifts between present action and introspective narration.",
+    "overall_assessment": "This scene exhibits strong clarity in its descriptive language, making the setting and protagonist's actions vividly apparent. The flow between Mira's immediate actions and reflective thoughts is somewhat jarring at times but generally maintains a coherent narrative rhythm. Sentence variety is commendable with a mix of short and long sentences to build tension effectively. However, voice consistency suffers from abrupt shifts in perspective that may confuse readers or disrupt immersion.",
+    "dimension_scores": {
+      "clarity": 0.9,
+      "flow": 0.75,
+      "voice_consistency": 0.6,
+      "sentence_variety": 0.85,
+      "pacing": 0.8
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Effective Tension Building",
+        "detail": "The scene expertly uses sentence variety and pacing to build tension during Mira's escape attempt."
+      },
+      {
+        "type": "weakness",
+        "label": "Unnecessary Narration",
+        "detail": "Introspective narration disrupts the flow of action, reducing voice consistency."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Streamline Perspective",
+        "detail": "Consider consolidating narrative perspective to enhance reader immersion and clarity."
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_spans": [
+      {
+        "start": 123,
+        "end": 174,
+        "reason": "This span exemplifies the shift in narrative voice that disrupts flow and consistency."
+      }
+    ]
+  },
+  "raw_model_output": "{\n  \"summary\": \"The scene is written with clear, precise language that conveys tension and detail effectively, though it occasionally shifts between present action and introspective narration.\",\n  \"overall_assessment\": \"This scene exhibits strong clarity in its descriptive language, making the setting and protagonist's actions vividly apparent. The flow between Mira's immediate actions and reflective thoughts is somewhat jarring at times but generally maintains a coherent narrative rhythm. Sentence variety is commendable with a mix of short and long sentences to build tension effectively. However, voice consistency suffers from abrupt shifts in perspective that may confuse readers or disrupt immersion.\",\n  \"dimension_scores\": {\n    \"clarity\": 0.9,\n    \"flow\": 0.75,\n    \"voice_consistency\": 0.6,\n    \"sentence_variety\": 0.85,\n    \"pacing\": 0.8\n  },\n  \"findings\": [\n    {\n      \"type\": \"strength\",\n      \"label\": \"Effective Tension Building\",\n      \"detail\": \"The scene expertly uses sentence variety and pacing to build tension during Mira's escape attempt.\"\n    },\n    {\n      \"type\": \"weakness\",\n      \"label\": \"Unnecessary Narration\",\n      \"detail\": \"Introspective narration disrupts the flow of action, reducing voice consistency.\"\n    }\n  ],\n  \"recommendations\": [\n    {\n      \"priority\": \"medium\",\n      \"label\": \"Streamline Perspective\",\n      \"detail\": \"Consider consolidating narrative perspective to enhance reader immersion and clarity.\"\n    }\n  ],\n  \"confidence\": 0.9,\n  \"evidence_spans\": [\n    {\n      \"start\": 123,\n      \"end\": 174,\n      \"reason\": \"This span exemplifies the shift in narrative voice that disrupts flow and consistency.\"\n    }\n  ]\n}"
+}

@@ -1,0 +1,63 @@
+{
+  "route_class": "WORKHORSE_LOCAL",
+  "model_id": "qwen2.5:14b",
+  "runtime_mode_used": "WORKHORSE_LOCAL",
+  "provenance_class": "inferred_candidate",
+  "schema_validation_status": "valid",
+  "warnings": [],
+  "output_payload": {
+    "summary": "The scene is written with a clear, tense narrative style focusing on Mira's escape from surveillance.",
+    "overall_assessment": "This passage offers a vivid portrayal of suspense and determination. The prose alternates between immediate action and reflective narration, which enriches the character's depth but slightly disrupts the pacing. The clarity is strong due to precise descriptions of actions and thoughts. Voice consistency is generally well-maintained throughout.",
+    "dimension_scores": {
+      "voice_consistency": 0.85,
+      "flow": 0.7,
+      "sentence_variety": 0.65,
+      "clarity": 0.9,
+      "pacing": 0.7
+    },
+    "findings": [
+      {
+        "type": "strength",
+        "label": "Strong descriptive clarity",
+        "detail": "The narrative provides clear and vivid descriptions of the physical environment and Mira's actions."
+      },
+      {
+        "type": "weakness",
+        "label": "Uneven pacing",
+        "detail": "There is a shift from immediate action to reflective narration, which disrupts the forward momentum of the scene."
+      }
+    ],
+    "recommendations": [
+      {
+        "priority": "medium",
+        "label": "Reduce introspection for smoother flow",
+        "detail": "Decrease the amount of reflective narration to maintain a consistent and fast-paced action sequence."
+      },
+      {
+        "priority": "high",
+        "label": "Enhance sentence variety",
+        "detail": "Incorporate more varied sentence structures to improve rhythm and engagement throughout the narrative."
+      }
+    ],
+    "confidence": 0.9,
+    "evidence_spans": [
+      {
+        "start": 145,
+        "end": 238,
+        "reason": "This span contains reflective narration that disrupts the action-driven flow of the scene."
+      },
+      {
+        "start": 0,
+        "end": 96,
+        "reason": "These initial sentences set a strong tone with clear, vivid descriptions that establish clarity and tension."
+      }
+    ]
+  },
+  "task_id": "analyze.style.scene.v1",
+  "contract_version": "v1",
+  "run_id": "run-2026-03-21-004",
+  "run_metadata": {
+    "scene_file": "inputs/style-analysis-eval/scene-04-voice-drift.md",
+    "raw_output_file": "evals/style-analysis-eval-2026-03-21/raw/qwen2.5-14b-style-scene-04-voice-drift.md-run-2026-03-21-004.raw.txt"
+  }
+}
