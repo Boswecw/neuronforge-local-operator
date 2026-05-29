@@ -11,7 +11,7 @@ It records only repository surfaces directly observable from the current working
 
 | Surface | Current truth |
 | --- | --- |
-| Canonical technical reference | `doc/system/` plus generated root `SYSTEM.md` |
+| Canonical technical reference | `doc/system/` plus generated root `NLOSYSTEM.md` |
 | Repo-local instructions | `CLAUDE.md` |
 | Current maturity | Baseline documentation protocol alignment |
 
@@ -19,7 +19,7 @@ It records only repository surfaces directly observable from the current working
 
 | Module | Surface | Current role |
 | --- | --- | --- |
-| Documentation Stack | `doc/system/`, `SYSTEM.md`, `scripts/context-bundle.sh` | Canonical repo context and build surfaces |
+| Documentation Stack | `doc/system/`, `NLOSYSTEM.md`, `scripts/context-bundle.sh` | Canonical repo context and build surfaces |
 | Runtime Surface | `app/`, `service/`, `cortex_runtime/`, `api/`, `src/`, `src-tauri/`, or `crates/` | Primary implementation boundary |
 | Data and Schemas | `schemas/`, `models/`, `db/`, `sql/`, `alembic/`, or `migrations/` | Persistence and validation surfaces |
 | Governance and Specs | `docs/`, `governance/`, `DECISIONS/`, `prompts/`, `evals/`, `analytics/`, or `registry/` | Repo doctrine, experiments, and supporting design material |
@@ -28,4 +28,4 @@ It records only repository surfaces directly observable from the current working
 ## 4. Architectural Boundary
 
 - this document is a baseline and must be expanded as concrete modules, routes, schemas, and integrations are cataloged
-- when this spec and `SYSTEM.md` diverge, `SYSTEM.md` wins as the implemented reality reference
+- when this spec and `NLOSYSTEM.md` diverge, `NLOSYSTEM.md` wins as the implemented reality reference

@@ -73,7 +73,7 @@ Latest successful wrapper-driven operational verification runs:
   Control documents for workflow, baseline status, review discipline, drift boundaries, repeatability, and scope.
 
 - `doc/system/`
-  Canonical system documentation parts; root `SYSTEM.md` is the build artifact (rebuild with `bash doc/system/BUILD.sh`).
+  Canonical system documentation parts; root `NLOSYSTEM.md` is the build artifact (rebuild with `bash doc/system/BUILD.sh`).
 
 - `inputs/`
   Source texts used for proofreading runs.
@@ -118,7 +118,7 @@ Start here for the current control surface:
 - `docs/repeatability-note.md`
 - `docs/experiment-scope.md`
 
-See also `SYSTEM.md` and `CLAUDE.md` for repo doctrine and assistant working instructions.
+See also `NLOSYSTEM.md` and `CLAUDE.md` for repo doctrine and assistant working instructions.
 
 ---
 
