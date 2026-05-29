@@ -1,9 +1,11 @@
-# NeuronForge System Documentation
+# NeuronForge Local Operator (NLO) — System Documentation
 
 **Document version:** 1.1 (2026-03-22) — analyze.style.scene.v1 promoted to candidate_baseline
 **Protocol:** Forge Documentation Protocol v1
 
-This `doc/system/` tree defines the NeuronForge Local control surface:
+This `doc/system/` tree defines the NeuronForge Local Operator (NLO) control surface — the
+local-first training and operator workspace from which reviewed, baseline-beating results are
+promoted to the public-facing NeuronForge applications-support version:
 - Task contract taxonomy and contract doctrine
 - Routing and model profile plan
 - Candidate artifact doctrine
@@ -12,7 +14,7 @@ This `doc/system/` tree defines the NeuronForge Local control surface:
 
 Assembly contract:
 - Command: `bash doc/system/BUILD.sh`
-- Output: `doc/nfSYSTEM.md`
+- Output: `NLOSYSTEM.md` (root) and `doc/NLOSYSTEM.md` (legacy copy: `doc/nfSYSTEM.md`)
 
 | Part | File | Contents |
 |------|------|----------|
@@ -33,7 +35,7 @@ Assembly contract:
 ## Quick Assembly
 
 ```bash
-bash doc/system/BUILD.sh   # Assembles all parts into doc/nfSYSTEM.md
+bash doc/system/BUILD.sh   # Assembles all parts into NLOSYSTEM.md
 ```
 
 *Last updated: 2026-03-22*
