@@ -1,0 +1,49 @@
+{
+  "schema_version": "neuronforge.promotion_manifest.v1",
+  "promotion_id": "promotion-2026-05-29-001",
+  "created_at": "2026-05-29T03:00:00-04:00",
+  "source": {
+    "repo_name": "neuronforge-local-operator",
+    "branch": "master",
+    "commit": "b83b428fecb6e7046a9c329cecfc5e2d47b2e9f2"
+  },
+  "target": {
+    "repo_name": "neuronforge",
+    "base_branch": "master"
+  },
+  "status": "evidence_ready",
+  "promotion_type": "eval_record_update",
+  "operator_decision": "approved_for_staging",
+  "baseline_impact": "operational_only",
+  "run_ids": ["run-2026-03-13-005"],
+  "files": [
+    {
+      "class": "eval_record",
+      "source_path": "evals/forge-command-promotion-validation-2026-05-29.md",
+      "target_path": "evals/forge-command-promotion-validation-2026-05-29.md",
+      "action": "create",
+      "required": true,
+      "sha256": "c23058a96d9dfaeb7c2d353e7f544a8fb0e7e333dc727b5db6cf0a7708d12d2b",
+      "size_bytes": 687
+    }
+  ],
+  "evidence": {
+    "summary": {
+      "path": "evals/lore-safe-lane-status-2026-03-13.md",
+      "sha256": "a8dee60d55947845065764df3d1688b4be1a8d7f14ea50d826a86c59d2b2db31",
+      "size_bytes": 820
+    },
+    "review": {
+      "path": "evals/run-2026-03-13-005-review.md",
+      "sha256": "94b4f330dbab6e215133699c0f0f00264bf01b1ad61775283b84daa54f405138",
+      "size_bytes": 1419
+    },
+    "baseline_decision": {
+      "path": "docs/current-baseline.md",
+      "sha256": "28b351fbc56afb93771be2c1f411d2f9d702755f913c74bd848c52002bbc59ff",
+      "size_bytes": 3286
+    }
+  },
+  "validation_profile": "docs_only",
+  "notes": "Forge_Command governed promotion pipeline end-to-end validation against the real repos (P-01..P-10). Lands on an isolated promotion/ branch for review; never auto-merged."
+}
