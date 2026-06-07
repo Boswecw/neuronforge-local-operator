@@ -4,12 +4,10 @@ set -euo pipefail
 # NLO = NeuronForge Local Operator.
 # The root system doc is prefixed (NLOSYSTEM.md) to make this repo's identity
 # explicit and distinct from the public-facing NeuronForge system doc.
+# The root NLOSYSTEM.md is the single canonical build artifact.
 PARTS_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$PARTS_DIR/../.." && pwd)"
 ROOT_OUTPUT="$REPO_ROOT/NLOSYSTEM.md"
-DOC_OUTPUT="$REPO_ROOT/doc/NLOSYSTEM.md"
-# Legacy neuronforge artifact kept for backward compatibility.
-LEGACY_OUTPUT_REL="doc/nfSYSTEM.md"
 TMP_OUTPUT="$(mktemp)"
 
 echo "Assembling NLOSYSTEM.md..."
@@ -24,18 +22,7 @@ for part in "$PARTS_DIR"/[0-9][0-9]-*.md; do
 done
 
 cp "$TMP_OUTPUT" "$ROOT_OUTPUT"
-cp "$TMP_OUTPUT" "$DOC_OUTPUT"
-
-if [[ -n "$LEGACY_OUTPUT_REL" ]]; then
-  LEGACY_OUTPUT="$REPO_ROOT/$LEGACY_OUTPUT_REL"
-  mkdir -p "$(dirname "$LEGACY_OUTPUT")"
-  cp "$TMP_OUTPUT" "$LEGACY_OUTPUT"
-fi
-
-chmod 664 "$ROOT_OUTPUT" "$DOC_OUTPUT"
-if [[ -n "$LEGACY_OUTPUT_REL" ]]; then
-  chmod 664 "$REPO_ROOT/$LEGACY_OUTPUT_REL"
-fi
+chmod 664 "$ROOT_OUTPUT"
 
 LINE_COUNT=$(wc -l < "$ROOT_OUTPUT")
 rm -f "$TMP_OUTPUT"
