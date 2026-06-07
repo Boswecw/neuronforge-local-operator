@@ -31,6 +31,7 @@ Exit codes:
 from __future__ import annotations
 
 import json
+import os
 import sys
 import unittest
 from pathlib import Path
@@ -491,7 +492,16 @@ class TestRoute(unittest.TestCase):
 
     def _skip_if_no_client(self) -> None:
         if self.client is None:
-            self.skipTest(f"FastAPI TestClient unavailable: {self.skip_reason}")
+            message = f"FastAPI TestClient unavailable: {self.skip_reason}"
+            # In enforced mode (CI), a missing dependency must fail loudly rather
+            # than silently skip — otherwise these route assertions never run and
+            # the suite reports a green "OK" that proves nothing.
+            if os.environ.get("NF_REQUIRE_HTTP_TESTS"):
+                self.fail(
+                    message
+                    + " (NF_REQUIRE_HTTP_TESTS is set; install requirements-dev.txt)"
+                )
+            self.skipTest(message)
 
     def _make_request_payload(self, scene_text: str = _SCENE_TEXT) -> dict:
         return {

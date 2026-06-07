@@ -1,0 +1,19 @@
+# Runtime dependencies for the NeuronForge Local Operator service surface
+# and validation tooling. Versions are floors known to work with this snapshot.
+#
+# Install:  pip install -r requirements.txt
+# (use a virtualenv:  python3 -m venv .venv && . .venv/bin/activate)
+
+# Schema / model layer (scripts/, service/, prompt_assembly/, promotion/)
+pydantic>=2.13
+
+# HTTP service surface (service/main.py, scripts/style_analysis/app.py)
+fastapi>=0.136
+uvicorn>=0.30          # documented dev server: uvicorn service.main:app
+
+# JSON Schema validation (prompt_assembly/, registry validators)
+jsonschema>=4.26
+referencing>=0.36      # $ref resolution for Draft 2020-12 validators
+
+# YAML registry/config parsing (prompt_assembly/tools/validate_registry.py)
+PyYAML>=6.0

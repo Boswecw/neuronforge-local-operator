@@ -14,7 +14,7 @@ promoted to the public-facing NeuronForge applications-support version:
 
 Assembly contract:
 - Command: `bash doc/system/BUILD.sh`
-- Output: `NLOSYSTEM.md` (root) and `doc/NLOSYSTEM.md` (legacy copy: `doc/nfSYSTEM.md`)
+- Output: `NLOSYSTEM.md` (root) — the single canonical build artifact
 
 | Part | File | Contents |
 |------|------|----------|

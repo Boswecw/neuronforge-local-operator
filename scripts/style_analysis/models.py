@@ -118,10 +118,13 @@ class StyleAnalysisRequest(BaseModel):
     """
 
     request_id: str = Field(..., min_length=1, description="Caller-supplied request / trace id")
-    task_family: Literal["analysis"] = "analysis"
-    task_type: Literal["style_analysis"] = "style_analysis"
-    contract_version: Literal["v1"] = "v1"
-    source_scope: Literal["scene"] = "scene"
+    # Envelope discriminator fields are required (no defaults): a caller that
+    # omits or mismatches any of them is sending a malformed envelope and must
+    # fail closed with HTTP 422 rather than be silently coerced to the contract.
+    task_family: Literal["analysis"]
+    task_type: Literal["style_analysis"]
+    contract_version: Literal["v1"]
+    source_scope: Literal["scene"]
     input_payload: StyleAnalysisInputPayload
     desired_runtime_mode: str = Field(
         default="WORKHORSE_LOCAL",

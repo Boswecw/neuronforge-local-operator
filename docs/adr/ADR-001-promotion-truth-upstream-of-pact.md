@@ -24,3 +24,10 @@ The wave-1 promotion integration plan (`promotion_integration_plan_set_canvases_
 ## Verification
 
 Run `python3 scripts/verify_promotion_seam.py`. Expect `verify_promotion_seam: PASS` and a green `all_pass` flag in the seam report.
+
+The script consumes the PACT-emitted envelope and manifest. By default it looks
+for them in a sibling `pact` checkout (`../pact/docs/evidence/`); override the
+locations with `NF_PACT_ENVELOPE` and `NF_PACT_MANIFEST`. When those external
+artifacts are not present (for example in a standalone snapshot of this repo),
+the script prints `verify_promotion_seam: SKIPPED` and exits `2` — distinct from
+PASS (`0`) and FAIL (`1`) — rather than failing on a machine-specific path.

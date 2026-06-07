@@ -18,6 +18,7 @@ markdown examples.
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -37,11 +38,33 @@ from promotion import (  # noqa: E402
 )
 
 MIRROR_PATH = REPO_ROOT / "registry" / "pact_wave1_envelope_mirror.json"
-PACT_ENVELOPE_PATH = Path(
-    "/home/charlie/Forge/ecosystem/pact/docs/evidence/wave1_promotion_envelope.json"
+
+
+def _resolve_pact_path(env_var: str, *default_rel_parts: str) -> Path:
+    """Resolve a path to an external PACT evidence artifact.
+
+    Resolution order:
+      1. The ``env_var`` environment variable, if set (absolute or relative).
+      2. A sibling ``pact`` checkout next to this repo:
+         ``<repo-parent>/pact/docs/evidence/<file>``.
+
+    No machine-specific absolute path is hardcoded; operators on a different
+    layout point the env vars at their PACT checkout.
+    """
+    override = os.environ.get(env_var)
+    if override:
+        return Path(override).expanduser()
+    return REPO_ROOT.parent / "pact" / "docs" / "evidence" / Path(*default_rel_parts)
+
+
+# External PACT seam artifacts (live in the separate `pact` repo). Override the
+# location with NF_PACT_ENVELOPE / NF_PACT_MANIFEST when PACT is checked out
+# elsewhere.
+PACT_ENVELOPE_PATH = _resolve_pact_path(
+    "NF_PACT_ENVELOPE", "wave1_promotion_envelope.json"
 )
-PACT_MANIFEST_PATH = Path(
-    "/home/charlie/Forge/ecosystem/pact/docs/evidence/toon_wave1_manifest.json"
+PACT_MANIFEST_PATH = _resolve_pact_path(
+    "NF_PACT_MANIFEST", "toon_wave1_manifest.json"
 )
 
 EVIDENCE_DIR = REPO_ROOT / "evidence" / "promotion_seam"
@@ -57,7 +80,26 @@ def _assert(condition: bool, message: str) -> None:
 
 def main() -> int:
     _assert(MIRROR_PATH.exists(), f"trusted envelope mirror missing: {MIRROR_PATH}")
-    _assert(PACT_ENVELOPE_PATH.exists(), f"PACT envelope missing: {PACT_ENVELOPE_PATH}")
+
+    missing_external = [
+        p for p in (PACT_ENVELOPE_PATH, PACT_MANIFEST_PATH) if not p.exists()
+    ]
+    if missing_external:
+        print("verify_promotion_seam: SKIPPED", file=sys.stderr)
+        print(
+            "  External PACT seam artifacts are not available in this checkout:",
+            file=sys.stderr,
+        )
+        for p in missing_external:
+            print(f"    - {p}", file=sys.stderr)
+        print(
+            "  Point NF_PACT_ENVELOPE / NF_PACT_MANIFEST at a PACT checkout, "
+            "or place a sibling `pact` repo next to this one, then re-run.",
+            file=sys.stderr,
+        )
+        # Could-not-run is distinct from PASS (0) and FAIL (1).
+        return 2
+
     mirror = load_envelope(MIRROR_PATH)
     envelope = load_envelope(PACT_ENVELOPE_PATH)
 
