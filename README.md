@@ -171,6 +171,10 @@ A run / model is promoted toward the public-facing applications-support version 
 - [ ] Is reviewed and accepted as **better than** the current quality anchor
 - [ ] Shows no regression in lore-safety or protected-term handling
 
+The COR GNAT handoff route accepts referenced Cortex syntax artifacts only for
+non-canonical candidate generation. It does not mutate COR receipts or claim
+canonical semantic truth.
+
 ---
 
 ## Boundary note
