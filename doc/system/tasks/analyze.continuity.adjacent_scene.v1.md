@@ -1,6 +1,6 @@
 # Task Contract: analyze.continuity.adjacent_scene.v1
 
-Date: 2026-03-14
+Date: 2026-04-16
 
 ## Identity
 
@@ -20,7 +20,7 @@ Date: 2026-03-14
 
 Accept a bounded two-scene packet and return a strict structured candidate artifact containing continuity and progression findings for reviewer consideration.
 
-This is the first live task contract for the `continuity-progression-reasoning` lane.
+This task now supports optional first-wave precomputed-context lineage carriage for connected requests.
 
 ---
 
@@ -46,6 +46,11 @@ This contract does not support:
   "scene_b_id": "<string>",
   "scene_a_text": "<string>",
   "scene_b_text": "<string>",
+  "task_intent_id": "<string, optional>",
+  "context_bundle_id": "<string, optional>",
+  "context_bundle_hash": "<string, optional>",
+  "context_manifest_ref": "<string, optional>",
+  "context_payload_ref": "<string, optional>",
   "packet_metadata": {}
 }
 ```
@@ -67,6 +72,22 @@ This contract does not support:
 | `scope_label` | string | Defaults to `adjacent_scene` |
 | `scene_packet_id` | string | Identifier for this analysis packet |
 | `packet_metadata` | object | Operator notes, chapter context, etc. |
+| `task_intent_id` | string | Connected upstream task intent id |
+| `context_bundle_id` | string | Connected upstream context bundle id |
+| `context_bundle_hash` | string | Connected upstream context bundle content hash |
+| `context_manifest_ref` | string | Optional provenance pointer to a context manifest |
+| `context_payload_ref` | string | Optional provenance pointer to a context payload |
+
+### Context-lineage completeness rule
+
+The task accepts either:
+
+1. a legacy/local packet with none of `task_intent_id`, `context_bundle_id`, `context_bundle_hash`, or
+2. a connected packet with all three present.
+
+Partial presence of those three lineage fields is a hard fail-closed intake error.
+
+If `context_manifest_ref` or `context_payload_ref` is present, the request must also carry all three connected lineage fields.
 
 ---
 
@@ -84,6 +105,9 @@ On success, the executor returns a candidate artifact envelope:
   "timestamp": "<ISO 8601 UTC>",
   "scene_packet_id": "<string>",
   "scope_label": "adjacent_scene",
+  "task_intent_id": "<string, optional>",
+  "context_bundle_id": "<string, optional>",
+  "context_bundle_hash": "<string, optional>",
   "envelope_status": "valid_candidate",
   "candidate_findings": [...],
   "overall_run_note": "<string>",
@@ -94,9 +118,11 @@ On success, the executor returns a candidate artifact envelope:
     "findings_count": 0
   },
   "run_metadata": {
-    "prompt_file": "prompts/continuity-adjacent-scene-v1.md",
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
     "request_file": "<path>",
-    "raw_output_file": "<path>"
+    "raw_output_file": "<path>",
+    "context_manifest_ref": "<string, optional>",
+    "context_payload_ref": "<string, optional>"
   }
 }
 ```
@@ -106,13 +132,13 @@ On success, the executor returns a candidate artifact envelope:
 | Value | Meaning |
 |-------|---------|
 | `valid_candidate` | Schema passed; findings are valid candidates for review |
-| `fail_closed` | Schema failed or model failed; no findings promoted |
+| `fail_closed` | Intake failed, schema failed, or model failed; no findings promoted |
 
 ---
 
 ## Fail-closed envelope shape
 
-On any failure (model failure or schema validation failure), the executor returns a structured failure envelope:
+On any failure (intake failure, model failure, or schema validation failure), the executor returns a structured failure envelope:
 
 ```json
 {
@@ -124,14 +150,19 @@ On any failure (model failure or schema validation failure), the executor return
   "timestamp": "<ISO 8601 UTC>",
   "scene_packet_id": "<string>",
   "scope_label": "adjacent_scene",
+  "task_intent_id": "<string, optional>",
+  "context_bundle_id": "<string, optional>",
+  "context_bundle_hash": "<string, optional>",
   "envelope_status": "fail_closed",
   "failure_reason": "<string>",
   "candidate_findings": [],
   "validation_result": null,
   "run_metadata": {
-    "prompt_file": "prompts/continuity-adjacent-scene-v1.md",
+    "prompt_file": "prompts/continuity-adjacent-scene-v3.md",
     "request_file": "<path>",
-    "raw_output_file": "<path or null>"
+    "raw_output_file": "<path or null>",
+    "context_manifest_ref": "<string, optional>",
+    "context_payload_ref": "<string, optional>"
   }
 }
 ```
@@ -200,9 +231,10 @@ The validator rejects output and triggers fail-closed if:
 
 ## Execution path
 
-```
+```text
 request packet
   → validate required fields
+  → validate context-lineage completeness
   → build model input (prompt + scene texts)
   → run HIGH_QUALITY_LOCAL model via ollama
   → extract JSON from raw output
@@ -218,23 +250,15 @@ request packet
 
 | Script | Purpose |
 |--------|---------|
+| `scripts/read-context-intake.py` | Request intake normalization and lineage validation |
 | `scripts/run-continuity-adjacent-scene.sh` | Main executor |
 | `scripts/validate-continuity-candidate.py` | Schema validator |
 | `scripts/render-continuity-candidate.sh` | Bloom-facing Markdown renderer |
 
 ---
 
-## Prompts
-
-| File | Purpose |
-|------|---------|
-| `prompts/continuity-adjacent-scene-v1.md` | Model system prompt for this task |
-
----
-
 ## Governance notes
 
-- This contract is `v1`. Changes to required fields or validation rules require a version bump.
-- Consumer code must bind to this contract, not to prompt internals.
-- The prompt is hidden behind the contract boundary.
-- Model selection is separate from the contract and governed by the route class policy.
+- This remains a candidate-only contract. Context lineage is provenance, not canonical authority.
+- Consumer code must bind to the contract, not prompt internals.
+- Changes to required lineage behavior require contract review.

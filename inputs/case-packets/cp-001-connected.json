@@ -1,0 +1,22 @@
+{
+  "task_id": "analyze.continuity.adjacent_scene.v1",
+  "scope_label": "adjacent_scene",
+  "scene_packet_id": "cp-001-connected",
+  "scene_a_id": "cp001-sc-a",
+  "scene_b_id": "cp001-sc-b",
+  "scene_a_text": "Rawn took the blow across the back of his left hand as he pulled the lantern free of the bracket. The metal edge opened a clean cut just below the knuckle, and he pressed his fist against his coat to slow the bleeding. Amicae noticed but said nothing until they were outside and moving. By the time they reached the gate, his left sleeve was dark at the wrist and his grip on the lantern had become careful rather than easy.",
+  "scene_b_text": "They arrived at the yard before the watch changed. Rawn dropped from his horse first and led it by the bridle to the trough, looping the reins with the ease of long habit. He drew the gate bolt with his left hand and held it open for Amicae without slowing. The yard was quiet and they crossed it quickly, the lantern swinging at his side.",
+  "task_intent_id": "ati-proofread-lore-safe-001",
+  "context_bundle_id": "cbm-2026-04-16-001",
+  "context_bundle_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "packet_metadata": {
+    "case_pack": "continuity-progression-case-pack-v1",
+    "primary_category": "true_continuity_tension",
+    "secondary_category": "state_carry_forward_issue",
+    "expected_review_posture": "candidate_issue_expected",
+    "expected_restraint_posture": "low_restraint",
+    "finding_expected": true,
+    "no_finding_acceptable": false,
+    "case_purpose": "Connected request fixture for lineage carriage."
+  }
+}
