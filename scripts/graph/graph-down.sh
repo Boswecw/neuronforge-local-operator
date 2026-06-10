@@ -3,5 +3,12 @@
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$REPO_ROOT"
-docker compose --env-file .env.graphiti -f docker-compose.graphiti-pilot.yml down
+# shellcheck source=scripts/graph/_compose.sh
+source "$REPO_ROOT/scripts/graph/_compose.sh"
+
+require_docker
+detect_compose
+load_graph_env 0
+
+"${COMPOSE[@]}" -f "$COMPOSE_FILE" down
 echo "graph backend stopped (volume retained)"
