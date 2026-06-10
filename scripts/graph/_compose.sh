@@ -10,6 +10,17 @@
 COMPOSE_FILE="docker-compose.graphiti-pilot.yml"
 GRAPH_CONTAINER="nlo-graphiti-pilot-neo4j"
 
+# Repo convention (requirements.txt): deps live in .venv. Prefer it when the
+# caller is not already inside a virtualenv (PEP 668 hosts). Callers must set
+# REPO_ROOT before sourcing this file.
+nlo_python() {
+  if [[ -z "${VIRTUAL_ENV:-}" && -x "$REPO_ROOT/.venv/bin/python3" ]]; then
+    echo "$REPO_ROOT/.venv/bin/python3"
+  else
+    echo "python3"
+  fi
+}
+
 require_docker() {
   if ! command -v docker >/dev/null 2>&1; then
     echo "docker is not available; the graph backend is optional and NLO runs do not need it" >&2
