@@ -48,6 +48,7 @@ Implemented evaluation artifacts:
 
 - `REVIEW.md`
 - `G-09-COMPARATIVE-EVALUATION.md`
+- `G-10-DECISION-RECORD.md` (unsigned operator template)
 
 ## Recommended Execution Order
 
