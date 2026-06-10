@@ -85,14 +85,21 @@ contradicts `NLOSYSTEM.md` authority boundaries.
 | Optional semantic enrichment tested | No. Module exists as a disabled boundary that refuses to run |
 | Final operator CLI naming | `scripts/graph/nlo-graph <subcommand>` → `python3 -m nlo_experiment_memory.cli` |
 
-## Graphiti Installation Gate (honored)
+## Graphiti Installation Gate (honored, then lifted 2026-06-10)
 
-Per the plan README, Graphiti is **not** installed before G-01–G-05 pass. The
-deterministic projector, rebuild proof, and evidence queries are implemented and tested
+Per the plan README, Graphiti was **not** installed before G-01–G-05 passed. The
+deterministic projector, rebuild proof, and evidence queries were implemented and tested
 against an in-memory graph store (a test double, not a second production backend — see
-plan 14 anti-patterns). The Graphiti/Neo4j write adapter is a declared interface that
-refuses instantiation until the operator wires it after the gates pass; the pinned
-backend compose files and scripts (G-06) are committed and operator-opt-in.
+plan 14 anti-patterns).
+
+G-01–G-05 were operator-accepted by merge, and G-06 verified the pinned backend live,
+so the gate is lifted: `graphiti-core==0.29.2` and `neo4j==6.2.0` are pinned **optional**
+dependencies (`requirements-graphiti.txt`) used only by the live adapter
+(`src/nlo_experiment_memory/projection/live_backend.py`). The adapter is strictly
+deterministic (our ids as uuids, `effective_at→valid_at`, `superseded_at→invalid_at`,
+canonical payload carried losslessly per node/edge; no LLM extraction, no embeddings),
+imports its dependencies lazily so every core module works without them, refuses
+non-loopback URIs, and never appears on the NLO run path.
 
 ## Slice Status
 
@@ -106,5 +113,6 @@ backend compose files and scripts (G-06) are committed and operator-opt-in.
 | G-06 Local backend pilot | **Verified on operator hardware 2026-06-10** (Ubuntu 24.04, Docker 29.1.3, Compose plugin 2.40.3): `neo4j:5.26.0-community` pulled and started via `graph-up.sh`, health check reported healthy, bindings confirmed loopback-only (`127.0.0.1:7474`, `127.0.0.1:7687`), and the projection fingerprint matched the frozen golden value in `graph-doctor.sh`. Memory/CPU limits are applied by the compose file (`mem_limit: 1536m`, `cpus: 2.0`; confirm anytime with `docker inspect -f '{{.HostConfig.Memory}} {{.HostConfig.NanoCpus}}' nlo-graphiti-pilot-neo4j` → `1610612736 2000000000`). Lifecycle scripts detect `docker compose`/legacy `docker-compose` and source `.env.graphiti` (Ubuntu's `docker.io` alone lacks the plugin: `sudo apt install docker-compose-v2`). Note: the backend runs empty until a live Graphiti adapter proof writes the projection to it — currently gated behind G-10 |
 | G-07 Deterministic projector and rebuild | Complete against in-memory store; two-rebuild provenance-equality proof in tests and `nlo-graph rebuild --prove` |
 | G-08 Operator evidence queries | Complete (five queries, golden evidence tests, fail-closed gates) |
-| G-09 Comparative evaluation | Complete (`G-09-COMPARATIVE-EVALUATION.md`; real Graphiti adapter remains unscored because live proof is still gated) |
-| G-10 Keep/revise/remove decision | Not started (operator decision after G-09) |
+| G-09 Comparative evaluation | Complete (`G-09-COMPARATIVE-EVALUATION.md`; real Graphiti adapter remains unscored until the live proof below passes) |
+| Live adapter proof (pre-G-10) | Adapter, `nlo-graph verify-live`, and the opt-in integration test are committed; **pending operator run**: `bash scripts/graph/graph-up.sh` then `scripts/graph/nlo-graph verify-live` (equivalently `NLO_GRAPH_LIVE_TEST=1 python3 -m pytest tests/experiment_memory/test_live_backend.py -q`). Pass = backend read-back fingerprint equals the projection report fingerprint and all five golden evidence queries match from the backend. Record the result here, then score Graphiti in the G-09 doc |
+| G-10 Keep/revise/remove decision | Not started (operator decision after the live proof settles Graphiti's score) |

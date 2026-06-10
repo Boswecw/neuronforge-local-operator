@@ -60,19 +60,8 @@ class InMemoryGraphStore:
             self.edges[edge["edge_id"]] = edge
 
 
-class GraphitiNeo4jBackend:
-    """Declared write adapter for Graphiti over pinned Neo4j Community.
-
-    Deliberately not implemented in this phase: the plan README forbids
-    installing Graphiti before slices G-01 through G-05 pass and the operator
-    accepts them. Wiring happens at G-06+ on the operator's machine via
-    scripts/graph/graph-up.sh; this class exists so the projector's backend
-    seam is explicit and decommission stays bounded.
-    """
-
-    def __init__(self, *args, **kwargs):
-        raise RuntimeError(
-            "Graphiti/Neo4j backend is gated behind G-01..G-05 acceptance. "
-            "See docs/plans/graphiti/10-PLATFORM-AND-DEPLOYMENT-PLAN.md and "
-            "docs/plans/graphiti/REVIEW.md before wiring this backend."
-        )
+# The live Graphiti/Neo4j adapter became available after the G-01..G-05 gates
+# were operator-accepted and G-06 verified the pinned backend (REVIEW.md).
+# It lives in live_backend.py with lazy dependency imports so this module —
+# and the whole package — still imports without requirements-graphiti.txt.
+from .live_backend import GraphitiNeo4jBackend, LiveBackendError  # noqa: E402,F401

@@ -15,8 +15,14 @@ from pathlib import Path
 
 from ..contracts.integrity import IntegrityChecker
 from ..contracts.loader import registry
+from ..projection.live_backend import GraphitiNeo4jBackend, LiveBackendError
 from ..projection.projector import prove_rebuild, rebuild
-from ..queries.evidence import QueryRefusedError, compute_graph_status, open_queries
+from ..queries.evidence import (
+    OperatorQueries,
+    QueryRefusedError,
+    compute_graph_status,
+    open_queries,
+)
 from ..queries.narrative import build_narrative
 from ..stores.fixture_store import FixtureStore
 
@@ -27,6 +33,21 @@ DEFAULT_RUNTIME_DIR = REPO_ROOT / "runtime" / "graph"
 
 def _max_lag() -> float:
     return float(os.environ.get("NLO_GRAPH_MAX_PROJECTION_LAG_SECONDS", "0"))
+
+
+def _load_env_graphiti() -> None:
+    """Populate unset NLO_GRAPH_* variables from repo-root .env.graphiti."""
+    env_file = REPO_ROOT / ".env.graphiti"
+    if not env_file.is_file():
+        return
+    for line in env_file.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key, value = key.strip(), value.strip()
+        if key and key not in os.environ:
+            os.environ[key] = value
 
 
 def _print_evidence(evidence: dict, as_json: bool):
@@ -127,6 +148,82 @@ def cmd_status(args) -> int:
     return 0 if status.status == "healthy" else 1
 
 
+def cmd_verify_live(args) -> int:
+    """Live adapter proof: write the verified projection into the pinned Neo4j
+    backend via graphiti-core, read it back, and require provenance equality
+    plus golden evidence equality (the proof demanded by the G-09 evaluation).
+    Rewrites only the pilot group in the backend; canonical records untouched.
+    """
+    export_path = Path(args.runtime_dir) / "export.json"
+    report_path = Path(args.runtime_dir) / "report.json"
+    if not (export_path.is_file() and report_path.is_file()):
+        print("no projection artifacts; run first: nlo-graph rebuild --prove")
+        return 1
+    export = json.loads(export_path.read_text(encoding="utf-8"))
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    source_wm = FixtureStore(args.records_dir).source_high_watermark()
+    status = compute_graph_status(export, report, source_wm, _max_lag())
+    if status.status != "healthy":
+        print(f"REFUSED: projection is {status.status}; fix it before the live proof")
+        for reason in status.reasons:
+            print(f"  - {reason}")
+        return 1
+
+    _load_env_graphiti()
+    uri = os.environ.get("NLO_GRAPH_NEO4J_URI", "bolt://127.0.0.1:7687")
+    user = os.environ.get("NLO_GRAPH_NEO4J_USER", "neo4j")
+    password = os.environ.get("NLO_GRAPH_NEO4J_PASSWORD", "")
+    try:
+        backend = GraphitiNeo4jBackend(uri, user, password)
+    except LiveBackendError as exc:
+        print(f"REFUSED: {exc}")
+        return 1
+    try:
+        proof = backend.roundtrip_proof(export)
+    finally:
+        backend.close()
+
+    print(f"backend           : {uri} (group {report['graph_schema_version']})")
+    print(f"written           : nodes={proof['nodes_written']} edges={proof['edges_written']}")
+    print(f"read back         : nodes={proof['nodes_read']} edges={proof['edges_read']}")
+    print(f"file fingerprint  : {proof['file_fingerprint']}")
+    print(f"backend fingerprint: {proof['backend_fingerprint']}")
+    print(f"report fingerprint : {report['fingerprint']}")
+    ok = proof["provenance_equal"] and proof["file_fingerprint"] == report["fingerprint"]
+    print(f"provenance equal  : {proof['provenance_equal']}")
+
+    golden_dir = Path(args.golden_dir) if args.golden_dir else (
+        Path(args.records_dir).parent / "golden"
+    )
+    if golden_dir.is_dir():
+        queries = OperatorQueries(proof["readback"], status)
+        checks = [
+            ("current-baseline.json",
+             lambda: queries.current_baseline("proofread.lore_safe.v1")),
+            ("baseline-history.json",
+             lambda: queries.baseline_history("proofread.lore_safe.v1")),
+            ("recurring-failures.json",
+             lambda: queries.recurring_failures("proofread.lore_safe.v1")),
+            ("compare-runs.json",
+             lambda: queries.compare_runs("run-2026-03-13-005", "run-2026-03-13-016")),
+            ("explain-candidate.json",
+             lambda: queries.explain_candidate("run-2026-03-13-016")),
+        ]
+        print("golden evidence from backend read-back:")
+        for filename, run_query in checks:
+            golden_file = golden_dir / filename
+            if not golden_file.is_file():
+                print(f"  {filename:<26} SKIPPED (no golden file)")
+                continue
+            expected = json.loads(golden_file.read_text(encoding="utf-8"))
+            matched = run_query() == expected
+            ok = ok and matched
+            print(f"  {filename:<26} {'MATCH' if matched else 'MISMATCH'}")
+
+    print(f"live adapter proof: {'PASS' if ok else 'FAIL'}")
+    return 0 if ok else 1
+
+
 def _query_command(args, runner) -> int:
     try:
         queries = open_queries(args.records_dir, args.runtime_dir, _max_lag())
@@ -156,6 +253,13 @@ def main(argv: list[str] | None = None) -> int:
     rebuild_parser.add_argument("--prove", action="store_true",
                                 help="run two rebuilds and require provenance equality")
     sub.add_parser("status", help="projection health and freshness")
+    verify_parser = sub.add_parser(
+        "verify-live",
+        help="write the projection to the live Neo4j backend via graphiti-core, "
+             "read it back, and prove provenance + golden evidence equality",
+    )
+    verify_parser.add_argument("--golden-dir", default=None,
+                               help="golden evidence directory (default: <records-dir>/../golden)")
 
     for name, help_text in [
         ("current-baseline", "current baseline for a task contract"),
@@ -190,6 +294,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_rebuild(args)
     if args.command == "status":
         return cmd_status(args)
+    if args.command == "verify-live":
+        return cmd_verify_live(args)
     if args.command == "current-baseline":
         return _query_command(args, lambda q: q.current_baseline(args.contract))
     if args.command == "baseline-history":
