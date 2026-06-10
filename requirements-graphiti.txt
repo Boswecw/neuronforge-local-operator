@@ -1,0 +1,14 @@
+# Pinned live-backend dependencies for the experiment-memory pilot.
+#
+# Gate status: G-01..G-05 are operator-accepted and G-06 verified the pinned
+# backend live (docs/plans/graphiti/REVIEW.md), so Graphiti may now be
+# installed for the live adapter proof (docs/plans/graphiti/G-09 doctrine).
+#
+# These dependencies are OPTIONAL and stay off the NLO run path: the core
+# pilot package imports cleanly without them (lazy imports in
+# src/nlo_experiment_memory/projection/live_backend.py), and removal is part
+# of the bounded decommission set (plan 13).
+#
+# Install:  pip install -r requirements-graphiti.txt
+graphiti-core==0.29.2
+neo4j==6.2.0

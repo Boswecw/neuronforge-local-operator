@@ -1,7 +1,7 @@
 # Experiment-Memory (Graphiti) Pilot
 
 ## Status
-Implemented through slice G-09 against an in-memory store; the pinned backend is verified live on operator hardware (2026-06-10: healthy, loopback-only); Graphiti itself not installed (gated). Governing plan set: `docs/plans/graphiti/`.
+Implemented through slice G-09 against an in-memory store; the pinned backend is verified live on operator hardware (2026-06-10: healthy, loopback-only); the live Graphiti adapter is wired behind explicit opt-in (gate lifted after G-01..G-05 acceptance) and its round-trip proof is pending the operator run. Governing plan set: `docs/plans/graphiti/`.
 
 ## Purpose
 Give the operator a **rebuildable, non-authoritative experiment-memory projection** over canonical experiment records: what was tested, what changed, why a baseline was promoted, what evidence supports or contradicts a promotion, and whether a failure pattern recurs.
@@ -32,6 +32,7 @@ Per the authority matrix (`docs/plans/graphiti/02-EXPERIMENT-RECORD-AUTHORITY-MA
 | Operator CLI | `scripts/graph/nlo-graph` (`validate`, `rebuild [--prove]`, `status`, five plan-08 queries) |
 | Hardware provenance capture | `scripts/graph/capture-hardware-profile.sh` |
 | Pinned backend (opt-in) | `docker-compose.graphiti-pilot.yml` (`neo4j:5.26.0-community`, loopback only) + `scripts/graph/graph-{up,down,reset,doctor}.sh` + `.env.graphiti.example` |
+| Live adapter (opt-in, lazy deps) | `src/nlo_experiment_memory/projection/live_backend.py` + `requirements-graphiti.txt` (`graphiti-core==0.29.2`, `neo4j==6.2.0`) + `nlo-graph verify-live` + `tests/experiment_memory/test_live_backend.py` (`NLO_GRAPH_LIVE_TEST=1`) |
 | Deterministic mapping spec | `docs/plans/graphiti/MAPPING-SPEC.md` |
 | Plan-set review and locked decisions | `docs/plans/graphiti/REVIEW.md` |
 
@@ -51,4 +52,4 @@ Evidence first, narrative second. `nlo-graph current-baseline|baseline-history|r
 
 ## 6. Gates
 
-Graphiti is **not installed**. The plan README forbids installation before G-01..G-05 pass; the projector and queries are proven against an in-memory store, and `GraphitiNeo4jBackend` refuses instantiation until the operator wires it after gate acceptance. G-09 is complete as a frozen comparative evaluation; it does not credit real Graphiti until a live adapter proof matches golden evidence and materially outperforms SQL/SQLite. G-10 (keep/revise/remove) remains pending. Decommission stays one bounded change set per `docs/plans/graphiti/13-DECOMMISSION-PLAN.md`.
+The install gate (no Graphiti before G-01..G-05 pass) was honored and is now lifted: those slices are operator-accepted and G-06 verified the backend, so `graphiti-core` ships as a pinned **optional** dependency (`requirements-graphiti.txt`) used only by the loopback-only live adapter. The adapter writes the deterministic canonical export (our ids as uuids, `effective_at→valid_at`, `superseded_at→invalid_at`; no LLM extraction, no embeddings); core modules never import its dependencies and NLO runs never touch it. G-09 is complete as a frozen comparative evaluation; real Graphiti is credited only when the live proof (`nlo-graph verify-live`) passes on operator hardware — backend read-back fingerprint equal to the projection report and all five golden evidence queries matching. G-10 (keep/revise/remove) remains pending. Decommission stays one bounded change set per `docs/plans/graphiti/13-DECOMMISSION-PLAN.md`.
