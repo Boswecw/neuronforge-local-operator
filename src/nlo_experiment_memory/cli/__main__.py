@@ -181,7 +181,10 @@ def cmd_verify_live(args) -> int:
     try:
         proof = backend.roundtrip_proof(export)
     finally:
-        backend.close()
+        try:
+            backend.close()
+        except Exception as exc:  # a close hiccup must never mask the proof
+            print(f"warning: backend close failed: {exc}")
 
     print(f"backend           : {uri} (group {report['graph_schema_version']})")
     print(f"written           : nodes={proof['nodes_written']} edges={proof['edges_written']}")
