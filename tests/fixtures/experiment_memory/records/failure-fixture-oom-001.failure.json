@@ -1,5 +1,6 @@
 {
   "schema_version": "nlo-failure-observation-v1",
+  "record_origin": "fixture_modeled",
   "failure_id": "failure-fixture-oom-001",
   "run_id": "run-fixture-oom-001",
   "taxonomy_version": "failure-taxonomy-v1",

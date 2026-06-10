@@ -40,6 +40,28 @@ def test_real_artifact_hashes_verify(records_dir):
         assert errors == [], run_id
 
 
+def test_missing_committed_artifact_rejected(records_dir):
+    store = FixtureStore(records_dir)
+    records = store.as_plain_dict()
+    record = json.loads(json.dumps(records["run-2026-03-13-005"]))
+    record["prompt_path"] = "prompts/missing-lore-safe-proofread.md"
+    records[record["run_id"]] = record
+    problems = IntegrityChecker(records).check()
+    assert any("does not resolve to a committed artifact" in message
+               for message in problems[record["run_id"]])
+
+
+def test_external_artifact_location_allows_missing_artifact(records_dir):
+    store = FixtureStore(records_dir)
+    records = store.as_plain_dict()
+    record = json.loads(json.dumps(records["run-2026-03-13-005"]))
+    record["artifact_location_class"] = "external"
+    record["prompt_path"] = "operator-artifact-store/prompts/lore-safe-proofread-003.md"
+    records[record["run_id"]] = record
+    problems = IntegrityChecker(records).check()
+    assert record["run_id"] not in problems
+
+
 def test_unknown_field_rejected(invalid_dir):
     errors = registry().validate(_load(invalid_dir / "run-unknown-field.json"))
     assert any("surprise_field" in error for error in errors)

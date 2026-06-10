@@ -42,6 +42,20 @@ def test_golden_recurring_failures(queries, golden_dir):
     assert queries.recurring_failures(CONTRACT) == _golden(golden_dir, "recurring-failures.json")
 
 
+def test_recurring_failures_excludes_fixture_modeled_by_default(queries):
+    evidence = queries.recurring_failures(CONTRACT)
+    assert "OUT_OF_MEMORY" not in evidence["facts"]["failure_classes"]
+    assert evidence["facts"]["excluded_failure_ids"] == ["failure-fixture-oom-001"]
+    assert "failure-fixture-oom-001" not in evidence["supporting_record_ids"]
+
+
+def test_recurring_failures_can_include_fixture_modeled(queries):
+    evidence = queries.recurring_failures(CONTRACT, include_fixtures=True)
+    assert "OUT_OF_MEMORY" in evidence["facts"]["failure_classes"]
+    assert evidence["facts"]["excluded_failure_ids"] == []
+    assert "failure-fixture-oom-001" in evidence["supporting_record_ids"]
+
+
 def test_golden_compare_runs(queries, golden_dir):
     evidence = queries.compare_runs("run-2026-03-13-005", "run-2026-03-13-016")
     assert evidence == _golden(golden_dir, "compare-runs.json")

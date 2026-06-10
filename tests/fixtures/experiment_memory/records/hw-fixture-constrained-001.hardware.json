@@ -1,5 +1,6 @@
 {
   "schema_version": "nlo-hardware-profile-v1",
+  "record_origin": "fixture_modeled",
   "hardware_profile_id": "hw-fixture-constrained-001",
   "captured_at": "2026-03-13T22:00:00Z",
   "capture_tool": "fixture-reconstruction",

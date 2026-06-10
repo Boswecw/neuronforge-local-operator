@@ -304,16 +304,24 @@ class OperatorQueries:
             "baseline_history", task_contract, supporting, [], timeline, facts
         )
 
-    def recurring_failures(self, task_contract: str) -> dict:
+    def recurring_failures(self, task_contract: str, include_fixtures: bool = False) -> dict:
         self._require_healthy()
         contract_node_id = node_id("TaskContractVersion", task_contract)
         runs = self._runs_under_contract(contract_node_id)
         by_class: dict[str, dict] = {}
         supporting = []
         timeline = []
+        excluded_failure_ids = []
         for run_id in runs:
+            run_origin = runs[run_id]["properties"].get("record_origin", "historical")
             for failure in self._failures_of_run(run_id):
                 failure_id = failure["properties"]["failure_id"]
+                failure_origin = failure["properties"].get("record_origin", "historical")
+                if not include_fixtures and (
+                    run_origin != "historical" or failure_origin != "historical"
+                ):
+                    excluded_failure_ids.append(failure_id)
+                    continue
                 failure_class = failure["properties"]["failure_class"]
                 bucket = by_class.setdefault(
                     failure_class, {"count": 0, "failure_ids": [], "run_ids": []}
@@ -334,6 +342,11 @@ class OperatorQueries:
             bucket["run_ids"].sort()
         facts = {
             "task_contract": task_contract,
+            "included_record_origins": (
+                ["fixture_modeled", "historical", "synthetic_test"]
+                if include_fixtures else ["historical"]
+            ),
+            "excluded_failure_ids": sorted(excluded_failure_ids),
             "failure_classes": {key: by_class[key] for key in sorted(by_class)},
             "recurring_classes": sorted(
                 key for key, bucket in by_class.items() if bucket["count"] >= 2

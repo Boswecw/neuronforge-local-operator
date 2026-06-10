@@ -101,10 +101,10 @@ backend compose files and scripts (G-06) are committed and operator-opt-in.
 | G-01 Governance and authority | Complete (plan set imported; this review resolves authority questions; no Graphiti dependency installed) |
 | G-02 Identity and temporal semantics | Complete (`src/nlo_experiment_memory/identity/`, tested without Graphiti) |
 | G-03 Core schemas and validation | Complete (`schemas/experiment_memory/`, strict, valid/invalid examples tested) |
-| G-04 Historical fixtures and hardware provenance | Complete (5 historical runs: 002, 003, 005, 016, OOM fixture; `scripts/graph/capture-hardware-profile.sh`) |
+| G-04 Historical fixtures and hardware provenance | Complete (4 historical runs: 002, 003, 005, 016; 1 fixture-modeled OOM event excluded from default trend analytics; `scripts/graph/capture-hardware-profile.sh`) |
 | G-05 Deterministic mapping specification | Complete (`MAPPING-SPEC.md`; no LLM extraction for core facts) |
 | G-06 Local backend pilot | Files committed (compose pinned to `neo4j:5.26.0-community`, env example, up/down/reset/doctor scripts). Scripts detect `docker compose` or legacy `docker-compose` and pass environment by sourcing `.env.graphiti` (Ubuntu's `docker.io` package alone lacks the Compose plugin: `sudo apt install docker-compose-v2`). Live start/stop, loopback, and resource-limit verification is **pending operator hardware**: run `bash scripts/graph/graph-up.sh` then `bash scripts/graph/graph-doctor.sh` locally and record the result here. `graph-doctor.sh` also checks the projection fingerprint against the frozen golden value to surface records-tree drift |
 | G-07 Deterministic projector and rebuild | Complete against in-memory store; two-rebuild provenance-equality proof in tests and `nlo-graph rebuild --prove` |
 | G-08 Operator evidence queries | Complete (five queries, golden evidence tests, fail-closed gates) |
-| G-09 Comparative evaluation | Not started (requires operator judgment and the real backend) |
+| G-09 Comparative evaluation | Complete (`G-09-COMPARATIVE-EVALUATION.md`; real Graphiti adapter remains unscored because live proof is still gated) |
 | G-10 Keep/revise/remove decision | Not started (operator decision after G-09) |

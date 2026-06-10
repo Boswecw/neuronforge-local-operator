@@ -1,5 +1,6 @@
 {
   "schema_version": "nlo-experiment-event-v1",
+  "record_origin": "fixture_modeled",
   "experiment_event_id": "exp-fixture-oom-001",
   "run_record_id": "run-fixture-oom-001",
   "failure_observation_ids": [

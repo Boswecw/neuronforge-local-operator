@@ -1,5 +1,6 @@
 {
   "schema_version": "nlo-run-record-v1",
+  "record_origin": "fixture_modeled",
   "run_id": "run-fixture-oom-001",
   "task_contract": "proofread.lore_safe.v1",
   "model_id": "qwen2.5:14b",

@@ -1,6 +1,6 @@
 # NeuronForge Local Operator (NLO) — System Documentation
 
-**Document version:** 1.2 (2026-06-10) — experiment-memory (Graphiti) pilot surfaces added
+**Document version:** 1.3 (2026-06-10) — G-09 comparative evaluation added
 **Protocol:** Forge Documentation Protocol v1
 
 This `doc/system/` tree defines the NeuronForge Local Operator (NLO) control surface — the

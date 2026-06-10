@@ -120,6 +120,7 @@ def project_records(records_by_type: dict[str, dict[str, dict]]) -> tuple[list[d
                 "input_id": run["input_id"],
                 "status": run["status"],
                 "occurred_at": occurred_at,
+                "record_origin": run.get("record_origin", "historical"),
             },
             provenance,
         )
@@ -204,6 +205,7 @@ def project_records(records_by_type: dict[str, dict[str, dict]]) -> tuple[list[d
                 "confidence": failure["confidence"],
                 "reproducibility": failure["reproducibility"],
                 "observed_at": observed_at,
+                "record_origin": failure.get("record_origin", "historical"),
             },
             provenance,
         )
@@ -259,6 +261,7 @@ def _add_hardware_node(builder: _GraphBuilder, profile: dict) -> str:
     properties = {
         "hardware_profile_id": profile["hardware_profile_id"],
         "captured_at": normalize_timestamp(profile["captured_at"]),
+        "record_origin": profile.get("record_origin", "historical"),
     }
     if "cpu_cores" in profile:
         properties["cpu_cores"] = profile["cpu_cores"]

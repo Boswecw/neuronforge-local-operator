@@ -165,6 +165,12 @@ def main(argv: list[str] | None = None) -> int:
         query_parser = sub.add_parser(name, help=help_text)
         query_parser.add_argument("contract")
         query_parser.add_argument("--json", action="store_true")
+        if name == "recurring-failures":
+            query_parser.add_argument(
+                "--include-fixtures",
+                action="store_true",
+                help="include fixture_modeled and synthetic_test records in trend analytics",
+            )
 
     compare_parser = sub.add_parser("compare-runs", help="compare two runs")
     compare_parser.add_argument("run_a")
@@ -189,7 +195,12 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "baseline-history":
         return _query_command(args, lambda q: q.baseline_history(args.contract))
     if args.command == "recurring-failures":
-        return _query_command(args, lambda q: q.recurring_failures(args.contract))
+        return _query_command(
+            args,
+            lambda q: q.recurring_failures(
+                args.contract, include_fixtures=args.include_fixtures
+            ),
+        )
     if args.command == "compare-runs":
         return _query_command(args, lambda q: q.compare_runs(args.run_a, args.run_b))
     if args.command == "explain-candidate":

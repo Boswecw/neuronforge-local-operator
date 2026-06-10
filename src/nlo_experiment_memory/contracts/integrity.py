@@ -195,11 +195,7 @@ class IntegrityChecker:
     # --- helpers -----------------------------------------------------------
 
     def _verify_hash(self, record: dict, path_field: str, hash_field: str):
-        """Verify an artifact hash against the repo file when the file exists.
-
-        Missing files are not an error here (canonical artifacts may live on
-        the operator host); wrong hashes against present files always are.
-        """
+        """Verify committed artifacts and require explicit external classification."""
         if not self.verify_artifact_hashes:
             return []
         path_value = record.get(path_field)
@@ -208,6 +204,15 @@ class IntegrityChecker:
             return []
         artifact = self.repo_root / path_value
         if not artifact.is_file():
+            if record.get("artifact_location_class", "committed") == "external":
+                return []
+            return [
+                f"{path_field} does not resolve to a committed artifact: "
+                f"{path_value} (set artifact_location_class='external' for external storage)"
+            ]
+        if artifact.is_dir():
+            return [f"{path_field} resolves to a directory, not an artifact: {path_value}"]
+        if record.get("artifact_location_class", "committed") == "external":
             return []
         digest = hashlib.sha256(artifact.read_bytes()).hexdigest()
         if digest != hash_value:

@@ -44,6 +44,11 @@ Graphiti must never become:
 13. `13-DECOMMISSION-PLAN.md`
 14. `14-RISKS-ANTI-PATTERNS-AND-DECISIONS.md`
 
+Implemented evaluation artifacts:
+
+- `REVIEW.md`
+- `G-09-COMPARATIVE-EVALUATION.md`
+
 ## Recommended Execution Order
 
 ```text

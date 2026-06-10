@@ -7,6 +7,7 @@
   "additionalProperties": false,
   "properties": {
     "schema_version": { "const": "nlo-hardware-profile-v1" },
+    "record_origin": { "$ref": "#/$defs/recordOrigin" },
     "hardware_profile_id": { "type": "string", "pattern": "^hw-[a-z0-9][a-z0-9-]*$" },
     "captured_at": { "$ref": "#/$defs/utcTimestamp" },
     "capture_tool": { "type": "string", "minLength": 1, "maxLength": 200 },
@@ -38,6 +39,9 @@
     "schema_version", "hardware_profile_id", "captured_at", "capture_tool", "recorded_at"
   ],
   "$defs": {
+    "recordOrigin": {
+      "enum": ["historical", "fixture_modeled", "synthetic_test"]
+    },
     "utcTimestamp": {
       "type": "string",
       "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"

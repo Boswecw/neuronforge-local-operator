@@ -2,6 +2,9 @@
   "authoritative": false,
   "contradicting_record_ids": [],
   "facts": {
+    "excluded_failure_ids": [
+      "failure-fixture-oom-001"
+    ],
     "failure_classes": {
       "FALSE_NEGATIVE": {
         "count": 1,
@@ -19,15 +22,6 @@
         ],
         "run_ids": [
           "run-2026-03-13-002"
-        ]
-      },
-      "OUT_OF_MEMORY": {
-        "count": 1,
-        "failure_ids": [
-          "failure-fixture-oom-001"
-        ],
-        "run_ids": [
-          "run-fixture-oom-001"
         ]
       },
       "OVER_EDITING": {
@@ -60,6 +54,9 @@
         ]
       }
     },
+    "included_record_origins": [
+      "historical"
+    ],
     "recurring_classes": [
       "SCHEMA_INVALID"
     ],
@@ -73,7 +70,6 @@
   "source_high_watermark": "2026-03-13T22:00:00Z",
   "subject_id": "proofread.lore_safe.v1",
   "supporting_record_ids": [
-    "failure-fixture-oom-001",
     "failure-run-2026-03-13-002-meaning-drift-01",
     "failure-run-2026-03-13-002-over-editing-01",
     "failure-run-2026-03-13-002-schema-invalid-01",
@@ -117,12 +113,6 @@
       "event": "FAILURE_OBSERVED",
       "record_id": "failure-run-2026-03-13-016-style-regression-01",
       "subject": "run-2026-03-13-016"
-    },
-    {
-      "at": "2026-03-13T22:00:00Z",
-      "event": "FAILURE_OBSERVED",
-      "record_id": "failure-fixture-oom-001",
-      "subject": "run-fixture-oom-001"
     }
   ]
 }

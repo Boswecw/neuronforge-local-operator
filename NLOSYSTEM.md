@@ -1,6 +1,6 @@
 # NeuronForge Local Operator (NLO) — System Documentation
 
-**Document version:** 1.2 (2026-06-10) — experiment-memory (Graphiti) pilot surfaces added
+**Document version:** 1.3 (2026-06-10) — G-09 comparative evaluation added
 **Protocol:** Forge Documentation Protocol v1
 
 This `doc/system/` tree defines the NeuronForge Local Operator (NLO) control surface — the
@@ -3502,7 +3502,7 @@ Most natural next step:
 # Experiment-Memory (Graphiti) Pilot
 
 ## Status
-Implemented through slice G-08 against an in-memory store; pinned backend files committed (G-06 live verification pending operator hardware); Graphiti itself not installed (gated). Governing plan set: `docs/plans/graphiti/`.
+Implemented through slice G-09 against an in-memory store; pinned backend files committed (G-06 live verification pending operator hardware); Graphiti itself not installed (gated). Governing plan set: `docs/plans/graphiti/`.
 
 ## Purpose
 Give the operator a **rebuildable, non-authoritative experiment-memory projection** over canonical experiment records: what was tested, what changed, why a baseline was promoted, what evidence supports or contradicts a promotion, and whether a failure pattern recurs.
@@ -3528,7 +3528,8 @@ Per the authority matrix (`docs/plans/graphiti/02-EXPERIMENT-RECORD-AUTHORITY-MA
 | Package (contracts, identity, stores, projection, queries, cli, enrichment) | `src/nlo_experiment_memory/` |
 | Canonical record fixtures (converted real history) | `tests/fixtures/experiment_memory/records/` |
 | Golden query evidence + frozen fingerprint | `tests/fixtures/experiment_memory/golden/` |
-| Test suite (55 tests) | `tests/experiment_memory/` (wired into `scripts/run-tests.sh`) |
+| Comparative evaluation | `docs/plans/graphiti/G-09-COMPARATIVE-EVALUATION.md` |
+| Test suite (59 tests) | `tests/experiment_memory/` (wired into `scripts/run-tests.sh`) |
 | Operator CLI | `scripts/graph/nlo-graph` (`validate`, `rebuild [--prove]`, `status`, five plan-08 queries) |
 | Hardware provenance capture | `scripts/graph/capture-hardware-profile.sh` |
 | Pinned backend (opt-in) | `docker-compose.graphiti-pilot.yml` (`neo4j:5.26.0-community`, loopback only) + `scripts/graph/graph-{up,down,reset,doctor}.sh` + `.env.graphiti.example` |
@@ -3538,6 +3539,8 @@ Per the authority matrix (`docs/plans/graphiti/02-EXPERIMENT-RECORD-AUTHORITY-MA
 ## 3. Canonical Records (v1)
 
 `NLORunRecord`, `NLOEvaluationRecord`, `NLOFailureObservation` (18-class `failure-taxonomy-v1`, including `OUT_OF_MEMORY` for the documented Ollama memory boundary), `NLOOperatorDecision`, `NLOHardwareProfile`, plus the non-authoritative `NLOExperimentEvent` envelope. Validation is strict JSON Schema plus cross-record integrity: referential resolution, taxonomy membership, artifact-hash verification against committed files, and temporal-order rules with quarantine cascade.
+
+Records may declare `record_origin` as `historical`, `fixture_modeled`, or `synthetic_test`. Default operator trend analytics include historical records only; fixture-modeled events are opt-in (`recurring-failures --include-fixtures`) so synthetic evidence does not distort operational recurrence claims. Run artifact references are treated as committed by default and missing committed files fail integrity unless the run explicitly declares `artifact_location_class: external`.
 
 ## 4. Identity and Rebuild Doctrine
 
@@ -3549,4 +3552,4 @@ Evidence first, narrative second. `nlo-graph current-baseline|baseline-history|r
 
 ## 6. Gates
 
-Graphiti is **not installed**. The plan README forbids installation before G-01..G-05 pass; the projector and queries are proven against an in-memory store, and `GraphitiNeo4jBackend` refuses instantiation until the operator wires it after gate acceptance. Slices G-09 (comparative evaluation) and G-10 (keep/revise/remove) are operator work. Decommission stays one bounded change set per `docs/plans/graphiti/13-DECOMMISSION-PLAN.md`.
+Graphiti is **not installed**. The plan README forbids installation before G-01..G-05 pass; the projector and queries are proven against an in-memory store, and `GraphitiNeo4jBackend` refuses instantiation until the operator wires it after gate acceptance. G-09 is complete as a frozen comparative evaluation; it does not credit real Graphiti until a live adapter proof matches golden evidence and materially outperforms SQL/SQLite. G-10 (keep/revise/remove) remains pending. Decommission stays one bounded change set per `docs/plans/graphiti/13-DECOMMISSION-PLAN.md`.
