@@ -108,3 +108,27 @@ current evidence is:
   deterministic projector, and evidence-query contract;
 - do not keep a Graphiti dependency unless a future live adapter proof clears
   the missing gate above and materially outperforms SQL/SQLite.
+
+## Addendum — Live Adapter Proof Result (2026-06-10)
+
+The adapter proof this evaluation required before scoring real Graphiti has
+passed, in the implementation environment (Neo4j Community 5.26.0 tarball)
+and confirmed by the operator against the Docker-composed pinned backend:
+
+- 26 nodes / 34 edges written via the graphiti-core 0.29.2 driver and read
+  back via graphiti's own models;
+- file = backend = report fingerprint (`857c29e55d8c3988…`), provenance
+  equal byte-for-byte;
+- all five golden evidence queries MATCH when answered from the backend
+  read-back; idempotent double-write confirmed
+  (`tests/experiment_memory/test_live_backend.py`, `NLO_GRAPH_LIVE_TEST=1`).
+
+Fit finding to weigh in scoring: graphiti-core 0.29.2's native
+`EntityNode.save`/`EntityEdge.save` unconditionally invoke Neo4j vector
+procedures and fail without embeddings, which the pilot's data policy
+forbids; the adapter therefore writes graphiti-schema-shaped Cypher through
+the graphiti driver while reads use graphiti's models. Graphiti's bi-temporal
+edge fields (`valid_at`/`invalid_at`) mapped cleanly onto the pilot's
+`effective_at`/`superseded_at`.
+
+Scores and the G-10 keep/revise/remove decision remain with the operator.
