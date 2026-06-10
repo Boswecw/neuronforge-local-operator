@@ -15,8 +15,15 @@ require_docker() {
     echo "docker is not available; the graph backend is optional and NLO runs do not need it" >&2
     return 1
   fi
-  if ! docker info >/dev/null 2>&1; then
-    echo "docker CLI found but the daemon is not reachable; start Docker and retry" >&2
+  local info_err
+  if ! info_err="$(docker info 2>&1 >/dev/null)"; then
+    if grep -qi "permission denied" <<<"$info_err"; then
+      echo "docker daemon is running but you lack permission to use it." >&2
+      echo "Fix:  sudo usermod -aG docker \$USER   (then log out and back in, or run: newgrp docker)" >&2
+    else
+      echo "docker CLI found but the daemon is not reachable." >&2
+      echo "Fix:  sudo systemctl enable --now docker   (then re-run this script)" >&2
+    fi
     return 1
   fi
 }
