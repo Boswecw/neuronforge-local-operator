@@ -39,11 +39,11 @@ fi
 echo ""
 echo "== projection =="
 export PYTHONPATH="$REPO_ROOT/src:${PYTHONPATH:-}"
-python3 -m nlo_experiment_memory.cli status || true
+"$(nlo_python)" -m nlo_experiment_memory.cli status || true
 
 echo ""
 echo "== rebuild determinism =="
-python3 - <<'PY' || true
+"$(nlo_python)" - <<'PY' || true
 import json
 from pathlib import Path
 
