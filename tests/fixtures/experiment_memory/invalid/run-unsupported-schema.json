@@ -1,0 +1,9 @@
+{
+  "schema_version": "nlo-run-record-v99",
+  "run_id": "run-invalid-unsupported-schema",
+  "task_contract": "proofread.lore_safe.v1",
+  "model_id": "qwen2.5:14b",
+  "status": "succeeded",
+  "occurred_at": "2026-03-13T12:00:00Z",
+  "recorded_at": "2026-03-13T12:00:00Z"
+}

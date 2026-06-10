@@ -1,0 +1,66 @@
+{
+  "authoritative": false,
+  "contradicting_record_ids": [
+    "failure-run-2026-03-13-016-false-negative-01",
+    "failure-run-2026-03-13-016-style-regression-01"
+  ],
+  "facts": {
+    "decision_id": "decision-2026-03-13-reject-016-01",
+    "disposition": "rejected",
+    "evaluation_outcomes": [
+      "rejected"
+    ],
+    "failure_classes": [
+      "FALSE_NEGATIVE",
+      "STYLE_REGRESSION"
+    ],
+    "model_id": "gemma3:4b",
+    "prompt_id": "lore-safe-proofread-003",
+    "run_id": "run-2026-03-13-016",
+    "status": "succeeded"
+  },
+  "graph_status": "healthy",
+  "projected_high_watermark": "2026-03-13T22:00:00Z",
+  "projection_lag_seconds": 0.0,
+  "query_id": "explain_candidate:run-2026-03-13-016",
+  "query_type": "explain_candidate",
+  "source_high_watermark": "2026-03-13T22:00:00Z",
+  "subject_id": "run-2026-03-13-016",
+  "supporting_record_ids": [
+    "decision-2026-03-13-reject-016-01",
+    "eval-run-2026-03-13-016-review-01",
+    "run-2026-03-13-016"
+  ],
+  "timeline_events": [
+    {
+      "at": "2026-03-13T20:00:00Z",
+      "event": "RUN_OCCURRED",
+      "record_id": "run-2026-03-13-016",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:00:00Z",
+      "event": "EVALUATED",
+      "record_id": "eval-run-2026-03-13-016-review-01",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-016-false-negative-01",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-016-style-regression-01",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:30:00Z",
+      "event": "DECIDED",
+      "record_id": "decision-2026-03-13-reject-016-01",
+      "subject": "run-2026-03-13-016"
+    }
+  ]
+}

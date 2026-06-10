@@ -1,0 +1,20 @@
+{
+  "schema_version": "nlo-failure-observation-v1",
+  "failure_id": "failure-run-2026-03-13-002-meaning-drift-01",
+  "run_id": "run-2026-03-13-002",
+  "evaluation_id": "eval-run-2026-03-13-002-review-01",
+  "taxonomy_version": "failure-taxonomy-v1",
+  "failure_class": "MEANING_DRIFT",
+  "severity": "high",
+  "confidence": 1.0,
+  "source_reference": "evals/run-2026-03-13-002-review.md",
+  "output_reference": "outputs/deepseek-r1-7b-lore-safe-001.md",
+  "reviewer_note": "introduced meaning drift; meaning preserved: no",
+  "reproducibility": "unknown",
+  "observed_at": "2026-03-13T10:00:00Z",
+  "recorded_at": "2026-03-13T10:00:00Z",
+  "converted_from": {
+    "path": "evals/run-2026-03-13-002-review.md",
+    "note": "Key Failures and Literary integrity sections"
+  }
+}

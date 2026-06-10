@@ -1,0 +1,9 @@
+{
+  "schema_version": "nlo-experiment-event-v1",
+  "experiment_event_id": "exp-2026-03-13-005-review-01",
+  "run_record_id": "run-2026-03-13-005",
+  "evaluation_record_id": "eval-run-2026-03-13-005-review-01",
+  "failure_observation_ids": [],
+  "decision_record_id": "decision-2026-03-13-lore-safe-baseline-001",
+  "observed_at": "2026-03-13T19:00:00Z"
+}

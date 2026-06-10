@@ -1,0 +1,15 @@
+#!/bin/bash
+# Operator wrapper for the experiment-memory pilot CLI (plan 08 commands):
+#
+#   scripts/graph/nlo-graph current-baseline <contract>
+#   scripts/graph/nlo-graph baseline-history <contract>
+#   scripts/graph/nlo-graph recurring-failures <contract>
+#   scripts/graph/nlo-graph compare-runs <run-a> <run-b>
+#   scripts/graph/nlo-graph explain-candidate <candidate-id>
+#   scripts/graph/nlo-graph validate | rebuild [--prove] | status
+#
+# Advisory only: output is never authoritative and never a promotion decision.
+set -euo pipefail
+REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+export PYTHONPATH="$REPO_ROOT/src:${PYTHONPATH:-}"
+exec python3 -m nlo_experiment_memory.cli "$@"

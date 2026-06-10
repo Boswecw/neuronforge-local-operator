@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/schemas/experiment_memory/nlo-failure-observation.v1.schema.json",
+  "title": "NLOFailureObservation.v1",
+  "description": "Canonical record of one observed failure, classified against the declared failure taxonomy. Must reference a run and/or an evaluation.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "nlo-failure-observation-v1" },
+    "failure_id": { "type": "string", "pattern": "^failure-[a-z0-9][a-z0-9-]*$" },
+    "run_id": { "type": "string", "pattern": "^run-[a-z0-9][a-z0-9-]*$" },
+    "evaluation_id": { "type": "string", "pattern": "^eval-[a-z0-9][a-z0-9-]*$" },
+    "taxonomy_version": { "type": "string", "pattern": "^failure-taxonomy-v[0-9]+$" },
+    "failure_class": { "type": "string", "pattern": "^[A-Z][A-Z_]*$" },
+    "severity": { "enum": ["low", "medium", "high", "critical"] },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "source_reference": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "output_reference": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "reviewer_note": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "reproducibility": { "enum": ["reproduced", "not_reproduced", "unknown"] },
+    "observed_at": { "$ref": "#/$defs/utcTimestamp" },
+    "recorded_at": { "$ref": "#/$defs/utcTimestamp" },
+    "converted_from": { "$ref": "#/$defs/convertedFrom" }
+  },
+  "required": [
+    "schema_version", "failure_id", "taxonomy_version", "failure_class",
+    "severity", "confidence", "source_reference", "reviewer_note",
+    "reproducibility", "observed_at", "recorded_at"
+  ],
+  "anyOf": [
+    { "required": ["run_id"] },
+    { "required": ["evaluation_id"] }
+  ],
+  "$defs": {
+    "utcTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    },
+    "convertedFrom": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "note": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["path"]
+    }
+  }
+}

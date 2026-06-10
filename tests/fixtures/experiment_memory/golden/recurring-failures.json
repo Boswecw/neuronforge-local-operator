@@ -1,0 +1,128 @@
+{
+  "authoritative": false,
+  "contradicting_record_ids": [],
+  "facts": {
+    "failure_classes": {
+      "FALSE_NEGATIVE": {
+        "count": 1,
+        "failure_ids": [
+          "failure-run-2026-03-13-016-false-negative-01"
+        ],
+        "run_ids": [
+          "run-2026-03-13-016"
+        ]
+      },
+      "MEANING_DRIFT": {
+        "count": 1,
+        "failure_ids": [
+          "failure-run-2026-03-13-002-meaning-drift-01"
+        ],
+        "run_ids": [
+          "run-2026-03-13-002"
+        ]
+      },
+      "OUT_OF_MEMORY": {
+        "count": 1,
+        "failure_ids": [
+          "failure-fixture-oom-001"
+        ],
+        "run_ids": [
+          "run-fixture-oom-001"
+        ]
+      },
+      "OVER_EDITING": {
+        "count": 1,
+        "failure_ids": [
+          "failure-run-2026-03-13-002-over-editing-01"
+        ],
+        "run_ids": [
+          "run-2026-03-13-002"
+        ]
+      },
+      "SCHEMA_INVALID": {
+        "count": 2,
+        "failure_ids": [
+          "failure-run-2026-03-13-002-schema-invalid-01",
+          "failure-run-2026-03-13-003-schema-invalid-01"
+        ],
+        "run_ids": [
+          "run-2026-03-13-002",
+          "run-2026-03-13-003"
+        ]
+      },
+      "STYLE_REGRESSION": {
+        "count": 1,
+        "failure_ids": [
+          "failure-run-2026-03-13-016-style-regression-01"
+        ],
+        "run_ids": [
+          "run-2026-03-13-016"
+        ]
+      }
+    },
+    "recurring_classes": [
+      "SCHEMA_INVALID"
+    ],
+    "task_contract": "proofread.lore_safe.v1"
+  },
+  "graph_status": "healthy",
+  "projected_high_watermark": "2026-03-13T22:00:00Z",
+  "projection_lag_seconds": 0.0,
+  "query_id": "recurring_failures:proofread.lore_safe.v1",
+  "query_type": "recurring_failures",
+  "source_high_watermark": "2026-03-13T22:00:00Z",
+  "subject_id": "proofread.lore_safe.v1",
+  "supporting_record_ids": [
+    "failure-fixture-oom-001",
+    "failure-run-2026-03-13-002-meaning-drift-01",
+    "failure-run-2026-03-13-002-over-editing-01",
+    "failure-run-2026-03-13-002-schema-invalid-01",
+    "failure-run-2026-03-13-003-schema-invalid-01",
+    "failure-run-2026-03-13-016-false-negative-01",
+    "failure-run-2026-03-13-016-style-regression-01"
+  ],
+  "timeline_events": [
+    {
+      "at": "2026-03-13T10:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-002-meaning-drift-01",
+      "subject": "run-2026-03-13-002"
+    },
+    {
+      "at": "2026-03-13T10:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-002-over-editing-01",
+      "subject": "run-2026-03-13-002"
+    },
+    {
+      "at": "2026-03-13T10:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-002-schema-invalid-01",
+      "subject": "run-2026-03-13-002"
+    },
+    {
+      "at": "2026-03-13T11:30:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-003-schema-invalid-01",
+      "subject": "run-2026-03-13-003"
+    },
+    {
+      "at": "2026-03-13T21:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-016-false-negative-01",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-016-style-regression-01",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T22:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-fixture-oom-001",
+      "subject": "run-fixture-oom-001"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "registry": "FailureTaxonomy",
+  "version": "v1",
+  "taxonomy_version": "failure-taxonomy-v1",
+  "classes": [
+    "CONTEXT_OVERFLOW",
+    "CONTINUITY_MISS",
+    "FALSE_NEGATIVE",
+    "FALSE_POSITIVE",
+    "LORE_HALLUCINATION",
+    "MEANING_DRIFT",
+    "MISSING_EVIDENCE",
+    "MODEL_UNAVAILABLE",
+    "NONDETERMINISTIC_OUTPUT",
+    "OMISSION",
+    "OUT_OF_MEMORY",
+    "OVER_EDITING",
+    "PROMPT_ASSEMBLY_FAILURE",
+    "PROTECTED_TERM_MUTATION",
+    "RUNTIME_TIMEOUT",
+    "SCHEMA_INVALID",
+    "STYLE_REGRESSION",
+    "WEAK_EVIDENCE"
+  ]
+}

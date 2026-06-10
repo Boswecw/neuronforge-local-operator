@@ -1,0 +1,13 @@
+{
+  "schema_version": "nlo-operator-decision-v1",
+  "decision_id": "decision-invalid-temporal",
+  "decision_type": "accept_baseline",
+  "task_contract": "proofread.lore_safe.v1",
+  "target_run_id": "run-2026-03-13-005",
+  "effective_at": "2026-03-13T19:00:00Z",
+  "superseded_at": "2026-03-13T18:00:00Z",
+  "decided_by": "operator",
+  "rationale": "temporal inversion: a baseline cannot stop being current before it became current",
+  "evidence_record_ids": ["eval-run-2026-03-13-005-review-01"],
+  "recorded_at": "2026-03-13T19:00:00Z"
+}

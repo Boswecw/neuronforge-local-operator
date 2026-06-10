@@ -1,0 +1,42 @@
+{
+  "registry": "ExperimentRecordType",
+  "version": "v1",
+  "entries": [
+    {
+      "record_type": "run",
+      "schema_version": "nlo-run-record-v1",
+      "schema_file": "nlo-run-record.v1.schema.json",
+      "id_field": "run_id"
+    },
+    {
+      "record_type": "evaluation",
+      "schema_version": "nlo-evaluation-record-v1",
+      "schema_file": "nlo-evaluation-record.v1.schema.json",
+      "id_field": "evaluation_id"
+    },
+    {
+      "record_type": "failure_observation",
+      "schema_version": "nlo-failure-observation-v1",
+      "schema_file": "nlo-failure-observation.v1.schema.json",
+      "id_field": "failure_id"
+    },
+    {
+      "record_type": "operator_decision",
+      "schema_version": "nlo-operator-decision-v1",
+      "schema_file": "nlo-operator-decision.v1.schema.json",
+      "id_field": "decision_id"
+    },
+    {
+      "record_type": "hardware_profile",
+      "schema_version": "nlo-hardware-profile-v1",
+      "schema_file": "nlo-hardware-profile.v1.schema.json",
+      "id_field": "hardware_profile_id"
+    },
+    {
+      "record_type": "experiment_event",
+      "schema_version": "nlo-experiment-event-v1",
+      "schema_file": "nlo-experiment-event.v1.schema.json",
+      "id_field": "experiment_event_id"
+    }
+  ]
+}

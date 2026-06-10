@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/schemas/experiment_memory/nlo-evaluation-record.v1.schema.json",
+  "title": "NLOEvaluationRecord.v1",
+  "description": "Canonical record of one manual evaluation of a run.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "nlo-evaluation-record-v1" },
+    "evaluation_id": { "type": "string", "pattern": "^eval-[a-z0-9][a-z0-9-]*$" },
+    "run_id": { "type": "string", "pattern": "^run-[a-z0-9][a-z0-9-]*$" },
+    "evaluator": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "rubric_reference": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "outcome": { "enum": ["accepted", "rejected", "observational"] },
+    "findings": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 500 },
+      "maxItems": 50
+    },
+    "scores": {
+      "type": "object",
+      "patternProperties": { "^[a-z0-9_]+$": { "type": "number" } },
+      "additionalProperties": false
+    },
+    "reviewed_at": { "$ref": "#/$defs/utcTimestamp" },
+    "recorded_at": { "$ref": "#/$defs/utcTimestamp" },
+    "notes": { "type": "string", "maxLength": 2000 },
+    "converted_from": { "$ref": "#/$defs/convertedFrom" }
+  },
+  "required": [
+    "schema_version", "evaluation_id", "run_id", "evaluator", "outcome",
+    "reviewed_at", "recorded_at"
+  ],
+  "$defs": {
+    "utcTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    },
+    "convertedFrom": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "note": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["path"]
+    }
+  }
+}

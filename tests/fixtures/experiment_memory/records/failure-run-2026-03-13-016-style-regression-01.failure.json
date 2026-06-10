@@ -1,0 +1,20 @@
+{
+  "schema_version": "nlo-failure-observation-v1",
+  "failure_id": "failure-run-2026-03-13-016-style-regression-01",
+  "run_id": "run-2026-03-13-016",
+  "evaluation_id": "eval-run-2026-03-13-016-review-01",
+  "taxonomy_version": "failure-taxonomy-v1",
+  "failure_class": "STYLE_REGRESSION",
+  "severity": "medium",
+  "confidence": 1.0,
+  "source_reference": "evals/run-2026-03-13-016-review.md",
+  "output_reference": "outputs/gemma3-4b-lore-safe-test-001-run-2026-03-13-016.md",
+  "reviewer_note": "introduced at least two clear errors: 'The path behind him were' and 'The child seen more'",
+  "reproducibility": "unknown",
+  "observed_at": "2026-03-13T21:00:00Z",
+  "recorded_at": "2026-03-13T21:00:00Z",
+  "converted_from": {
+    "path": "evals/run-2026-03-13-016-review.md",
+    "note": "Key Notes section"
+  }
+}

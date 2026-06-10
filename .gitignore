@@ -13,3 +13,13 @@ build/
 .tmp/
 
 context-bundle.md
+
+# Graphiti experiment-memory pilot (docs/plans/graphiti/07-REPOSITORY-STRUCTURE.md)
+.graphiti/
+.neo4j/
+.falkordb/
+runtime/graph/
+artifacts/graph-runtime/
+*.graph-snapshot
+.env.graphiti
+!.env.graphiti.example

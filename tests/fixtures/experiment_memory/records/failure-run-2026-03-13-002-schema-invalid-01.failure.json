@@ -1,0 +1,20 @@
+{
+  "schema_version": "nlo-failure-observation-v1",
+  "failure_id": "failure-run-2026-03-13-002-schema-invalid-01",
+  "run_id": "run-2026-03-13-002",
+  "evaluation_id": "eval-run-2026-03-13-002-review-01",
+  "taxonomy_version": "failure-taxonomy-v1",
+  "failure_class": "SCHEMA_INVALID",
+  "severity": "high",
+  "confidence": 1.0,
+  "source_reference": "evals/run-2026-03-13-002-review.md",
+  "output_reference": "outputs/deepseek-r1-7b-lore-safe-001.md",
+  "reviewer_note": "violated the return-only-text output contract: showed reasoning, added commentary before and after the answer, returned content outside the requested corrected passage",
+  "reproducibility": "reproduced",
+  "observed_at": "2026-03-13T10:00:00Z",
+  "recorded_at": "2026-03-13T10:00:00Z",
+  "converted_from": {
+    "path": "evals/run-2026-03-13-002-review.md",
+    "note": "reproduced: run-2026-03-13-003 repeated the same contract violation with a revised prompt"
+  }
+}

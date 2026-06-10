@@ -1,0 +1,121 @@
+{
+  "authoritative": false,
+  "contradicting_record_ids": [],
+  "facts": {
+    "decisions": {
+      "run-2026-03-13-005": [
+        {
+          "decision_id": "decision-2026-03-13-lore-safe-baseline-001",
+          "decision_type": "accept_baseline"
+        }
+      ],
+      "run-2026-03-13-016": [
+        {
+          "decision_id": "decision-2026-03-13-reject-016-01",
+          "decision_type": "reject_candidate"
+        }
+      ]
+    },
+    "differing_fields": [
+      "model_id"
+    ],
+    "evaluation_outcomes": {
+      "run-2026-03-13-005": [
+        "accepted"
+      ],
+      "run-2026-03-13-016": [
+        "rejected"
+      ]
+    },
+    "failure_classes": {
+      "run-2026-03-13-005": [],
+      "run-2026-03-13-016": [
+        "FALSE_NEGATIVE",
+        "STYLE_REGRESSION"
+      ]
+    },
+    "run_a": {
+      "input_id": "lore-safe-test-001",
+      "model_id": "qwen2.5:14b",
+      "prompt_id": "lore-safe-proofread-003",
+      "run_id": "run-2026-03-13-005",
+      "status": "succeeded",
+      "task_contract": "proofread.lore_safe.v1"
+    },
+    "run_b": {
+      "input_id": "lore-safe-test-001",
+      "model_id": "gemma3:4b",
+      "prompt_id": "lore-safe-proofread-003",
+      "run_id": "run-2026-03-13-016",
+      "status": "succeeded",
+      "task_contract": "proofread.lore_safe.v1"
+    }
+  },
+  "graph_status": "healthy",
+  "projected_high_watermark": "2026-03-13T22:00:00Z",
+  "projection_lag_seconds": 0.0,
+  "query_id": "compare_runs:run-2026-03-13-005..run-2026-03-13-016",
+  "query_type": "compare_runs",
+  "source_high_watermark": "2026-03-13T22:00:00Z",
+  "subject_id": "run-2026-03-13-005..run-2026-03-13-016",
+  "supporting_record_ids": [
+    "decision-2026-03-13-lore-safe-baseline-001",
+    "decision-2026-03-13-reject-016-01",
+    "eval-run-2026-03-13-005-review-01",
+    "eval-run-2026-03-13-016-review-01",
+    "failure-run-2026-03-13-016-false-negative-01",
+    "failure-run-2026-03-13-016-style-regression-01",
+    "run-2026-03-13-005",
+    "run-2026-03-13-016"
+  ],
+  "timeline_events": [
+    {
+      "at": "2026-03-13T12:00:00Z",
+      "event": "RUN_OCCURRED",
+      "record_id": "run-2026-03-13-005",
+      "subject": "run-2026-03-13-005"
+    },
+    {
+      "at": "2026-03-13T18:00:00Z",
+      "event": "EVALUATED",
+      "record_id": "eval-run-2026-03-13-005-review-01",
+      "subject": "run-2026-03-13-005"
+    },
+    {
+      "at": "2026-03-13T19:00:00Z",
+      "event": "DECIDED",
+      "record_id": "decision-2026-03-13-lore-safe-baseline-001",
+      "subject": "run-2026-03-13-005"
+    },
+    {
+      "at": "2026-03-13T20:00:00Z",
+      "event": "RUN_OCCURRED",
+      "record_id": "run-2026-03-13-016",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:00:00Z",
+      "event": "EVALUATED",
+      "record_id": "eval-run-2026-03-13-016-review-01",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-016-false-negative-01",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:00:00Z",
+      "event": "FAILURE_OBSERVED",
+      "record_id": "failure-run-2026-03-13-016-style-regression-01",
+      "subject": "run-2026-03-13-016"
+    },
+    {
+      "at": "2026-03-13T21:30:00Z",
+      "event": "DECIDED",
+      "record_id": "decision-2026-03-13-reject-016-01",
+      "subject": "run-2026-03-13-016"
+    }
+  ]
+}

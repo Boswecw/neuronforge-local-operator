@@ -1,0 +1,9 @@
+{
+  "registry": "ExperimentStatus",
+  "version": "v1",
+  "description": "Runtime execution status of a run. Quality judgments live in evaluation outcomes, not here.",
+  "entries": [
+    "failed",
+    "succeeded"
+  ]
+}

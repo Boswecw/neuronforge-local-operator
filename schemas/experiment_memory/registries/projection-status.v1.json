@@ -1,0 +1,9 @@
+{
+  "registry": "ProjectionStatus",
+  "version": "v1",
+  "entries": [
+    "complete",
+    "failed",
+    "partial"
+  ]
+}

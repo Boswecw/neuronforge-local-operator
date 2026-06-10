@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/schemas/experiment_memory/nlo-experiment-event.v1.schema.json",
+  "title": "NLOExperimentEvent.v1",
+  "description": "Projection assembly envelope linking immutable records under one bounded experiment event. Not an authoritative domain record; produces no graph nodes or edges itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "nlo-experiment-event-v1" },
+    "experiment_event_id": { "type": "string", "pattern": "^exp-[a-z0-9][a-z0-9-]*$" },
+    "run_record_id": { "type": "string", "pattern": "^run-[a-z0-9][a-z0-9-]*$" },
+    "evaluation_record_id": { "type": "string", "pattern": "^eval-[a-z0-9][a-z0-9-]*$" },
+    "failure_observation_ids": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^failure-[a-z0-9][a-z0-9-]*$" },
+      "maxItems": 50
+    },
+    "decision_record_id": { "type": "string", "pattern": "^decision-[a-z0-9][a-z0-9-]*$" },
+    "hardware_profile_id": { "type": "string", "pattern": "^hw-[a-z0-9][a-z0-9-]*$" },
+    "observed_at": { "$ref": "#/$defs/utcTimestamp" }
+  },
+  "required": [
+    "schema_version", "experiment_event_id", "run_record_id",
+    "failure_observation_ids", "observed_at"
+  ],
+  "$defs": {
+    "utcTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    }
+  }
+}

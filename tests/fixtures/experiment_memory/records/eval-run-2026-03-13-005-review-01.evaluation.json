@@ -1,0 +1,21 @@
+{
+  "schema_version": "nlo-evaluation-record-v1",
+  "evaluation_id": "eval-run-2026-03-13-005-review-01",
+  "run_id": "run-2026-03-13-005",
+  "evaluator": "operator-manual",
+  "rubric_reference": "docs/review-checklist.md",
+  "outcome": "accepted",
+  "findings": [
+    "kept the output clean and contract-compliant",
+    "preserved protected terms and original imagery",
+    "reduced non-minimal rewrites compared with run 004",
+    "still made one avoidable phrasing change: 'sat badly in him' to 'sat badly with him'"
+  ],
+  "reviewed_at": "2026-03-13T18:00:00Z",
+  "recorded_at": "2026-03-13T18:00:00Z",
+  "notes": "strongest proofreading result so far; good enough to serve as the current baseline for lore-safe proofreading",
+  "converted_from": {
+    "path": "evals/run-2026-03-13-005-review.md",
+    "note": "findings converted from the review's Key Notes section"
+  }
+}

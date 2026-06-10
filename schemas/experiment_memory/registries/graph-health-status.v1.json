@@ -1,0 +1,12 @@
+{
+  "registry": "GraphHealthStatus",
+  "version": "v1",
+  "entries": [
+    "degraded",
+    "healthy",
+    "invalid",
+    "rebuilding",
+    "stale",
+    "unavailable"
+  ]
+}

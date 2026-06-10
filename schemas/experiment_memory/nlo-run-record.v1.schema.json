@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/schemas/experiment_memory/nlo-run-record.v1.schema.json",
+  "title": "NLORunRecord.v1",
+  "description": "Canonical record of one local model run. Authority: Git (fixture records) until DataForge Local exists.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "nlo-run-record-v1" },
+    "run_id": { "type": "string", "pattern": "^run-[a-z0-9][a-z0-9-]*$" },
+    "task_contract": { "type": "string", "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)*\\.v[0-9]+$" },
+    "model_id": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "model_digest": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "prompt_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "prompt_path": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "prompt_content_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "input_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "input_path": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "input_content_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "output_path": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "output_content_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "status": { "enum": ["succeeded", "failed"] },
+    "error_message": { "type": "string", "maxLength": 1000 },
+    "runner": { "type": "string", "maxLength": 200 },
+    "hardware_profile_id": { "type": "string", "pattern": "^hw-[a-z0-9][a-z0-9-]*$" },
+    "occurred_at": { "$ref": "#/$defs/utcTimestamp" },
+    "recorded_at": { "$ref": "#/$defs/utcTimestamp" },
+    "notes": { "type": "string", "maxLength": 2000 },
+    "converted_from": { "$ref": "#/$defs/convertedFrom" }
+  },
+  "required": [
+    "schema_version", "run_id", "task_contract", "model_id",
+    "prompt_id", "prompt_path", "prompt_content_hash",
+    "input_id", "input_path", "input_content_hash",
+    "status", "occurred_at", "recorded_at"
+  ],
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "succeeded" } } },
+      "then": { "required": ["output_path", "output_content_hash"] }
+    }
+  ],
+  "$defs": {
+    "utcTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    },
+    "convertedFrom": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "note": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["path"]
+    }
+  }
+}
