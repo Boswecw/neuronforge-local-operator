@@ -1,0 +1,19 @@
+{
+  "schema_version": "nlo-failure-observation-v1",
+  "failure_id": "failure-run-2026-03-13-003-schema-invalid-01",
+  "run_id": "run-2026-03-13-003",
+  "taxonomy_version": "failure-taxonomy-v1",
+  "failure_class": "SCHEMA_INVALID",
+  "severity": "high",
+  "confidence": 1.0,
+  "source_reference": "registry/runs.md",
+  "output_reference": "outputs/deepseek-r1-7b-lore-safe-002.md",
+  "reviewer_note": "still failed after prompt revision: reasoning leakage remained, commentary remained, output format failed",
+  "reproducibility": "reproduced",
+  "observed_at": "2026-03-13T11:30:00Z",
+  "recorded_at": "2026-03-13T11:30:00Z",
+  "converted_from": {
+    "path": "registry/runs.md",
+    "note": "no eval review file exists for run-003; observation derives from the registry notes and references the run directly"
+  }
+}

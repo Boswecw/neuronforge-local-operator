@@ -1,6 +1,6 @@
 # NeuronForge Local Operator (NLO) — System Documentation
 
-**Document version:** 1.1 (2026-03-22) — analyze.style.scene.v1 promoted to candidate_baseline
+**Document version:** 1.2 (2026-06-10) — experiment-memory (Graphiti) pilot surfaces added
 **Protocol:** Forge Documentation Protocol v1
 
 This `doc/system/` tree defines the NeuronForge Local Operator (NLO) control surface — the
@@ -24,6 +24,7 @@ Assembly contract:
 | §4 | [04-anvil-bloom-reasoning-contracts.md](04-anvil-bloom-reasoning-contracts.md) | ANVIL/Bloom consumption rules, required contract posture, scope rules, failure doctrine |
 | §5 | [05-scene-beat-extraction-lane-plan.md](05-scene-beat-extraction-lane-plan.md) | First concrete extraction lane: input scope, output doctrine, failure taxonomy, eval design |
 | §6 | [06-continuity-progression-reasoning-lane-plan.md](06-continuity-progression-reasoning-lane-plan.md) | Cross-scene reasoning lane: scope doctrine, finding types, risk taxonomy, review rubric direction |
+| §7 | [07-experiment-memory-graphiti-pilot.md](07-experiment-memory-graphiti-pilot.md) | Non-authoritative experiment-memory projection: canonical record schemas, deterministic identity/rebuild, fail-open/fail-closed doctrine, operator evidence queries |
 
 ## Task contracts
 
@@ -38,4 +39,4 @@ Assembly contract:
 bash doc/system/BUILD.sh   # Assembles all parts into NLOSYSTEM.md
 ```
 
-*Last updated: 2026-03-22*
+*Last updated: 2026-06-10*

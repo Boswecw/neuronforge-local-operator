@@ -1,0 +1,16 @@
+{
+  "registry": "GraphEntityType",
+  "version": "v1",
+  "graph_schema_version": "nlo-graph-schema-v1",
+  "entries": [
+    "Evaluation",
+    "FailureObservation",
+    "HardwareProfile",
+    "InputVersion",
+    "ModelVersion",
+    "OperatorDecision",
+    "PromptVersion",
+    "Run",
+    "TaskContractVersion"
+  ]
+}

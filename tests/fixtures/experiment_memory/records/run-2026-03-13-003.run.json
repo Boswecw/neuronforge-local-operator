@@ -1,0 +1,22 @@
+{
+  "schema_version": "nlo-run-record-v1",
+  "run_id": "run-2026-03-13-003",
+  "task_contract": "proofread.lore_safe.v1",
+  "model_id": "deepseek-r1:7b",
+  "prompt_id": "lore-safe-proofread-002",
+  "prompt_path": "prompts/lore-safe-proofread-002.md",
+  "prompt_content_hash": "8a54b8f4b55baf86faf1fbd9142c766866d9efad18f99bf279563f1faaf48b73",
+  "input_id": "lore-safe-test-001",
+  "input_path": "inputs/lore-safe-test-001.md",
+  "input_content_hash": "a467cf8907c6c8d9b25e08e65266d0e3f8d736319a3445b7f3235b96b775c883",
+  "output_path": "outputs/deepseek-r1-7b-lore-safe-002.md",
+  "output_content_hash": "2e9b3e931fd53b21d82e33cfb830f095ca0df06dc36f1b12dfa1ca9c073bf4d6",
+  "status": "succeeded",
+  "occurred_at": "2026-03-13T11:00:00Z",
+  "recorded_at": "2026-03-13T11:00:00Z",
+  "notes": "prompt revision test; still failed: reasoning leakage remained, commentary remained, output format failed",
+  "converted_from": {
+    "path": "registry/runs.md",
+    "note": "no eval review file exists for this run; failure observations below derive from the registry notes"
+  }
+}

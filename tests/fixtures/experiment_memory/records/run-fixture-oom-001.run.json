@@ -1,0 +1,23 @@
+{
+  "schema_version": "nlo-run-record-v1",
+  "run_id": "run-fixture-oom-001",
+  "task_contract": "proofread.lore_safe.v1",
+  "model_id": "qwen2.5:14b",
+  "prompt_id": "lore-safe-proofread-003",
+  "prompt_path": "prompts/lore-safe-proofread-003.md",
+  "prompt_content_hash": "5820b4a7551655392fa4eb4b5a4bddc41afdad1a4ce38b21adef1068b46cf5ea",
+  "input_id": "lore-safe-test-001",
+  "input_path": "inputs/lore-safe-test-001.md",
+  "input_content_hash": "a467cf8907c6c8d9b25e08e65266d0e3f8d736319a3445b7f3235b96b775c883",
+  "status": "failed",
+  "error_message": "Error: 500 Internal Server Error: model requires more system memory (3.3 GiB) than is available (2.5 GiB)",
+  "runner": "scripts/run-proofread.sh",
+  "hardware_profile_id": "hw-fixture-constrained-001",
+  "occurred_at": "2026-03-13T22:00:00Z",
+  "recorded_at": "2026-03-13T22:00:00Z",
+  "notes": "fixture reconstruction of the documented runtime memory-failure boundary; no output file exists because the wrapper removes partial outputs on failure",
+  "converted_from": {
+    "path": "docs/operational-workflow.md",
+    "note": "fixture-namespaced: the source doc records the error verbatim but not the run id or model; treated as a resource boundary, not a workflow defect"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "nlo-failure-observation-v1",
+  "failure_id": "failure-invalid-taxonomy-mismatch",
+  "run_id": "run-2026-03-13-005",
+  "taxonomy_version": "failure-taxonomy-v1",
+  "failure_class": "NOT_A_REAL_CLASS",
+  "severity": "low",
+  "confidence": 0.5,
+  "source_reference": "evals/run-2026-03-13-005-review.md",
+  "reviewer_note": "schema-pattern-valid class name that does not exist in the declared taxonomy version",
+  "reproducibility": "unknown",
+  "observed_at": "2026-03-13T18:00:00Z",
+  "recorded_at": "2026-03-13T18:00:00Z"
+}

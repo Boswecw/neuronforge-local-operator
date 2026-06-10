@@ -1,0 +1,22 @@
+{
+  "schema_version": "nlo-run-record-v1",
+  "run_id": "run-2026-03-13-002",
+  "task_contract": "proofread.lore_safe.v1",
+  "model_id": "deepseek-r1:7b",
+  "prompt_id": "lore-safe-proofread-001",
+  "prompt_path": "prompts/lore-safe-proofread-001.md",
+  "prompt_content_hash": "b47c535b3897a741d53aa5d30abcf09e7dcd704a973b072599ab653bb936779a",
+  "input_id": "lore-safe-test-001",
+  "input_path": "inputs/lore-safe-test-001.md",
+  "input_content_hash": "a467cf8907c6c8d9b25e08e65266d0e3f8d736319a3445b7f3235b96b775c883",
+  "output_path": "outputs/deepseek-r1-7b-lore-safe-001.md",
+  "output_content_hash": "f5309ec69a31e011bf31182b83299cf764fc502662418b8ba1a6787fa22181ea",
+  "status": "succeeded",
+  "occurred_at": "2026-03-13T09:00:00Z",
+  "recorded_at": "2026-03-13T09:00:00Z",
+  "notes": "lore-safe proofreading baseline attempt; executed and produced output, but failed review hard",
+  "converted_from": {
+    "path": "registry/runs.md",
+    "note": "run id, model, prompt, input, output, and notes converted verbatim; time of day is an ordering placeholder"
+  }
+}

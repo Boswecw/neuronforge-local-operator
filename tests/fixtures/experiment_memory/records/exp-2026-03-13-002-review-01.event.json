@@ -1,0 +1,12 @@
+{
+  "schema_version": "nlo-experiment-event-v1",
+  "experiment_event_id": "exp-2026-03-13-002-review-01",
+  "run_record_id": "run-2026-03-13-002",
+  "evaluation_record_id": "eval-run-2026-03-13-002-review-01",
+  "failure_observation_ids": [
+    "failure-run-2026-03-13-002-meaning-drift-01",
+    "failure-run-2026-03-13-002-over-editing-01",
+    "failure-run-2026-03-13-002-schema-invalid-01"
+  ],
+  "observed_at": "2026-03-13T10:00:00Z"
+}

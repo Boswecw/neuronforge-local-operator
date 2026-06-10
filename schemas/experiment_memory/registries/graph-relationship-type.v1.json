@@ -1,0 +1,18 @@
+{
+  "registry": "GraphRelationshipType",
+  "version": "v1",
+  "graph_schema_version": "nlo-graph-schema-v1",
+  "entries": [
+    "APPROVES",
+    "BECAME_BASELINE_FOR",
+    "EVALUATES",
+    "EXECUTED_ON",
+    "EXECUTED_UNDER",
+    "FOUND_FAILURE",
+    "REJECTS",
+    "SUPERSEDED",
+    "USED_INPUT",
+    "USED_MODEL",
+    "USED_PROMPT"
+  ]
+}

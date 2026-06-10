@@ -32,6 +32,7 @@ run "style-analysis (python)"      python3 tests/test-style-analysis.py
 run "cor-gnat handoff (python)"    python3 tests/test-cor-gnat-semantic-handoff.py
 run "prompt_assembly (pytest)"     python3 -m pytest prompt_assembly/tests/ -q
 run "continuity adjacent (shell)"  bash tests/test-continuity-adjacent-scene.sh
+run "experiment-memory (pytest)"   python3 -m pytest tests/experiment_memory/ -q
 
 echo ""
 if [[ "$status" -eq 0 ]]; then

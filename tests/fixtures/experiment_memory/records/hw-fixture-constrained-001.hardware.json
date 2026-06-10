@@ -1,0 +1,15 @@
+{
+  "schema_version": "nlo-hardware-profile-v1",
+  "hardware_profile_id": "hw-fixture-constrained-001",
+  "captured_at": "2026-03-13T22:00:00Z",
+  "capture_tool": "fixture-reconstruction",
+  "os": "linux",
+  "mem_available_gb": 2.5,
+  "unsupported_metrics": ["cpu_cores", "cpu_model", "gpu", "kernel", "mem_total_gb"],
+  "notes": "reconstructs the documented memory-constrained state: 2.5 GiB available when the model required 3.3 GiB; total memory, CPU, and GPU details are not recorded in the source doc, so they are declared unsupported rather than guessed",
+  "recorded_at": "2026-03-13T22:00:00Z",
+  "converted_from": {
+    "path": "docs/operational-workflow.md",
+    "note": "Observed failure boundary section"
+  }
+}

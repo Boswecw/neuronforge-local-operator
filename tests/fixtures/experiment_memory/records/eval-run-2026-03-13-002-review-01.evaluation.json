@@ -1,0 +1,22 @@
+{
+  "schema_version": "nlo-evaluation-record-v1",
+  "evaluation_id": "eval-run-2026-03-13-002-review-01",
+  "run_id": "run-2026-03-13-002",
+  "evaluator": "operator-manual",
+  "rubric_reference": "docs/review-checklist.md",
+  "outcome": "rejected",
+  "findings": [
+    "showed reasoning",
+    "added commentary before and after the answer",
+    "returned content outside the requested corrected passage",
+    "rewrote imagery and wording beyond proofreading scope",
+    "introduced meaning drift"
+  ],
+  "reviewed_at": "2026-03-13T10:00:00Z",
+  "recorded_at": "2026-03-13T10:00:00Z",
+  "notes": "failed the core contract; even where some corrections were valid the output was not usable as strict lore-safe proofreading",
+  "converted_from": {
+    "path": "evals/run-2026-03-13-002-review.md",
+    "note": "findings converted from the review's Key Failures section"
+  }
+}

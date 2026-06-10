@@ -1,0 +1,17 @@
+{
+  "schema_version": "nlo-operator-decision-v1",
+  "decision_id": "decision-2026-03-13-reject-016-01",
+  "decision_type": "reject_candidate",
+  "task_contract": "proofread.lore_safe.v1",
+  "target_run_id": "run-2026-03-13-016",
+  "effective_at": "2026-03-13T21:30:00Z",
+  "superseded_at": null,
+  "decided_by": "operator",
+  "rationale": "Challenger stayed inside the output contract but failed review on core grammar quality (introduced clear errors); does not beat the current qwen2.5:14b baseline.",
+  "evidence_record_ids": ["eval-run-2026-03-13-016-review-01"],
+  "recorded_at": "2026-03-13T21:30:00Z",
+  "converted_from": {
+    "path": "docs/current-baseline.md",
+    "note": "gemma3:4b listed among rejected challengers; review detail in evals/run-2026-03-13-016-review.md"
+  }
+}

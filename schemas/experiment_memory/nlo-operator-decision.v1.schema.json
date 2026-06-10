@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/schemas/experiment_memory/nlo-operator-decision.v1.schema.json",
+  "title": "NLOOperatorDecision.v1",
+  "description": "Canonical record of one operator decision about a run (baseline acceptance, candidate rejection, baseline retirement). The operator is the sole promotion authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "nlo-operator-decision-v1" },
+    "decision_id": { "type": "string", "pattern": "^decision-[a-z0-9][a-z0-9-]*$" },
+    "decision_type": { "enum": ["accept_baseline", "reject_candidate", "retire_baseline"] },
+    "task_contract": { "type": "string", "pattern": "^[a-z0-9_]+(\\.[a-z0-9_]+)*\\.v[0-9]+$" },
+    "target_run_id": { "type": "string", "pattern": "^run-[a-z0-9][a-z0-9-]*$" },
+    "supersedes_run_id": { "type": "string", "pattern": "^run-[a-z0-9][a-z0-9-]*$" },
+    "effective_at": { "$ref": "#/$defs/utcTimestamp" },
+    "superseded_at": {
+      "oneOf": [ { "$ref": "#/$defs/utcTimestamp" }, { "type": "null" } ]
+    },
+    "decided_by": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "rationale": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "evidence_record_ids": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 200 },
+      "minItems": 1,
+      "maxItems": 50
+    },
+    "recorded_at": { "$ref": "#/$defs/utcTimestamp" },
+    "converted_from": { "$ref": "#/$defs/convertedFrom" }
+  },
+  "required": [
+    "schema_version", "decision_id", "decision_type", "task_contract",
+    "target_run_id", "effective_at", "superseded_at", "decided_by",
+    "rationale", "evidence_record_ids", "recorded_at"
+  ],
+  "$defs": {
+    "utcTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    },
+    "convertedFrom": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "note": { "type": "string", "maxLength": 1000 }
+      },
+      "required": ["path"]
+    }
+  }
+}

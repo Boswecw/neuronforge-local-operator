@@ -1,0 +1,9 @@
+{
+  "schema_version": "nlo-evaluation-record-v1",
+  "evaluation_id": "eval-invalid-temporal",
+  "run_id": "run-2026-03-13-005",
+  "evaluator": "operator-manual",
+  "outcome": "accepted",
+  "reviewed_at": "2026-03-12T18:00:00Z",
+  "recorded_at": "2026-03-12T18:00:00Z"
+}

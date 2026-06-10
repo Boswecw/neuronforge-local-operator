@@ -1,0 +1,110 @@
+# Plan-Set Review — Graphiti Experiment-Memory Pilot
+
+Review of the imported plan set (`README.md`, `01`–`14`) against the actual state of
+`neuronforge-local-operator` before implementation. Reviewed 2026-06-10.
+
+## Verdict
+
+The plan set is internally coherent and consistent with repo doctrine (operator-only
+promotion, reproducible records, lore-safe focus, bounded experiments). It is approved
+for implementation with the resolutions recorded below. Nothing in the plan set
+contradicts `NLOSYSTEM.md` authority boundaries.
+
+## Confirmed Alignment
+
+- The governing rule (Graphiti may explain and suggest, never approve/promote/mutate)
+  matches the repo's promotion doctrine (`docs/current-baseline.md`, `docs/adr/ADR-001`).
+- The plan's anchors are real repo history: `run-2026-03-13-005` (accepted baseline,
+  `qwen2.5:14b` + `prompts/lore-safe-proofread-003.md`), rejected challengers
+  (`run-2026-03-13-016` …), and the documented Ollama memory failure boundary
+  (`docs/operational-workflow.md`: model requires more system memory (3.3 GiB) than is
+  available (2.5 GiB)) which maps to taxonomy class `OUT_OF_MEMORY`.
+- `analyze.style.scene.v1` (used in plan examples) is a real task contract
+  (candidate_baseline). The lore-safe lane's contract id is `proofread.lore_safe.v1`
+  (declared in `doc/system/01-task-contract-taxonomy.md` §3.3).
+- The plan's failure taxonomy covers every failure mode recorded in
+  `registry/runs.md` and `evals/run-*.md` reviews.
+
+## Discrepancies Found and Resolutions
+
+1. **DataForge Local does not exist in this repo.** DataForge is the NeuronForge
+   ecosystem's cloud data service; no local instance or client is present. Today the
+   canonical experiment records live in Git (`registry/*.md`, `evals/*.md`,
+   `docs/current-baseline.md`).
+   **Resolution:** for the first pilot, Git is the authority for all artifact types in
+   the authority matrix; normalized canonical records are committed fixtures converted
+   from the markdown registries. The DataForge Local adapter ships as an interface only
+   (per G-07), unimplemented. The authority matrix is unchanged for the day DataForge
+   Local arrives. (Resolves open decision: "whether DataForge Local adapter is
+   available in the first pilot" → interface only, not available.)
+
+2. **The `04-TEMPORAL-SEMANTICS.md` baseline example is illustrative, not history.**
+   It shows "run-022 replaced run-005 on 2026-06-10". In real history
+   `run-2026-03-13-022` (olmo2:13b) was a *rejected* challenger and `run-2026-03-13-005`
+   has never been superseded.
+   **Resolution:** the example is kept verbatim as a doctrine illustration; fixtures
+   and golden query results encode only real history (run-005 baseline current,
+   `superseded_at: null`).
+
+3. **`01-PILOT-ARCHITECTURE.md` scope says "four operator evidence queries";
+   `08-OPERATOR-QUERY-CONTRACTS.md` lists five commands.**
+   **Resolution:** implement all five (current-baseline, baseline-history,
+   recurring-failures, compare-runs, explain-candidate).
+
+4. **No `nlo` CLI exists in the repo.**
+   **Resolution (resolves open decision "final operator CLI naming"):** the query
+   surface is `python3 -m nlo_experiment_memory.cli …` with a thin operator wrapper
+   `scripts/graph/nlo-graph` exposing the exact subcommand names from plan 08.
+
+5. **No `src/` layout exists** (repo packages are top-level: `service/`,
+   `prompt_assembly/`).
+   **Resolution:** follow plan 07 as written (`src/nlo_experiment_memory/`); tests and
+   the wrapper script add `src/` to `PYTHONPATH` themselves, so no global config is
+   required and decommission stays one bounded change set.
+
+6. **Registry timestamps are date-only.** `registry/runs.md` records dates, not times.
+   **Resolution:** converted fixture records use the real date (2026-03-13) with
+   time-of-day placeholders chosen only to satisfy temporal ordering (run < review <
+   decision), following the plan's own example times (19:00Z for the run-005 baseline
+   decision). The fixture README declares this explicitly.
+
+7. **The documented OOM failure is not tied to a run id** in `registry/runs.md`
+   (failed runs are intentionally not logged as successful runs).
+   **Resolution:** the OOM/hardware path uses an explicitly fixture-namespaced run id
+   (`run-fixture-oom-001`) carrying the exact documented error string, with
+   `converted_from` pointing at `docs/operational-workflow.md`. It cannot be confused
+   with a registry run.
+
+## Locked Decisions (resolving plan 14 "Open Decisions")
+
+| Open decision | Resolution |
+| --- | --- |
+| Final backend choice | Neo4j Community, pinned `neo4j:5.26.0-community` in Docker, loopback only |
+| Acceptable projection lag for advisory queries | 0 seconds (any unprojected canonical record fails advisory queries closed); tunable via `NLO_GRAPH_MAX_PROJECTION_LAG_SECONDS` |
+| DataForge Local adapter in first pilot | Interface only; fixture store is the pilot record source |
+| Optional semantic enrichment tested | No. Module exists as a disabled boundary that refuses to run |
+| Final operator CLI naming | `scripts/graph/nlo-graph <subcommand>` → `python3 -m nlo_experiment_memory.cli` |
+
+## Graphiti Installation Gate (honored)
+
+Per the plan README, Graphiti is **not** installed before G-01–G-05 pass. The
+deterministic projector, rebuild proof, and evidence queries are implemented and tested
+against an in-memory graph store (a test double, not a second production backend — see
+plan 14 anti-patterns). The Graphiti/Neo4j write adapter is a declared interface that
+refuses instantiation until the operator wires it after the gates pass; the pinned
+backend compose files and scripts (G-06) are committed and operator-opt-in.
+
+## Slice Status
+
+| Slice | Status |
+| --- | --- |
+| G-01 Governance and authority | Complete (plan set imported; this review resolves authority questions; no Graphiti dependency installed) |
+| G-02 Identity and temporal semantics | Complete (`src/nlo_experiment_memory/identity/`, tested without Graphiti) |
+| G-03 Core schemas and validation | Complete (`schemas/experiment_memory/`, strict, valid/invalid examples tested) |
+| G-04 Historical fixtures and hardware provenance | Complete (5 historical runs: 002, 003, 005, 016, OOM fixture; `scripts/graph/capture-hardware-profile.sh`) |
+| G-05 Deterministic mapping specification | Complete (`MAPPING-SPEC.md`; no LLM extraction for core facts) |
+| G-06 Local backend pilot | Files committed (compose pinned to `neo4j:5.26.0-community`, env example, up/down/reset/doctor scripts). Live start/stop, loopback, and resource-limit verification is **pending operator hardware**: the implementation environment had a Docker CLI but no Docker daemon. Run `bash scripts/graph/graph-up.sh` then `bash scripts/graph/graph-doctor.sh` locally and record the result here |
+| G-07 Deterministic projector and rebuild | Complete against in-memory store; two-rebuild provenance-equality proof in tests and `nlo-graph rebuild --prove` |
+| G-08 Operator evidence queries | Complete (five queries, golden evidence tests, fail-closed gates) |
+| G-09 Comparative evaluation | Not started (requires operator judgment and the real backend) |
+| G-10 Keep/revise/remove decision | Not started (operator decision after G-09) |

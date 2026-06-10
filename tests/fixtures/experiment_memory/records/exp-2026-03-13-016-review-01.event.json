@@ -1,0 +1,12 @@
+{
+  "schema_version": "nlo-experiment-event-v1",
+  "experiment_event_id": "exp-2026-03-13-016-review-01",
+  "run_record_id": "run-2026-03-13-016",
+  "evaluation_record_id": "eval-run-2026-03-13-016-review-01",
+  "failure_observation_ids": [
+    "failure-run-2026-03-13-016-false-negative-01",
+    "failure-run-2026-03-13-016-style-regression-01"
+  ],
+  "decision_record_id": "decision-2026-03-13-reject-016-01",
+  "observed_at": "2026-03-13T21:30:00Z"
+}

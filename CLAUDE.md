@@ -22,6 +22,7 @@ NeuronForge applications-support version.
 | Run Records | `outputs/`, `registry/` | Saved outputs and structured run/model/term registries |
 | Data and Schemas | `schemas/`, `analytics/`, `service/` | Validation surfaces, analytics, and service code |
 | Governance and Specs | `docs/`, the root `*plan*.md` / `schema_change*.md` design docs | Repo doctrine, experiment design, and supporting material |
+| Experiment Memory (pilot) | `src/nlo_experiment_memory/`, `schemas/experiment_memory/`, `scripts/graph/`, `docs/plans/graphiti/` | Non-authoritative Graphiti pilot: canonical record schemas, deterministic projection/rebuild, advisory operator queries (`scripts/graph/nlo-graph`); never on the run path |
 | Verification | `tests/` | Test and audit surfaces |
 
 ## Baseline (current)

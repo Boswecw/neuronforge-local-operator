@@ -1,0 +1,18 @@
+{
+  "schema_version": "nlo-failure-observation-v1",
+  "failure_id": "failure-fixture-oom-001",
+  "run_id": "run-fixture-oom-001",
+  "taxonomy_version": "failure-taxonomy-v1",
+  "failure_class": "OUT_OF_MEMORY",
+  "severity": "high",
+  "confidence": 1.0,
+  "source_reference": "docs/operational-workflow.md",
+  "reviewer_note": "Error: 500 Internal Server Error: model requires more system memory (3.3 GiB) than is available (2.5 GiB) — treated as a runtime resource failure, not a wrapper logic bug",
+  "reproducibility": "unknown",
+  "observed_at": "2026-03-13T22:00:00Z",
+  "recorded_at": "2026-03-13T22:00:00Z",
+  "converted_from": {
+    "path": "docs/operational-workflow.md",
+    "note": "Observed failure boundary section; error string verbatim"
+  }
+}

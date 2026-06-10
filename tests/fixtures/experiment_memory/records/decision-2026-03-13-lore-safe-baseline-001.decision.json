@@ -1,0 +1,17 @@
+{
+  "schema_version": "nlo-operator-decision-v1",
+  "decision_id": "decision-2026-03-13-lore-safe-baseline-001",
+  "decision_type": "accept_baseline",
+  "task_contract": "proofread.lore_safe.v1",
+  "target_run_id": "run-2026-03-13-005",
+  "effective_at": "2026-03-13T19:00:00Z",
+  "superseded_at": null,
+  "decided_by": "operator",
+  "rationale": "Strongest confirmed lore-safe proofreading result: clean output without reasoning leakage or commentary, protected terms preserved, unnecessary rewrites reduced. Accepted as the current baseline; run-2026-03-13-005 is the quality anchor.",
+  "evidence_record_ids": ["eval-run-2026-03-13-005-review-01"],
+  "recorded_at": "2026-03-13T19:00:00Z",
+  "converted_from": {
+    "path": "docs/current-baseline.md",
+    "note": "the locked conclusion for the lore-safe lane; later challenger testing (runs 016-023) did not displace this baseline"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "authoritative": false,
+  "contradicting_record_ids": [],
+  "facts": {
+    "baseline_run_id": "run-2026-03-13-005",
+    "decision_id": "decision-2026-03-13-lore-safe-baseline-001",
+    "effective_at": "2026-03-13T19:00:00Z",
+    "model_id": "qwen2.5:14b",
+    "prompt_id": "lore-safe-proofread-003",
+    "superseded_at": null,
+    "task_contract": "proofread.lore_safe.v1"
+  },
+  "graph_status": "healthy",
+  "projected_high_watermark": "2026-03-13T22:00:00Z",
+  "projection_lag_seconds": 0.0,
+  "query_id": "current_baseline:proofread.lore_safe.v1",
+  "query_type": "current_baseline",
+  "source_high_watermark": "2026-03-13T22:00:00Z",
+  "subject_id": "proofread.lore_safe.v1",
+  "supporting_record_ids": [
+    "decision-2026-03-13-lore-safe-baseline-001",
+    "eval-run-2026-03-13-005-review-01"
+  ],
+  "timeline_events": [
+    {
+      "at": "2026-03-13T19:00:00Z",
+      "event": "BECAME_BASELINE_FOR",
+      "record_id": "decision-2026-03-13-lore-safe-baseline-001",
+      "subject": "proofread.lore_safe.v1"
+    }
+  ]
+}

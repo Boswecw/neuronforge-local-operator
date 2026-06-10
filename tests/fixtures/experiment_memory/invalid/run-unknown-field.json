@@ -1,0 +1,18 @@
+{
+  "schema_version": "nlo-run-record-v1",
+  "run_id": "run-invalid-unknown-field",
+  "task_contract": "proofread.lore_safe.v1",
+  "model_id": "qwen2.5:14b",
+  "prompt_id": "lore-safe-proofread-003",
+  "prompt_path": "prompts/lore-safe-proofread-003.md",
+  "prompt_content_hash": "5820b4a7551655392fa4eb4b5a4bddc41afdad1a4ce38b21adef1068b46cf5ea",
+  "input_id": "lore-safe-test-001",
+  "input_path": "inputs/lore-safe-test-001.md",
+  "input_content_hash": "a467cf8907c6c8d9b25e08e65266d0e3f8d736319a3445b7f3235b96b775c883",
+  "output_path": "outputs/qwen2.5-14b-lore-safe-002.md",
+  "output_content_hash": "19c9b3895fe9011a33fb6b78d07248965bd2487568bf42ceb8c5b4853fd9b0f2",
+  "status": "succeeded",
+  "occurred_at": "2026-03-13T12:00:00Z",
+  "recorded_at": "2026-03-13T12:00:00Z",
+  "surprise_field": "strict schemas must reject this"
+}
