@@ -3502,7 +3502,7 @@ Most natural next step:
 # Experiment-Memory (Graphiti) Pilot
 
 ## Status
-Implemented through slice G-09 against an in-memory store; pinned backend files committed (G-06 live verification pending operator hardware); Graphiti itself not installed (gated). Governing plan set: `docs/plans/graphiti/`.
+Implemented through slice G-09 against an in-memory store; the pinned backend is verified live on operator hardware (2026-06-10: healthy, loopback-only); Graphiti itself not installed (gated). Governing plan set: `docs/plans/graphiti/`.
 
 ## Purpose
 Give the operator a **rebuildable, non-authoritative experiment-memory projection** over canonical experiment records: what was tested, what changed, why a baseline was promoted, what evidence supports or contradicts a promotion, and whether a failure pattern recurs.
