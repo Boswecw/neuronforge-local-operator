@@ -4,9 +4,9 @@ The G-01..G-05 gates passed and were operator-accepted, and G-06 verified the
 pinned backend live, so Graphiti may now be wired (plan README gate). This
 adapter stays strictly deterministic:
 
-- it writes the projector's canonical export as graphiti EntityNode /
-  EntityEdge objects using our deterministic ids as uuids — no LLM
-  extraction, no embeddings, no external transmission;
+- it writes the projector's canonical export into graphiti's storage schema
+  (`:Entity` nodes, `RELATES_TO` edges) using our deterministic ids as uuids —
+  no LLM extraction, no embeddings, no external transmission;
 - entity_type -> node label, business_key -> node name,
   relationship_type -> edge name, effective_at -> valid_at,
   superseded_at -> invalid_at (graphiti business-time validity),
@@ -16,6 +16,15 @@ adapter stays strictly deterministic:
   export byte-for-byte and the provenance fingerprint can be re-verified
   against the projection report (the live adapter proof demanded by
   G-09-COMPARATIVE-EVALUATION.md).
+
+Write-path note (pilot finding, relevant to G-09/G-10 scoring): graphiti-core
+0.29.2's own `EntityNode.save` / `EntityEdge.save` unconditionally invoke
+Neo4j vector procedures (`db.create.setNodeVectorProperty` /
+`setRelationshipVectorProperty`), which fail when no embedding exists — and
+plan 05 forbids computing embeddings in this pilot. Writes therefore use the
+graphiti Neo4j driver with graphiti-schema-shaped Cypher minus the vector
+calls; reads go through graphiti's own models (`EntityNode.get_by_group_ids`,
+`EntityEdge.get_by_group_ids`) so its hydration path is genuinely exercised.
 
 Doctrine guards:
 - graphiti-core/neo4j imports are lazy: NLO and the rest of this package
@@ -29,6 +38,8 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
+import re
 from datetime import datetime
 from urllib.parse import urlparse
 
@@ -37,6 +48,22 @@ from ..identity.normalize import canonical_json
 
 CANONICAL_ATTRIBUTE = "nlo_canonical_json"
 _LOOPBACK_HOSTS = {"127.0.0.1", "localhost", "::1"}
+_SAFE_LABEL = re.compile(r"^[A-Za-z][A-Za-z0-9]*$")
+
+_NODE_SAVE_CYPHER = """
+MERGE (n:Entity {{uuid: $props.uuid}})
+SET n:{label}
+SET n = $props
+RETURN n.uuid AS uuid
+"""
+
+_EDGE_SAVE_CYPHER = """
+MATCH (source:Entity {uuid: $source_uuid})
+MATCH (target:Entity {uuid: $target_uuid})
+MERGE (source)-[e:RELATES_TO {uuid: $props.uuid}]->(target)
+SET e = $props
+RETURN e.uuid AS uuid
+"""
 
 
 class LiveBackendError(RuntimeError):
@@ -77,64 +104,82 @@ class GraphitiNeo4jBackend:
                 "loopback-only (docs/plans/graphiti/05-DATA-SECURITY-AND-CLASSIFICATION.md)"
             )
         driver_cls, self._node_cls, self._edge_cls = _require_graphiti()
+        # graphiti's read queries reference optional temporal properties
+        # (expired_at, invalid_at) that are legitimately absent on our edges;
+        # the resulting server notifications are noise, not problems.
+        logging.getLogger("neo4j.notifications").setLevel(logging.ERROR)
         self.group_id = group_id
+        # One event loop owns every driver operation for the backend's
+        # lifetime; per-call asyncio.run() would close the loop the driver's
+        # connection pool is bound to.
+        self._loop = asyncio.new_event_loop()
         self._driver = driver_cls(uri, user, password)
 
+    def _run(self, coroutine):
+        return self._loop.run_until_complete(coroutine)
+
     def close(self) -> None:
-        asyncio.run(self._driver.close())
+        try:
+            self._run(self._driver.close())
+        finally:
+            self._loop.close()
 
     # --- write -------------------------------------------------------------
 
     def write_export(self, export: dict) -> dict:
         """Clean group rewrite of the canonical export. Returns write counts."""
-        return asyncio.run(self._write(export))
+        return self._run(self._write(export))
 
     async def _write(self, export: dict) -> dict:
         await self._node_cls.delete_by_group_id(self._driver, self.group_id)
         for node in export["nodes"]:
-            entity = self._node_cls(
-                uuid=node["node_id"],
-                name=node["business_key"],
-                group_id=self.group_id,
-                labels=[node["entity_type"]],
-                created_at=_parse_ts(node["provenance"]["recorded_at"]),
-                summary="",
-                attributes={
-                    CANONICAL_ATTRIBUTE: canonical_json(node),
-                    "entity_type": node["entity_type"],
-                    "source_record_id": node["provenance"]["source_record_id"],
-                },
+            label = node["entity_type"]
+            if not _SAFE_LABEL.match(label):
+                raise LiveBackendError(f"unsafe entity type for a Neo4j label: {label!r}")
+            props = {
+                "uuid": node["node_id"],
+                "name": node["business_key"],
+                "group_id": self.group_id,
+                "created_at": _parse_ts(node["provenance"]["recorded_at"]),
+                "summary": "",
+                "entity_type": label,
+                "source_record_id": node["provenance"]["source_record_id"],
+                CANONICAL_ATTRIBUTE: canonical_json(node),
+            }
+            await self._driver.execute_query(
+                _NODE_SAVE_CYPHER.format(label=label), props=props
             )
-            await entity.save(self._driver)
         for edge in export["edges"]:
             superseded_at = edge.get("superseded_at")
-            entity_edge = self._edge_cls(
-                uuid=edge["edge_id"],
-                group_id=self.group_id,
-                source_node_uuid=edge["source_node_id"],
-                target_node_uuid=edge["target_node_id"],
-                created_at=_parse_ts(edge["provenance"]["recorded_at"]),
-                name=edge["relationship_type"],
-                fact=(
+            props = {
+                "uuid": edge["edge_id"],
+                "group_id": self.group_id,
+                "name": edge["relationship_type"],
+                "fact": (
                     f"{edge['relationship_type']} asserted by canonical record "
                     f"{edge['provenance']['source_record_id']}"
                 ),
-                episodes=[],
-                valid_at=_parse_ts(edge["effective_at"]),
-                invalid_at=_parse_ts(superseded_at) if superseded_at else None,
-                attributes={
-                    CANONICAL_ATTRIBUTE: canonical_json(edge),
-                    "source_record_id": edge["provenance"]["source_record_id"],
-                },
+                "episodes": [],
+                "created_at": _parse_ts(edge["provenance"]["recorded_at"]),
+                "valid_at": _parse_ts(edge["effective_at"]),
+                "invalid_at": _parse_ts(superseded_at) if superseded_at else None,
+                "source_record_id": edge["provenance"]["source_record_id"],
+                CANONICAL_ATTRIBUTE: canonical_json(edge),
+            }
+            await self._driver.execute_query(
+                _EDGE_SAVE_CYPHER,
+                source_uuid=edge["source_node_id"],
+                target_uuid=edge["target_node_id"],
+                props=props,
             )
-            await entity_edge.save(self._driver)
         return {"nodes_written": len(export["nodes"]), "edges_written": len(export["edges"])}
 
     # --- read --------------------------------------------------------------
 
     def read_export(self) -> dict:
-        """Reconstruct the canonical export from the backend, byte-for-byte."""
-        return asyncio.run(self._read())
+        """Reconstruct the canonical export from the backend, byte-for-byte,
+        via graphiti's own node/edge models."""
+        return self._run(self._read())
 
     async def _read(self) -> dict:
         nodes = await self._node_cls.get_by_group_ids(self._driver, [self.group_id])
