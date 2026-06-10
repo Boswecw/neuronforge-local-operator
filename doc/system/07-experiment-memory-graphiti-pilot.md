@@ -1,7 +1,7 @@
 # Experiment-Memory (Graphiti) Pilot
 
 ## Status
-Implemented through slice G-09; the pinned backend is verified live on operator hardware (2026-06-10: healthy, loopback-only); the live Graphiti adapter round-trip proof passes against real Neo4j 5.26.0 (provenance-equal read-back, five golden queries matching from the backend), with operator confirmation pending. Governing plan set: `docs/plans/graphiti/`.
+Implemented through slice G-09; the pinned backend is verified live on operator hardware (2026-06-10: healthy, loopback-only); the live Graphiti adapter round-trip proof is operator-confirmed against real Neo4j 5.26.0 (provenance-equal read-back, five golden queries matching from the backend). Every gate ahead of G-10 (keep/revise/remove) is closed. Governing plan set: `docs/plans/graphiti/`.
 
 ## Purpose
 Give the operator a **rebuildable, non-authoritative experiment-memory projection** over canonical experiment records: what was tested, what changed, why a baseline was promoted, what evidence supports or contradicts a promotion, and whether a failure pattern recurs.
