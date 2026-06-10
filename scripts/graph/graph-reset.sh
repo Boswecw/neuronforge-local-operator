@@ -5,6 +5,8 @@
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$REPO_ROOT"
+# shellcheck source=scripts/graph/_compose.sh
+source "$REPO_ROOT/scripts/graph/_compose.sh"
 
 if [[ "${1:-}" != "--yes" ]]; then
   echo "This deletes the graph volume and runtime projection artifacts." >&2
@@ -13,7 +15,11 @@ if [[ "${1:-}" != "--yes" ]]; then
   exit 1
 fi
 
-docker compose --env-file .env.graphiti -f docker-compose.graphiti-pilot.yml down -v
+require_docker
+detect_compose
+load_graph_env 0
+
+"${COMPOSE[@]}" -f "$COMPOSE_FILE" down -v
 rm -rf runtime/graph
 echo "graph backend reset: containers removed, volume removed, runtime/graph cleared"
 echo "rebuild with: scripts/graph/nlo-graph rebuild --prove"

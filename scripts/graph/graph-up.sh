@@ -3,20 +3,36 @@
 set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 cd "$REPO_ROOT"
+# shellcheck source=scripts/graph/_compose.sh
+source "$REPO_ROOT/scripts/graph/_compose.sh"
 
-if ! command -v docker >/dev/null 2>&1; then
-  echo "docker is not available; the graph backend is optional and NLO runs do not need it" >&2
+require_docker
+detect_compose
+load_graph_env 1
+
+"${COMPOSE[@]}" -f "$COMPOSE_FILE" up -d
+
+echo "waiting for backend health (up to 3 minutes)..."
+state="starting"
+for _ in $(seq 1 36); do
+  state="$(docker inspect -f '{{if .State.Health}}{{.State.Health.Status}}{{else}}{{.State.Status}}{{end}}' "$GRAPH_CONTAINER" 2>/dev/null || echo missing)"
+  if [[ "$state" == "healthy" ]]; then
+    break
+  fi
+  if [[ "$state" == "exited" || "$state" == "dead" ]]; then
+    echo "container is $state; inspect with: docker logs $GRAPH_CONTAINER" >&2
+    exit 1
+  fi
+  sleep 5
+done
+if [[ "$state" != "healthy" ]]; then
+  echo "backend did not report healthy in time (last state: $state)" >&2
+  echo "inspect with: docker logs $GRAPH_CONTAINER" >&2
   exit 1
 fi
-if [[ ! -f .env.graphiti ]]; then
-  echo "missing .env.graphiti — run: cp .env.graphiti.example .env.graphiti  (then set a local password)" >&2
-  exit 1
-fi
-
-docker compose --env-file .env.graphiti -f docker-compose.graphiti-pilot.yml up -d --wait
 
 echo "verifying loopback-only binding..."
-BINDINGS="$(docker port nlo-graphiti-pilot-neo4j)"
+BINDINGS="$(docker port "$GRAPH_CONTAINER")"
 echo "$BINDINGS"
 if echo "$BINDINGS" | grep -vE '127\.0\.0\.1|\[::1\]' | grep -q ':'; then
   echo "ERROR: backend is bound beyond loopback; stopping it" >&2
