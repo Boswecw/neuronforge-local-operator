@@ -1,42 +1,46 @@
-# NeuronForge Local Operator (NLO) — System Documentation
+        # NeuronForge Local Operator - Compiled System Reference
 
-**Document version:** 1.3 (2026-06-10) — G-09 comparative evaluation added
-**Protocol:** Forge Documentation Protocol v1
+        **Designation:** NLO
+        **Document role:** Canonical compiled technical reference for the NeuronForge Local Operator control surface
+        **Source:** `doc/system/`
+        **Build command:** `bash doc/system/BUILD.sh`
+        **Document version:** 2.0 (2026-06-22) - canonical compliance migration
+        **Protocol:** BDS Documentation Protocol v2.0; BDS Repo Documentation System Canonical Compliance Standard
 
-This `doc/system/` tree defines the NeuronForge Local Operator (NLO) control surface — the
-local-first training and operator workspace from which reviewed, baseline-beating results are
-promoted to the public-facing NeuronForge applications-support version:
-- Task contract taxonomy and contract doctrine
-- Routing and model profile plan
-- Candidate artifact doctrine
-- Module-specific reasoning contract requirements
-- Concrete lane plans
+        > **Generated artifact warning:** `doc/NLOSYSTEM.md` is assembled output. Edit
+        > the source modules under `doc/system/` and rebuild. Hand edits to the
+        > compiled artifact are overwritten by the next build.
 
-Assembly contract:
-- Command: `bash doc/system/BUILD.sh`
-- Output: `NLOSYSTEM.md` (root) — the single canonical build artifact
+        Assembly contract:
 
-| Part | File | Contents |
-|------|------|----------|
-| §1 | [01-task-contract-taxonomy.md](01-task-contract-taxonomy.md) | Task families, contract layering, strictness classes, degraded-mode doctrine |
-| §2 | [02-routing-and-model-profile-plan.md](02-routing-and-model-profile-plan.md) | Route classes, hardware doctrine, contract-to-route mapping, fallback rules |
-| §3 | [03-candidate-artifact-doctrine.md](03-candidate-artifact-doctrine.md) | Candidate artifact classes, evidence/confidence doctrine, review states, promotion rules |
-| §4 | [04-anvil-bloom-reasoning-contracts.md](04-anvil-bloom-reasoning-contracts.md) | ANVIL/Bloom consumption rules, required contract posture, scope rules, failure doctrine |
-| §5 | [05-scene-beat-extraction-lane-plan.md](05-scene-beat-extraction-lane-plan.md) | First concrete extraction lane: input scope, output doctrine, failure taxonomy, eval design |
-| §6 | [06-continuity-progression-reasoning-lane-plan.md](06-continuity-progression-reasoning-lane-plan.md) | Cross-scene reasoning lane: scope doctrine, finding types, risk taxonomy, review rubric direction |
-| §7 | [07-experiment-memory-graphiti-pilot.md](07-experiment-memory-graphiti-pilot.md) | Non-authoritative experiment-memory projection: canonical record schemas, deterministic identity/rebuild, fail-open/fail-closed doctrine, operator evidence queries |
+        - Command: `bash doc/system/BUILD.sh`
+        - Validation: `bash doc/system/validate_snapshots.sh` runs during assembly
+        - Primary output: `doc/NLOSYSTEM.md`
 
-## Task contracts
+        This `doc/system/` tree is the canonical source of truth for NeuronForge Local Operator. It uses
+        explicit **truth classes**: canonical facts define repo role, authority
+        boundaries, contract behavior, runtime behavior, and verification doctrine;
+        snapshot facts are dated, audit-derived counts and current implementation
+        inventory that may drift between audits.
 
-| Contract                               | Status                              |
-| -------------------------------------- | ----------------------------------- |
-| `analyze.continuity.adjacent_scene.v1` | live                                |
-| `analyze.style.scene.v1`               | **candidate_baseline** (2026-03-22) |
+        | Part | File | Contents |
+        | --- | --- | --- |
+        | §1 | `00_overview/00-overview.md` | Overview |
+| §2 | `10_service-contract/01-task-contract-taxonomy.md` | NeuronForge Local Task Contract Taxonomy |
+| §3 | `10_service-contract/04-anvil-bloom-reasoning-contracts.md` | ANVIL and Bloom Reasoning Contract Requirements |
+| §4 | `10_service-contract/20-analyze-continuity-adjacent-scene-v1.md` | Task Contract: analyze.continuity.adjacent_scene.v1 |
+| §5 | `10_service-contract/21-analyze-style-scene-v1.md` | Task Contract: analyze.style.scene.v1 |
+| §6 | `20_runtime/02-routing-and-model-profile-plan.md` | NeuronForge Local Routing and Model Profile Plan |
+| §7 | `20_runtime/05-scene-beat-extraction-lane-plan.md` | Scene-Aware Beat Candidate Extraction Lane Plan |
+| §8 | `20_runtime/06-continuity-progression-reasoning-lane-plan.md` | Continuity / Progression Reasoning Lane Plan |
+| §9 | `20_runtime/07-experiment-memory-graphiti-pilot.md` | Experiment-Memory (Graphiti) Pilot |
+| §10 | `30_dependencies/30-dependencies.md` | Dependencies |
+| §11 | `40_governance/03-candidate-artifact-doctrine.md` | Candidate Artifact Doctrine for AuthorForge |
+| §12 | `50_operations/50-operations.md` | Operations |
+| §13 | `99_appendices/90-appendices.md` | Appendices |
 
-## Quick Assembly
+        ## Quick Assembly
 
-```bash
-bash doc/system/BUILD.sh   # Assembles all parts into NLOSYSTEM.md
-```
-
-*Last updated: 2026-06-10*
+        ```bash
+        bash doc/system/BUILD.sh
+        ```
