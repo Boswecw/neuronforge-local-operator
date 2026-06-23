@@ -13,6 +13,7 @@ from nlo_skillopt.schemas import SCHEMA_DIR, SchemaValidationError, load_schema,
 
 SCHEMAS = (
     "skill-candidate.v1.schema.json",
+    "skill-promotion-receipt.v1.schema.json",
     "skill-spec.v1.schema.json",
     "skill-eval-case.v1.schema.json",
     "skill-eval-run.v1.schema.json",

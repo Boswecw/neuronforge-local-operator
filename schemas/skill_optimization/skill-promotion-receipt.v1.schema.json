@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/schemas/skill_optimization/skill-promotion-receipt.v1.schema.json",
+  "title": "SkillPromotionReceipt.v1",
+  "description": "Governed receipt for promoting a reviewed SkillCandidate.v1 package into the canonical promoted skill location.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "skill-promotion-receipt-v1" },
+    "receipt_id": { "$ref": "#/$defs/receiptId" },
+    "candidate_id": { "$ref": "#/$defs/candidateId" },
+    "skill_id": { "$ref": "#/$defs/skillId" },
+    "lane_id": { "$ref": "#/$defs/id" },
+    "base_skill_version": { "$ref": "#/$defs/skillVersion" },
+    "promoted_skill_version": { "$ref": "#/$defs/skillVersion" },
+    "source_candidate_hash": { "$ref": "#/$defs/sha256" },
+    "baseline_eval_run_id": {
+      "oneOf": [
+        { "$ref": "#/$defs/evalRunId" },
+        { "type": "null" }
+      ]
+    },
+    "candidate_eval_run_id": { "$ref": "#/$defs/evalRunId" },
+    "validation_status": { "const": "passed" },
+    "aggregate_delta": {
+      "oneOf": [
+        { "type": "number", "minimum": -1, "maximum": 1 },
+        { "type": "null" }
+      ]
+    },
+    "blocking_regressions": {
+      "type": "array",
+      "maxItems": 0,
+      "items": { "type": "string" }
+    },
+    "dry_run_receipt": { "$ref": "#/$defs/dryRunReceipt" },
+    "promotion_decision": { "const": "approved" },
+    "approval_phrase": { "const": "I approve this SkillOpt promotion" },
+    "approver": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "approved_at": { "$ref": "#/$defs/utcTimestamp" },
+    "target_path": { "$ref": "#/$defs/repoPath" },
+    "previous_promoted_version": {
+      "oneOf": [
+        { "$ref": "#/$defs/skillVersion" },
+        { "type": "null" }
+      ]
+    },
+    "rollback_ref": { "$ref": "#/$defs/rollbackRef" },
+    "notes": { "type": "string", "maxLength": 2000 }
+  },
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "candidate_id",
+    "skill_id",
+    "lane_id",
+    "base_skill_version",
+    "promoted_skill_version",
+    "source_candidate_hash",
+    "baseline_eval_run_id",
+    "candidate_eval_run_id",
+    "validation_status",
+    "aggregate_delta",
+    "blocking_regressions",
+    "dry_run_receipt",
+    "promotion_decision",
+    "approval_phrase",
+    "approver",
+    "approved_at",
+    "target_path",
+    "previous_promoted_version",
+    "rollback_ref"
+  ],
+  "$defs": {
+    "candidateId": {
+      "type": "string",
+      "pattern": "^skill-candidate-[a-z0-9][a-z0-9-]*$",
+      "maxLength": 180
+    },
+    "dryRunReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "type": "string",
+          "pattern": "^skillopt-dry-run-[a-z0-9][a-z0-9-]*$",
+          "maxLength": 180
+        },
+        "status": { "const": "passed" },
+        "command_hash": { "$ref": "#/$defs/sha256" },
+        "output_hash": { "$ref": "#/$defs/sha256" },
+        "created_at": { "$ref": "#/$defs/utcTimestamp" }
+      },
+      "required": [
+        "receipt_id",
+        "status",
+        "command_hash",
+        "output_hash",
+        "created_at"
+      ]
+    },
+    "evalRunId": {
+      "type": "string",
+      "pattern": "^skill-eval-run-[a-z0-9][a-z0-9-]*$",
+      "maxLength": 160
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "receiptId": {
+      "type": "string",
+      "pattern": "^skill-promotion-receipt-[a-z0-9][a-z0-9-]*$",
+      "maxLength": 180
+    },
+    "repoPath": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._/-]+$",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "rollbackRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rollback_type": { "enum": ["previous_version", "none"] },
+        "skill_version": {
+          "oneOf": [
+            { "$ref": "#/$defs/skillVersion" },
+            { "type": "null" }
+          ]
+        },
+        "target_path": {
+          "oneOf": [
+            { "$ref": "#/$defs/repoPath" },
+            { "type": "null" }
+          ]
+        },
+        "receipt_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/receiptId" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "required": [
+        "rollback_type",
+        "skill_version",
+        "target_path",
+        "receipt_id"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "skillId": {
+      "type": "string",
+      "pattern": "^skill-[a-z0-9][a-z0-9-]*$",
+      "maxLength": 160
+    },
+    "skillVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-z0-9][a-z0-9.-]*)?$",
+      "maxLength": 80
+    },
+    "utcTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    }
+  }
+}
