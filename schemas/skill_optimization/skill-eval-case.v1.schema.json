@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/schemas/skill_optimization/skill-eval-case.v1.schema.json",
+  "title": "SkillEvalCase.v1",
+  "description": "Executable eval-case record for a governed skill lane.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "skill-eval-case-v1" },
+    "case_id": { "$ref": "#/$defs/caseId" },
+    "skill_id": { "$ref": "#/$defs/skillId" },
+    "lane_id": { "$ref": "#/$defs/id" },
+    "case_pack_id": { "$ref": "#/$defs/id" },
+    "split": { "enum": ["train", "validation", "regression", "blocked"] },
+    "active": { "type": "boolean" },
+    "blocked_reason": {
+      "oneOf": [
+        { "type": "string", "minLength": 1, "maxLength": 500 },
+        { "type": "null" }
+      ]
+    },
+    "task_id": { "$ref": "#/$defs/id" },
+    "scope_label": {
+      "enum": ["scene_local", "adjacent_scene", "scene_window", "chapter_window"]
+    },
+    "source_packet_ref": { "$ref": "#/$defs/repoPath" },
+    "source_packet_hash": { "$ref": "#/$defs/sha256" },
+    "input_unit_ids": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/id" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "primary_category": { "$ref": "#/$defs/id" },
+    "secondary_category": {
+      "oneOf": [
+        { "$ref": "#/$defs/id" },
+        { "type": "null" }
+      ]
+    },
+    "expected_review_posture": {
+      "enum": [
+        "candidate_issue_expected",
+        "restraint_expected",
+        "ambiguous_candidate_allowed"
+      ]
+    },
+    "expected_restraint_posture": {
+      "enum": ["low_restraint", "moderate_restraint", "high_restraint"]
+    },
+    "finding_expected": {
+      "oneOf": [
+        { "type": "boolean" },
+        { "const": "partial" }
+      ]
+    },
+    "no_finding_acceptable": {
+      "oneOf": [
+        { "type": "boolean" },
+        { "const": "partial" }
+      ]
+    },
+    "scoring_tags": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/id" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "case_purpose": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "reviewer_note": {
+      "oneOf": [
+        { "type": "string", "minLength": 1, "maxLength": 2000 },
+        { "type": "null" }
+      ]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sourceRef" },
+      "minItems": 1
+    },
+    "created_at": { "$ref": "#/$defs/utcTimestamp" }
+  },
+  "required": [
+    "schema_version",
+    "case_id",
+    "skill_id",
+    "lane_id",
+    "case_pack_id",
+    "split",
+    "active",
+    "blocked_reason",
+    "task_id",
+    "scope_label",
+    "source_packet_ref",
+    "source_packet_hash",
+    "input_unit_ids",
+    "primary_category",
+    "secondary_category",
+    "expected_review_posture",
+    "expected_restraint_posture",
+    "finding_expected",
+    "no_finding_acceptable",
+    "scoring_tags",
+    "case_purpose",
+    "reviewer_note",
+    "source_refs",
+    "created_at"
+  ],
+  "$defs": {
+    "caseId": {
+      "type": "string",
+      "pattern": "^cp-[0-9]{3}$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "repoPath": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._/-]+$",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "skillId": {
+      "type": "string",
+      "pattern": "^skill-[a-z0-9][a-z0-9-]*$",
+      "maxLength": 160
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "unit_id": { "$ref": "#/$defs/id" },
+        "field": { "enum": ["scene_a_text", "scene_b_text", "scene_text", "source_packet"] },
+        "content_hash": { "$ref": "#/$defs/sha256" }
+      },
+      "required": ["unit_id", "field", "content_hash"]
+    },
+    "utcTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    }
+  }
+}

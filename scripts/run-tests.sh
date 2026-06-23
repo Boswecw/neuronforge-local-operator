@@ -33,6 +33,7 @@ run "cor-gnat handoff (python)"    python3 tests/test-cor-gnat-semantic-handoff.
 run "prompt_assembly (pytest)"     python3 -m pytest prompt_assembly/tests/ -q
 run "continuity adjacent (shell)"  bash tests/test-continuity-adjacent-scene.sh
 run "experiment-memory (pytest)"   python3 -m pytest tests/experiment_memory/ -q
+run "skill optimization (pytest)"  python3 -m pytest tests/skill_optimization/ -q
 
 echo ""
 if [[ "$status" -eq 0 ]]; then
