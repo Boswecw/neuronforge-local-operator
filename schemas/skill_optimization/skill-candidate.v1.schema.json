@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronforge.local/schemas/skill_optimization/skill-candidate.v1.schema.json",
+  "title": "SkillCandidate.v1",
+  "description": "Manual candidate skill patch package. This is proposal evidence only and cannot promote or write canonical skill files.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "const": "skill-candidate-v1" },
+    "candidate_id": { "$ref": "#/$defs/candidateId" },
+    "skill_id": { "$ref": "#/$defs/skillId" },
+    "base_skill_version": { "$ref": "#/$defs/skillVersion" },
+    "candidate_skill_version": { "$ref": "#/$defs/skillVersion" },
+    "lane_id": { "$ref": "#/$defs/id" },
+    "package_state": {
+      "enum": ["draft", "validated", "rejected", "ready_for_review"]
+    },
+    "candidate_kind": { "const": "manual_patch" },
+    "patch_author": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "created_at": { "$ref": "#/$defs/utcTimestamp" },
+    "rationale": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "base_skill_hash": { "$ref": "#/$defs/sha256" },
+    "candidate_skill_hash": {
+      "oneOf": [
+        { "$ref": "#/$defs/sha256" },
+        { "type": "null" }
+      ]
+    },
+    "patch_set": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/patchEntry" },
+      "minItems": 1,
+      "maxItems": 4
+    },
+    "eval_summary": { "$ref": "#/$defs/evalSummary" },
+    "notes": { "type": "string", "maxLength": 2000 }
+  },
+  "required": [
+    "schema_version",
+    "candidate_id",
+    "skill_id",
+    "base_skill_version",
+    "candidate_skill_version",
+    "lane_id",
+    "package_state",
+    "candidate_kind",
+    "patch_author",
+    "created_at",
+    "rationale",
+    "base_skill_hash",
+    "candidate_skill_hash",
+    "patch_set",
+    "eval_summary"
+  ],
+  "$defs": {
+    "candidateId": {
+      "type": "string",
+      "pattern": "^skill-candidate-[a-z0-9][a-z0-9-]*$",
+      "maxLength": 180
+    },
+    "evalRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ref_type": { "enum": ["eval_case", "eval_run", "baseline_report", "review_note"] },
+        "ref_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9._:-]+$",
+          "minLength": 1,
+          "maxLength": 180
+        }
+      },
+      "required": ["ref_type", "ref_id"]
+    },
+    "evalRunId": {
+      "type": "string",
+      "pattern": "^skill-eval-run-[a-z0-9][a-z0-9-]*$",
+      "maxLength": 160
+    },
+    "evalSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "baseline_eval_run_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/evalRunId" },
+            { "type": "null" }
+          ]
+        },
+        "candidate_eval_run_id": {
+          "oneOf": [
+            { "$ref": "#/$defs/evalRunId" },
+            { "type": "null" }
+          ]
+        },
+        "validation_status": { "enum": ["not_run", "passed", "failed", "blocked"] },
+        "aggregate_delta": {
+          "oneOf": [
+            { "type": "number", "minimum": -1, "maximum": 1 },
+            { "type": "null" }
+          ]
+        },
+        "blocking_regressions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1, "maxLength": 500 }
+        }
+      },
+      "required": [
+        "baseline_eval_run_id",
+        "candidate_eval_run_id",
+        "validation_status",
+        "aggregate_delta",
+        "blocking_regressions"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "patchEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "target_path": { "$ref": "#/$defs/repoPath" },
+        "operation": { "enum": ["add", "replace", "delete"] },
+        "section_ref": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "diff_summary": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "added_lines_count": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "removed_lines_count": { "type": "integer", "minimum": 0, "maximum": 24 },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evalRef" },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "target_path",
+        "operation",
+        "section_ref",
+        "diff_summary",
+        "added_lines_count",
+        "removed_lines_count",
+        "evidence_refs"
+      ]
+    },
+    "repoPath": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9._/-]+$",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "skillId": {
+      "type": "string",
+      "pattern": "^skill-[a-z0-9][a-z0-9-]*$",
+      "maxLength": 160
+    },
+    "skillVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-z0-9][a-z0-9.-]*)?$",
+      "maxLength": 80
+    },
+    "utcTimestamp": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?Z$"
+    }
+  }
+}
