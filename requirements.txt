@@ -17,3 +17,11 @@ referencing>=0.36      # $ref resolution for Draft 2020-12 validators
 
 # YAML registry/config parsing (prompt_assembly/tools/validate_registry.py)
 PyYAML>=6.0
+
+# Canonical continuity vocabulary, CONSUMED (not hand-mirrored) from PACT, the
+# domain owner of the continuity contract. Zero-dependency pure-Python package;
+# scripts/validate-continuity-candidate.py imports pact_contracts.continuity.
+# Path-dep — assumes the Forge repos are colocated; pip resolves it relative to
+# its CWD (this repo root). Git-dep alternative for a standalone checkout:
+#   pact-contracts @ git+ssh://git@github.com/Boswecw/PACT@<ref>#subdirectory=contracts_py
+../../pact/contracts_py
