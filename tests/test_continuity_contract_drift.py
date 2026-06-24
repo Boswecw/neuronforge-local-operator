@@ -3,7 +3,8 @@
 This repo (neuronforge-local-operator) holds copies of the continuity-progression
 artifacts that MUST stay aligned with the canonical pact contract:
 
-  - scripts/validate-continuity-candidate.py   (VALID_* enum constant sets)
+  - scripts/validate-continuity-candidate.py   (VALID_* enum sets, now IMPORTED
+    from pact_contracts; this gate proves the consumed values == the vendored schema)
   - prompts/continuity-adjacent-scene-{v1,v2,v3}.md  (operator prompt enum blocks)
   - docs/continuity-progression-candidate-schema.md   (human schema doc)
 
@@ -25,11 +26,20 @@ from __future__ import annotations
 import importlib.util
 import json
 import re
+import sys
 from pathlib import Path
 
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+
+# The validator now CONSUMES pact_contracts (see scripts/validate-continuity-candidate.py).
+# Make the colocated PACT consumable importable so this gate is self-sufficient
+# within the Forge tree; a standalone checkout instead pip-installs pact_contracts
+# (requirements path-dep / git-dep) and this lookup simply no-ops.
+_PACT_CONTRACTS = REPO_ROOT.parent.parent / "pact" / "contracts_py"
+if _PACT_CONTRACTS.is_dir() and str(_PACT_CONTRACTS) not in sys.path:
+    sys.path.insert(0, str(_PACT_CONTRACTS))
 
 VENDOR_SCHEMA = REPO_ROOT / "schemas" / "_vendor" / "continuity_findings_packet.schema.json"
 VALIDATOR_PATH = REPO_ROOT / "scripts" / "validate-continuity-candidate.py"
@@ -92,7 +102,11 @@ CANON = _load_canonical_enums()
 
 
 # ---------------------------------------------------------------------------
-# Surface 1: the validator script's VALID_* constant sets.
+# Surface 1: the validator script's VALID_* enum sets. These are now IMPORTED
+# from pact_contracts (not hand-mirrored), so this surface proves the consumed
+# package values still equal the vendored canonical schema — loading the
+# validator module exercises that import (it fails closed if pact_contracts is
+# unavailable, rather than silently passing).
 # ---------------------------------------------------------------------------
 
 
@@ -122,9 +136,10 @@ def test_validator_constants_match_canonical(field, const_name):
     mod = _load_validator_module()
     assert hasattr(mod, const_name), f"validator missing constant {const_name}"
     local = getattr(mod, const_name)
-    assert isinstance(local, set), f"{const_name} expected to be a set"
+    # Imported from pact_contracts as a frozenset; accept either set kind.
+    assert isinstance(local, (set, frozenset)), f"{const_name} expected to be a set/frozenset"
     assert local, f"{const_name} is EMPTY -- fail-closed"
-    assert local == CANON[field], (
+    assert set(local) == CANON[field], (
         f"DRIFT in validator {const_name} for {field}:\n"
         f"  canonical: {sorted(CANON[field])}\n"
         f"  local:     {sorted(local)}\n"

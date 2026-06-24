@@ -22,48 +22,26 @@ import re
 import sys
 from datetime import datetime, timezone
 
+# Canonical continuity vocabulary is CONSUMED from PACT (the domain owner that
+# owns continuity_findings_packet.schema.json) instead of being hand-mirrored
+# here. PACT pins these to the locked schema; a single schema change propagates
+# to every importer. See pact/contracts_py + the pact consumable==schema gate.
+# Requires pact_contracts to be importable: install via requirements.txt (the
+# ../../pact/contracts_py path-dep when colocated, or the git-dep alternative for
+# a standalone checkout — see requirements.txt). For ad-hoc runs without an
+# install: PYTHONPATH=../../pact/contracts_py python3 scripts/validate-...py
+from pact_contracts.continuity import (
+    CANDIDATE_STATES as VALID_CANDIDATE_STATES,
+    CONFIDENCES as VALID_CONFIDENCE,
+    FINDING_TYPES as VALID_FINDING_TYPES,
+    SCOPE_TYPES as VALID_SCOPE_TYPES,
+    SEVERITY_HINTS as VALID_SEVERITY_HINTS,
+    SPAN_ROLES as VALID_SPAN_ROLES,
+)
+
 LANE_ID = "continuity-progression-reasoning"
 SCHEMA_VERSION = "1.0"
 RUN_POSTURE = "candidate_only"
-
-VALID_SCOPE_TYPES = {
-    "scene_local",
-    "adjacent_scene",
-    "scene_window",
-    "chapter_window",
-}
-
-VALID_FINDING_TYPES = {
-    "continuity_tension",
-    "progression_break",
-    "transition_gap",
-    "descriptive_mismatch",
-    "repeated_movement",
-    "escalation_mismatch",
-    "state_carry_forward_issue",
-    "causal_link_unclear",
-}
-
-VALID_CONFIDENCE = {"low", "moderate", "high"}
-
-VALID_SPAN_ROLES = {
-    "setup",
-    "contrast",
-    "carry_forward",
-    "mismatch_signal",
-    "transition_signal",
-    "progression_signal",
-}
-
-VALID_CANDIDATE_STATES = {
-    "candidate_unreviewed",
-    "candidate_review_in_progress",
-    "candidate_retained",
-    "candidate_rejected",
-    "candidate_promoted",
-}
-
-VALID_SEVERITY_HINTS = {"minor", "moderate", "major"}
 
 AUTHORITY_PATTERNS = [
     r"\bdefinitely\b",
